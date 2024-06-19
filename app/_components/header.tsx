@@ -1,4 +1,3 @@
-import NotificationBell from '@/app/_assets/icons/notification-bell';
 import ShopBag from '@/app/_assets/icons/shop-bag';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -47,7 +46,13 @@ export default function Header() {
           </Link>
 
           <Link href={'/'} className="">
-            <NotificationBell />
+            <Image
+              src="/images/notification-bell.png"
+              width={60}
+              height={60}
+              className=""
+              alt="User image"
+            />
           </Link>
 
           <Link href={'/'} className="">

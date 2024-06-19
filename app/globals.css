@@ -74,3 +74,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.footer-links-section {
+  @apply text-2xl font-light;
+
+  > h3 {
+    @apply font-semibold;
+  }
+}

@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={cn(outfit.className)}>
         <div className="flex min-h-screen flex-col bg-custom-gradient">
           <Header />
-          <main className="mx-auto max-w-[1920px] flex-1">{children}</main>
+          <main className="mx-auto flex-1">{children}</main>
           <Footer />
         </div>
       </body>

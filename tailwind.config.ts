@@ -75,6 +75,8 @@ const config = {
       backgroundImage: {
         'custom-gradient':
           'linear-gradient(to bottom, #004459 0%, #01303A 50%, #000122 100%)',
+        'header-gradient':
+          'linear-gradient(to right, rgb(106,106,106), #13272B )',
       },
     },
   },

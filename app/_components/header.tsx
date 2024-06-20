@@ -1,12 +1,12 @@
-import ShopBag from '@/app/_assets/icons/shop-bag';
+import ShopBag from '@/app/_components/icons/shop-bag';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
   return (
     // <header className="sticky top-0 z-10 backdrop-blur-lg backdrop-filter">
-    <header className="sticky top-0 z-50 h-[116px] w-full py-4 backdrop-blur-md backdrop-filter">
-      <div className="flex h-[80px] bg-header-gradient px-4">
+    <header className="fixed top-0 z-50 h-[116px] w-full py-4">
+      <div className="flex h-[80px] bg-header-gradient px-4 backdrop-blur-md backdrop-filter">
         <div className="mx-auto flex h-full max-w-[1920px] flex-1 items-center gap-10">
           <Link href={'/'}>
             <Image
@@ -21,7 +21,7 @@ export default function Header() {
             <Link href={'/'} className="text-4xl">
               Accounts
             </Link>
-            <Link href={'/'} className="text-4xl">
+            <Link href={'/elojob'} className="text-4xl">
               Elojob
             </Link>
             <Link href={'/'} className="text-4xl">
@@ -55,7 +55,7 @@ export default function Header() {
             />
           </Link>
 
-          <Link href={'/'} className="">
+          <Link href={'/user'} className="mt-1">
             <Image
               src="/images/user.png"
               width={102}

@@ -82,3 +82,10 @@
     @apply font-semibold;
   }
 }
+
+.page-section {
+  @apply min-h-[1080px] w-full pt-[116px];
+  > div {
+    @apply mx-auto w-full max-w-[1920px];
+  }
+}

@@ -97,3 +97,9 @@
     @apply mx-auto w-full max-w-[1920px];
   }
 }
+
+.btn-golden-variant {
+  > span {
+    @apply inline-block bg-gradient-to-r from-[#000] to-[#373737] bg-clip-text text-6xl text-transparent;
+  }
+}

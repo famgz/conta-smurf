@@ -18,11 +18,14 @@ const buttonVariants = cva(
           'bg-secondary/50  text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        golden:
+          'bg-[#FFF500] font-semibold hover:bg-primary/90 btn-golden-variant',
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
+        xl: 'h-24 rounded-3xl px-8',
         icon: 'size-14',
       },
     },

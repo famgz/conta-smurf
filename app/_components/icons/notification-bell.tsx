@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
-const NotificationBell = (props: SVGProps<SVGSVGElement>) => (
+
+const NotificationBellIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={61}
@@ -139,4 +140,4 @@ const NotificationBell = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
-export default NotificationBell;
+export default NotificationBellIcon;

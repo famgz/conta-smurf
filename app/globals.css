@@ -71,12 +71,16 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply hide-scrollbar bg-background text-foreground;
   }
 }
 
 .flex-center {
   @apply flex items-center justify-center text-center;
+}
+
+.hide-scrollbar {
+  @apply [&::-webkit-scrollbar]:hidden;
 }
 
 .footer-links-section {

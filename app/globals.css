@@ -75,6 +75,10 @@
   }
 }
 
+.flex-center {
+  @apply flex items-center justify-center text-center;
+}
+
 .footer-links-section {
   @apply text-2xl font-light;
 
@@ -84,7 +88,7 @@
 }
 
 .page-section {
-  @apply min-h-[1080px] w-full pt-[116px];
+  @apply flex-center h-screen w-full snap-start border border-red-600 bg-effects bg-cover pt-[116px];
   > div {
     @apply mx-auto w-full max-w-[1920px];
   }

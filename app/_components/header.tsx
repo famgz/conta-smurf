@@ -17,7 +17,7 @@ export default function Header() {
               alt="Logo image"
             />
           </Link>
-          <div className="flex flex-1 gap-12">
+          <div className="hidden flex-1 gap-12 xl:flex">
             <Link href={'/'} className="text-4xl">
               Accounts
             </Link>
@@ -41,11 +41,11 @@ export default function Header() {
             </Link>
           </div>
 
-          <Link href={'/'} className="">
+          <Link href={'/cart'} className="">
             <ShopBag />
           </Link>
 
-          <Link href={'/'} className="">
+          <Link href={'/user'} className="">
             <Image
               src="/images/notification-bell.png"
               width={60}

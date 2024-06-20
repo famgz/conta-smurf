@@ -80,6 +80,7 @@ const config = {
           'linear-gradient(to right, rgb(220,220,220,0.4), rgba(0,51,63,0.4) )',
 
         'line-gradient': 'radial-gradient( #BD00FF, rgba(250,0,255,0) )',
+        effects: "url('/images/bg-effects.png')",
       },
     },
   },

@@ -97,15 +97,19 @@ body {
 }
 
 .page-section {
-  @apply flex-center h-screen w-full snap-start border border-red-600 bg-effects bg-cover pt-[116px];
+  @apply flex-center h-screen w-full border border-red-600 bg-effects bg-cover pt-[116px];
   > div {
     @apply mx-auto w-full max-w-[1920px];
   }
 }
 
+.text-gradient-dark {
+  @apply inline-block bg-gradient-to-r from-[#000] to-[#4e4e4e] bg-clip-text leading-tight text-transparent;
+}
+
 .btn-golden-variant {
   > span,
   > a {
-    @apply inline-block bg-gradient-to-r from-[#000] to-[#373737] bg-clip-text text-6xl text-transparent;
+    @apply text-gradient-dark;
   }
 }

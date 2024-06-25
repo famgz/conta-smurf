@@ -19,12 +19,15 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         golden:
-          'bg-[#FFF500] font-semibold hover:bg-primary/90 btn-golden-variant',
+          'bg-[#FFF500] font-semibold hover:shadow-[0_5px_30px_#FFF500] btn-golden-variant',
+        white:
+          'bg-white font-semibold btn-golden-variant hover:shadow-[0_5px_30px_#FFF]',
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
+        lg2: 'h-[80px] rounded-3xl px-8',
         xl: 'h-24 rounded-3xl px-8',
         icon: 'size-14',
       },

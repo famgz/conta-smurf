@@ -75,6 +75,11 @@
   }
 }
 
+html,
+body {
+  @apply !scroll-smooth;
+}
+
 .flex-center {
   @apply flex items-center justify-center text-center;
 }
@@ -99,7 +104,8 @@
 }
 
 .btn-golden-variant {
-  > span {
+  > span,
+  > a {
     @apply inline-block bg-gradient-to-r from-[#000] to-[#373737] bg-clip-text text-6xl text-transparent;
   }
 }

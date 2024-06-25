@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={cn(outfit.className)}>
         <Header />
         <div className="flex min-h-screen flex-col bg-custom-gradient">

@@ -1,9 +1,10 @@
 import { Button } from '@/app/_components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="page-section !bg-[url('/images/bg-not-found.png')]">
+    <div className="page-section !bg-[url('/images/bg/not-found.png')]">
       <div className="flex-center !max-w-[1024px] gap-10">
         <Image
           src={'/images/blitz.png'}
@@ -19,7 +20,9 @@ export default function NotFound() {
             <p className="">Let&apos;s come back to a warded place</p>
           </div>
           <Button size="xl" variant="golden">
-            <span className="text-6xl">Return to Base</span>
+            <Link href="/" className="text-6xl">
+              Return to Base
+            </Link>
           </Button>
         </div>
       </div>

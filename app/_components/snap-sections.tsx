@@ -68,7 +68,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
           <div
             key={section.id}
             id={section.id}
-            className="page-section"
+            className="page-section snap-start"
             ref={(el) => {
               if (el) {
                 sectionRefs.current[index] = el;

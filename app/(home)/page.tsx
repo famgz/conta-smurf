@@ -1,3 +1,4 @@
+import AboutUs from '@/app/(home)/_components/section-about-us';
 import HomeHero from '@/app/(home)/_components/section-hero';
 import MostWanted from '@/app/(home)/_components/section-most-wanted';
 import Products from '@/app/(home)/_components/section-products';
@@ -32,7 +33,7 @@ export default function Home() {
     {
       id: 'home-about-us',
       label: 'About Us',
-      content: <></>,
+      content: <AboutUs />,
       icon: <AboutUsIcon />,
     },
     { id: 'home-faq', label: 'FAQ', content: <></>, icon: <FaqIcon /> },

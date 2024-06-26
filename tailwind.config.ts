@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config = {
   darkMode: ['class'],
@@ -39,6 +40,12 @@ const config = {
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
+        },
+        golden: {
+          DEFAULT: 'hsl(var(--golden))',
+        },
+        brass: {
+          DEFAULT: 'hsl(var(--brass))',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
@@ -82,9 +89,29 @@ const config = {
         'line-gradient': 'radial-gradient( #BD00FF, rgba(250,0,255,0) )',
         effects: "url('/images/bg/effects.png')",
       },
+      boxShadow: {
+        golden: '0 5px 30px hsl(var(--golden))',
+      },
+      textShadow: {
+        sm: '0 0 10px var(--tw-shadow-color)',
+        DEFAULT: '0 0 15px var(--tw-shadow-color)',
+        lg: '0 0 20px var(--tw-shadow-color)',
+      },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      );
+    }),
+  ],
 } satisfies Config;
 
 export default config;

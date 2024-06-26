@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         golden:
-          'bg-[#FFF500] font-semibold hover:shadow-[0_5px_30px_#FFF500] btn-golden-variant',
+          'bg-golden font-semibold hover:shadow-golden btn-golden-variant',
         white:
           'bg-white font-semibold btn-golden-variant hover:shadow-[0_5px_30px_#FFF]',
       },

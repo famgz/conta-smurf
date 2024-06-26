@@ -1,3 +1,5 @@
+import HomeHero from '@/app/(home)/_components/section-hero';
+import MostWanted from '@/app/(home)/_components/section-most-wanted';
 import AboutUsIcon from '@/app/_components/icons/about-us';
 import BlogIcon from '@/app/_components/icons/blog';
 import FaqIcon from '@/app/_components/icons/faq';
@@ -8,11 +10,16 @@ import SnapSections from '@/app/_components/snap-sections';
 
 export default function Home() {
   const sections = [
-    { id: 'home-hero', label: 'Hero', content: <></>, icon: <HomeIcon /> },
+    {
+      id: 'home-hero',
+      label: 'Hero',
+      content: <HomeHero />,
+      icon: <HomeIcon />,
+    },
     {
       id: 'home-most-wanted',
       label: 'Most Wanted',
-      content: <></>,
+      content: <MostWanted />,
       icon: <MostWantedIcon />,
     },
     {

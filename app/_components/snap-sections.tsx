@@ -63,7 +63,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
         ))}
       </FloatingSideMenu>
 
-      <div className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll">
+      <div className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
         {sections.map((section, index) => (
           <div
             key={section.id}
@@ -75,7 +75,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
               }
             }}
           >
-            <span className="text-4xl">{section.label}</span>
+            {section.content}
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@
 
 import SideMenuButton from '@/app/_components/buttons/side-menu-button';
 import FloatingSideMenu from '@/app/_components/floating-side-menu';
+import { cn } from '@/app/_lib/utils';
 import { useEffect, useRef, useState } from 'react';
 
 interface SnapSection {
@@ -9,6 +10,7 @@ interface SnapSection {
   label: string;
   content: React.JSX.Element;
   icon: React.JSX.Element;
+  className: string;
 }
 
 interface SnapSectionsProps {
@@ -68,7 +70,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
           <div
             key={section.id}
             id={section.id}
-            className="page-section snap-start"
+            className={cn('page-section snap-start', section.className)}
             ref={(el) => {
               if (el) {
                 sectionRefs.current[index] = el;

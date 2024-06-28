@@ -1,5 +1,4 @@
 import HeroCard from '@/app/(home)/_components/hero-card';
-import Image from 'next/image';
 
 export default function HomeHero() {
   return (
@@ -7,7 +6,7 @@ export default function HomeHero() {
       {/* Hero image */}
       <div className="mt-[-100px] flex flex-1 items-center justify-start rounded-[40px] bg-[url('/images/home-hero.jpg')] bg-cover bg-top">
         <div className="hidden space-y-5 pl-28 xl:block">
-          <p className="text-brass text-shadow-sm shadow-brass text-9xl font-extrabold">
+          <p className="text-9xl font-extrabold text-brass shadow-brass text-shadow-sm">
             Be a legend
           </p>
           <p className="mx-auto max-w-[500px] text-left font-light">

@@ -1,4 +1,5 @@
 import AboutUs from '@/app/(home)/_components/section-about-us';
+import Blog from '@/app/(home)/_components/section-blog';
 import HomeFAQ from '@/app/(home)/_components/section-faq';
 import HomeHero from '@/app/(home)/_components/section-hero';
 import MostWanted from '@/app/(home)/_components/section-most-wanted';
@@ -51,7 +52,7 @@ export default function Home() {
     {
       id: 'home-blog',
       label: 'Blog',
-      content: <></>,
+      content: <Blog />,
       icon: <BlogIcon />,
       className: '',
     },

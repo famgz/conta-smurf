@@ -10,7 +10,7 @@ interface SnapSection {
   label: string;
   content: React.JSX.Element;
   icon: React.JSX.Element;
-  className: string;
+  className?: string;
 }
 
 interface SnapSectionsProps {
@@ -70,7 +70,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
           <div
             key={section.id}
             id={section.id}
-            className={cn('page-section snap-start', section.className)}
+            className={cn('page-section snap-start', section?.className)}
             ref={(el) => {
               if (el) {
                 sectionRefs.current[index] = el;

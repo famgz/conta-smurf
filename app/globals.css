@@ -102,8 +102,9 @@ body {
 
 .page-section {
   @apply flex-center h-screen w-full overflow-hidden border border-red-600 bg-effects bg-cover pt-[116px];
-  > div {
-    @apply mx-auto h-full w-full max-w-[1920px];
+
+  & > div {
+    @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)];
   }
 }
 
@@ -120,4 +121,9 @@ body {
   > a {
     @apply text-gradient-dark;
   }
+}
+
+/* to ensure ScrollArea inner divs will expand vertically */
+.scroll-area-viewport > div {
+  @apply h-full;
 }

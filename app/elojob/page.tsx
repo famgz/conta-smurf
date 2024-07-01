@@ -5,7 +5,7 @@ import SnapSections from '@/app/_components/snap-sections';
 
 export default function ElojobPage() {
   const sections = [
-    { id: 'elojob-hero', label: 'Hero', content: <></>, icon: <RocketIcon /> },
+    { id: '', label: 'Hero', content: <></>, icon: <RocketIcon /> },
     {
       id: 'elojob-order',
       label: 'Order',

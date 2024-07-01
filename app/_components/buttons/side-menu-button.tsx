@@ -2,20 +2,19 @@
 
 import { Button } from '@/app/_components/ui/button';
 import { cn } from '@/app/_lib/utils';
-import Link from 'next/link';
 
 interface SideMenuButtonProps {
   children: string | JSX.Element | JSX.Element[];
-  href: string;
   active: boolean;
   className?: string;
+  onClick: () => void;
 }
 
 export default function SideMenuButton({
   children,
-  href,
   active,
   className,
+  onClick,
 }: SideMenuButtonProps) {
   const stl = active ? 'border-2 border-blue-400 ' : 'border-none';
 
@@ -24,9 +23,9 @@ export default function SideMenuButton({
       variant="secondary"
       size="icon"
       className={cn(className, stl, '')}
-      asChild
+      onClick={onClick}
     >
-      <Link href={href}>{children}</Link>
+      {children}
     </Button>
   );
 }

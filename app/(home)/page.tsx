@@ -15,7 +15,8 @@ import SnapSections from '@/app/_components/snap-sections';
 export default function Home() {
   const sections = [
     {
-      id: 'home-hero',
+      // id: 'home-hero',
+      id: '',
       label: 'Hero',
       content: <HomeHero />,
       icon: <HomeIcon />,

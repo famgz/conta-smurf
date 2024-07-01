@@ -6,7 +6,7 @@ import SnapSections from '@/app/_components/snap-sections';
 export default function UserPage() {
   const sections = [
     {
-      id: 'user-history',
+      id: '',
       label: 'History',
       content: <></>,
       icon: <ProfileIcon />,

@@ -1,9 +1,9 @@
+import Footer from '@/app/_components/footer';
+import Header from '@/app/_components/header';
+import { cn } from '@/app/_lib/utils';
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/app/_lib/utils';
-import Header from '@/app/_components/header';
-import Footer from '@/app/_components/footer';
 
 const outfit = Outfit({ subsets: ['latin'] });
 

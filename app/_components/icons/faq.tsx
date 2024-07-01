@@ -1,16 +1,13 @@
+import SvgDefs from '@/app/_components/icons/svg-defs';
 import * as React from 'react';
 import { SVGProps } from 'react';
 
 const FaqIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={37}
-    height={35}
-    fill="none"
-    {...props}
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width={37} height={35}>
+    <SvgDefs />
     <path
-      stroke="#7B7B7B"
+      stroke={props.stroke}
+      fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={3}

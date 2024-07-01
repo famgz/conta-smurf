@@ -127,3 +127,43 @@ body {
 .scroll-area-viewport > div {
   @apply h-full;
 }
+
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+.active-side-menu-button {
+  /* 
+  figma values:
+  
+  bg
+  linear-gradient(222.9deg, rgba(55, 111, 255, 0.4) -5.91%, rgba(33, 67, 153, 0.4) 71.55%)
+  
+  border
+  linear-gradient(213.42deg, #0094FF -33.23%, rgba(0, 255, 194, 0) 80.12%) 
+
+  box-shadow: 
+  box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
+
+  
+  
+  */
+
+  background:
+    linear-gradient(
+        222.9deg,
+        rgba(8, 16, 37, 0.4) 0%,
+        rgba(33, 67, 153, 0.4) 100%
+      )
+      padding-box,
+    linear-gradient(213.42deg, #0094ff -33.23%, rgba(33, 67, 153, 0.4) 100%)
+      border-box;
+
+  border: 1px solid transparent;
+
+  box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
+
+  & > svg {
+    @apply drop-shadow-[0px_0px_5px_#ffb800];
+  }
+}

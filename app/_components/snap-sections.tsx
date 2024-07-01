@@ -4,13 +4,13 @@ import SideMenuButton from '@/app/_components/buttons/side-menu-button';
 import FloatingSideMenu from '@/app/_components/floating-side-menu';
 import useIntersectionObserver from '@/app/_hooks/use-intersection-observer';
 import { cn } from '@/app/_lib/utils';
-import { useEffect, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 
-interface SnapSection {
+export interface SnapSection {
   id: string;
   label: string;
   content: React.JSX.Element;
-  icon: React.JSX.Element;
+  icon: ReactElement;
   className?: string;
 }
 
@@ -19,8 +19,10 @@ interface SnapSectionsProps {
 }
 
 export default function SnapSections({ sections }: SnapSectionsProps) {
-  const [activeSection, setActiveSection] = useState(sections[0].id);
-  const sectionRefs = useIntersectionObserver(setActiveSection);
+  const [activeSectionId, setActiveSectionId] = useState<string>(
+    sections[0].id
+  );
+  const sectionRefs = useIntersectionObserver(setActiveSectionId);
 
   const handleScrollToSection = (index: number) => {
     const section = sectionRefs.current[index];
@@ -35,11 +37,10 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
         {sections.map((section, index) => (
           <SideMenuButton
             key={index}
-            active={activeSection === section.id}
+            active={activeSectionId === section.id}
             onClick={() => handleScrollToSection(index)}
-          >
-            {section.icon}
-          </SideMenuButton>
+            icon={section.icon}
+          />
         ))}
       </FloatingSideMenu>
 

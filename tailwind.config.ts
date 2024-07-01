@@ -81,7 +81,8 @@ const config = {
       },
       backgroundImage: {
         'custom-gradient':
-          'linear-gradient(to bottom, #004459 0%, #01303A 50%, #000122 100%)',
+          'linear-gradient(to bottom, #004459 0%,  #000122 100%)',
+        // 'linear-gradient(to bottom, #004459 0%, #01303A 50%, #000122 100%)',
 
         'header-gradient':
           'linear-gradient(to right, rgb(220,220,220,0.4), rgba(0,51,63,0.4) )',

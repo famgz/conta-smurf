@@ -2,30 +2,35 @@
 
 import { Button } from '@/app/_components/ui/button';
 import { cn } from '@/app/_lib/utils';
+import React, { ReactElement } from 'react';
 
 interface SideMenuButtonProps {
-  children: string | JSX.Element | JSX.Element[];
+  icon: ReactElement;
   active: boolean;
   className?: string;
   onClick: () => void;
 }
 
 export default function SideMenuButton({
-  children,
+  icon,
   active,
   className,
   onClick,
 }: SideMenuButtonProps) {
-  const stl = active ? 'border-2 border-blue-400 ' : 'border-none';
+  const btnStyle = active ? 'active-side-menu-button' : 'border-none';
+  const svgColor = active ? 'url(#svg-linear-gradient)' : '#7B7B7B';
 
   return (
     <Button
       variant="secondary"
       size="icon"
-      className={cn(className, stl, '')}
+      className={cn(className, btnStyle, 'overflow-hidden')}
       onClick={onClick}
     >
-      {children}
+      {React.cloneElement(icon, {
+        fill: svgColor,
+        stroke: svgColor,
+      })}
     </Button>
   );
 }

@@ -89,7 +89,9 @@ body {
 }
 
 .hide-scrollbar {
-  @apply [&::-webkit-scrollbar]:hidden;
+  @apply [&::-webkit-scrollbar]:hidden; /* Webkit */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 .footer-links-section {
@@ -132,6 +134,10 @@ svg {
   shape-rendering: geometricPrecision;
 }
 
+.subtitle-badge {
+  @apply flex-center rounded-lg bg-black/50 px-6 py-2 text-lg font-semibold text-brass hover:outline hover:outline-1 hover:outline-brass;
+}
+
 .active-side-menu-button {
   /* 
   figma values:
@@ -144,9 +150,6 @@ svg {
 
   box-shadow: 
   box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
-
-  
-  
   */
 
   background:

@@ -36,7 +36,7 @@ export default function MostWantedCard() {
 
       <Link
         href=""
-        className="absolute -bottom-8 right-2 rounded-lg bg-black/50 px-6 py-2 text-lg font-semibold text-brass hover:outline hover:outline-1 hover:outline-brass"
+        className="subtitle-badge absolute -bottom-8 right-2 overflow-hidden"
       >
         See more
       </Link>

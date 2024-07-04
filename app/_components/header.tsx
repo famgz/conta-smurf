@@ -13,7 +13,7 @@ export default function Header() {
               src="/images/logo.png"
               width={126}
               height={116}
-              className=""
+              className="min-h-[116px] min-w-[126px]"
               alt="Logo image"
             />
           </Link>
@@ -50,7 +50,7 @@ export default function Header() {
               src="/images/notification-bell.png"
               width={60}
               height={60}
-              className=""
+              className="min-h-[60px] min-w-[60px]"
               alt="User image"
             />
           </Link>
@@ -60,7 +60,7 @@ export default function Header() {
               src="/images/user.png"
               width={102}
               height={102}
-              className=""
+              className="min-h-[102px] min-w-[102px]"
               alt="User image"
             />
           </Link>

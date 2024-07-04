@@ -4,7 +4,7 @@ import SideMenuButton from '@/app/_components/buttons/side-menu-button';
 import FloatingSideMenu from '@/app/_components/floating-side-menu';
 import useIntersectionObserver from '@/app/_hooks/use-intersection-observer';
 import { cn } from '@/app/_lib/utils';
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 export interface SnapSection {
   id: string;
@@ -33,16 +33,11 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
 
   return (
     <>
-      <FloatingSideMenu>
-        {sections.map((section, index) => (
-          <SideMenuButton
-            key={index}
-            active={activeSectionId === section.id}
-            onClick={() => handleScrollToSection(index)}
-            icon={section.icon}
-          />
-        ))}
-      </FloatingSideMenu>
+      <FloatingSideMenu
+        sections={sections}
+        activeSectionId={activeSectionId}
+        onClick={handleScrollToSection}
+      />
 
       <div className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
         {sections.map((section, index) => (

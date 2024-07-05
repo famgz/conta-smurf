@@ -68,9 +68,9 @@ export default function Products() {
 
   return (
     <div className="flex-center">
-      <div className="grid w-full max-w-[1580px] grid-cols-[1fr_3fr] overflow-hidden rounded-[30px] bg-black/20">
+      <div className="grid h-full max-h-[720px] w-full max-w-[1580px] grid-cols-[1fr_3fr] overflow-hidden rounded-[30px] bg-black/20">
         {/* Filters */}
-        <div className="space-y-2 overflow-y-auto">
+        <div className="hide-scrollbar max-h-[720px] space-y-2 overflow-y-auto">
           <div className="flex-center gap-1 py-7">
             <SlidersHorizontalIcon />
             <h2 className="text-4xl font-light">Filters</h2>

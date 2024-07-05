@@ -1,4 +1,6 @@
+import BellIcon from '@/app/_components/icons/bell';
 import ShopBag from '@/app/_components/icons/shop-bag';
+import UserIcon from '@/app/_components/icons/user';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -46,23 +48,18 @@ export default function Header() {
           </Link>
 
           <Link href={'/user'} className="">
-            <Image
+            <BellIcon />
+            {/* <Image
               src="/images/notification-bell.png"
               width={60}
               height={60}
               className="min-h-[60px] min-w-[60px]"
               alt="User image"
-            />
+            /> */}
           </Link>
 
           <Link href={'/user'} className="mt-1">
-            <Image
-              src="/images/user.png"
-              width={102}
-              height={102}
-              className="min-h-[102px] min-w-[102px]"
-              alt="User image"
-            />
+            <UserIcon />
           </Link>
         </div>
       </div>

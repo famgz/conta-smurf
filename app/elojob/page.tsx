@@ -3,6 +3,7 @@ import SwordIcon from '@/app/_components/icons/sword';
 import TargetIcon from '@/app/_components/icons/target';
 import SnapSections, { SnapSection } from '@/app/_components/snap-sections';
 import EloJobHero from '@/app/elojob/_components/section-hero';
+import Order from '@/app/elojob/_components/section-order';
 
 export default function ElojobPage() {
   const sections: SnapSection[] = [
@@ -16,7 +17,7 @@ export default function ElojobPage() {
     {
       id: 'elojob-order',
       label: 'Order',
-      content: <></>,
+      content: <Order />,
       icon: <TargetIcon />,
       className: '',
     },

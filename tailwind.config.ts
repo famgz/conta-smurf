@@ -94,6 +94,7 @@ const config = {
         golden: '0 5px 30px hsl(var(--golden))',
       },
       textShadow: {
+        xs: '0 0 4px var(--tw-shadow-color)',
         sm: '0 0 7px var(--tw-shadow-color)',
         DEFAULT: '0 0 15px var(--tw-shadow-color)',
         lg: '0 0 20px var(--tw-shadow-color)',

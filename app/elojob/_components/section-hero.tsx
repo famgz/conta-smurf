@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function EloJobHero() {
   return (
-    <div className="grid h-full max-w-[1780px] grid-cols-[2fr_3fr] items-center justify-center px-[70px] pb-10 pr-40 pt-3">
+    <div className="grid h-full max-w-[1780px] grid-cols-[2fr_3fr] items-center justify-center px-[70px] py-3 pr-40">
       {/* Section image */}
       <div className="z-1 relative h-full w-full overflow-hidden rounded-3xl border-2 border-[rgba(8,_112,_184,_0.7)] shadow-[0px_0px_73.3px_0px_rgba(0,_255,_224,_0.49)]">
         <Image
@@ -50,7 +50,7 @@ export default function EloJobHero() {
         </div>
 
         <div className="flex-center max-w-[830px] rounded-r-[30px] bg-[linear-gradient(168.32deg,_rgba(0,_0,_0,_0.3)_8.57%,_rgba(20,_0,_62,_0.3)_115.05%)] pb-14 pt-7 backdrop-blur-2xl">
-          <div className="w-full max-w-[540px] space-y-14">
+          <div className="w-full max-w-[540px] space-y-10">
             <div className="w-full space-y-2">
               <p className="text-left text-4xl font-extrabold">
                 Let us explain more

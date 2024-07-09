@@ -14,9 +14,18 @@ import {
   FormMessage,
 } from '@/app/_components/ui/form';
 import { Input } from '@/app/_components/ui/input';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FormEvent } from 'react';
 
 export default function LoginPage() {
   const form = useForm();
+  const router = useRouter();
+
+  function handleSubmit(ev: FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    router.push('/login');
+  }
 
   return (
     <div className="page-section">
@@ -35,7 +44,7 @@ export default function LoginPage() {
         <div className="flex-center mx-auto w-full max-w-[427px] flex-col">
           <h1 className="mb-6 text-6xl font-bold">Sign up</h1>
           <Form {...form}>
-            <form onSubmit={() => {}} className="w-full text-start">
+            <form onSubmit={handleSubmit} className="w-full text-start">
               <FormField
                 control={form.control}
                 name="email"
@@ -150,8 +159,9 @@ export default function LoginPage() {
               variant={'link'}
               size={'sm'}
               className="!m-0 p-0 text-xs font-extralight"
+              asChild
             >
-              sign in
+              <Link href={'/login'}>sign in</Link>
             </Button>
           </div>
         </div>

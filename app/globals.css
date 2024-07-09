@@ -95,7 +95,7 @@ body {
 }
 
 .footer-links-section {
-  @apply text-2xl font-light;
+  @apply text-base font-light xl:text-2xl;
 
   > h3 {
     @apply font-semibold;

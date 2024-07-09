@@ -1,9 +1,9 @@
-import SvgDefs from '@/app/_components/icons/svg-defs';
+import SvgDefs from '@/app/_components/icons/_svg-defs';
 import * as React from 'react';
 import { SVGProps } from 'react';
 
 const HomeIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 30 30" width="30" height="30" overflow="visible">
+  <svg width="30" height="30" viewBox="0 0 30 30" overflow="visible">
     <SvgDefs />
 
     <path

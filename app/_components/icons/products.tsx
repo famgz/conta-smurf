@@ -1,4 +1,4 @@
-import SvgDefs from '@/app/_components/icons/svg-defs';
+import SvgDefs from '@/app/_components/icons/_svg-defs';
 import * as React from 'react';
 import { SVGProps } from 'react';
 
@@ -7,6 +7,7 @@ const ProductsIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={31}
     height={31}
+    viewBox="0 0 31 31"
     overflow="visible"
   >
     <SvgDefs />

@@ -1,4 +1,4 @@
-import SvgDefs from '@/app/_components/icons/svg-defs';
+import SvgDefs from '@/app/_components/icons/_svg-defs';
 import * as React from 'react';
 import { SVGProps } from 'react';
 
@@ -7,6 +7,7 @@ const GearIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={30}
     height={30}
+    viewBox="0 0 30 30"
     overflow="visible"
   >
     <SvgDefs />

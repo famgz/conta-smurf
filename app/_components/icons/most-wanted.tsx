@@ -1,4 +1,4 @@
-import SvgDefs from '@/app/_components/icons/svg-defs';
+import SvgDefs from '@/app/_components/icons/_svg-defs';
 import * as React from 'react';
 import { SVGProps } from 'react';
 

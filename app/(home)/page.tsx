@@ -20,7 +20,7 @@ export default function Home() {
       label: 'Hero',
       content: <HomeHero />,
       icon: <HomeIcon />,
-      className: '',
+      className: '!p-0 !xl:pt-[116px] !xl:p-0',
     },
     {
       id: 'home-most-wanted',

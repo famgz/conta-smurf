@@ -14,7 +14,7 @@ export default function FloatingSideMenu({
   onClick,
 }: FloatingSideMenuProps) {
   return (
-    <div className="fixed right-[max(90px,calc((100vw-1920px)/2))] top-0 z-10 flex min-h-screen w-fit flex-col items-center justify-center gap-2">
+    <div className="fixed bottom-7 z-10 flex w-full items-center justify-center gap-2 xl:right-[max(90px,calc((100vw-1920px)/2))] xl:top-0 xl:min-h-screen xl:w-fit xl:flex-col">
       {sections.map((section, index) => (
         <SideMenuButton
           key={index}

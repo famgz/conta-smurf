@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="space-y-20 bg-[#050024] px-20 pb-8 pt-20 font-light">
+    <footer className="hidden space-y-20 bg-[#050024] px-20 pb-8 pt-20 font-light xl:block">
       <div className="mx-auto flex max-w-[1920px]">
         <Link href={'/'}>
           <Image
@@ -60,7 +60,7 @@ export default function Footer() {
           Legends e Riot Games são marcas comerciais ou marcas registradas da
           Riot Games, Inc. League of Legends © Riot Games, Inc.
         </div>
-        <div className="bg-line-gradient mb-4 mt-9 h-[2px]"></div>
+        <div className="mb-4 mt-9 h-[2px] bg-line-gradient"></div>
         <p className="text-center text-2xl">Copyright © 2024</p>
       </div>
     </footer>

@@ -89,6 +89,8 @@ const config = {
 
         'line-gradient': 'radial-gradient( #BD00FF, rgba(250,0,255,0) )',
         effects: "url('/images/bg/effects.png')",
+        light:
+          'linear-gradient(180deg, rgba(235, 235, 235, 0.4) 0%, rgba(166, 166, 166, 0.4) 100%)',
       },
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',

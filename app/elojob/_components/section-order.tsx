@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { Slider } from '@/app/_components/ui/slider';
 import { cn } from '@/app/_lib/utils';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -35,6 +36,7 @@ interface Summary {
 export default function Order() {
   const imagePrefix = '/images/icons/';
   const form = useForm();
+  const router = useRouter();
 
   const infos = {
     game: {
@@ -613,7 +615,7 @@ export default function Order() {
       canProceed: true,
       content: (
         <div className="flex h-full flex-col items-center gap-4">
-          <h3 className="text-shadow-xs text-3xl shadow-white">
+          <h3 className="text-3xl shadow-white text-shadow-xs">
             Right! We have everything we need to complete your order
           </h3>
 
@@ -690,7 +692,12 @@ export default function Order() {
     setCurrentOrderStepIndex((prev) => prev + 1);
   }
 
-  console.log(summary);
+  function submitOrder() {
+    console.log('submited');
+    router.push('/cart');
+  }
+
+  // console.log(summary);
 
   function handleSummaryArrayChange(value: string, arrayKey: string): void {
     const array = summary[arrayKey as keyof typeof summary] as string[];
@@ -936,14 +943,25 @@ export default function Order() {
 
             {/* Next button */}
             <div className="flex w-[250px] justify-start">
-              <Button
-                className="p-6 text-3xl"
-                variant={'secondary'}
-                onClick={handleNextStep}
-                disabled={!currentOrderStep.canProceed}
-              >
-                {currentOrderStepIndex < nSteps - 1 ? 'Next' : 'Finish Order'}
-              </Button>
+              {currentOrderStepIndex < nSteps - 1 ? (
+                <Button
+                  className="p-6 text-3xl"
+                  variant={'secondary'}
+                  onClick={handleNextStep}
+                  disabled={!currentOrderStep.canProceed}
+                >
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  className="p-6 text-3xl"
+                  variant={'secondary'}
+                  onClick={submitOrder}
+                  disabled={!currentOrderStep.canProceed}
+                >
+                  Finish Order
+                </Button>
+              )}
             </div>
           </div>
         </div>

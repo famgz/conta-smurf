@@ -7,6 +7,7 @@ const BellIcon = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 61 69"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <g filter="url(#filter0_di_42_2291)">
       <path

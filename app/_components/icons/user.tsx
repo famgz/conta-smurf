@@ -7,6 +7,7 @@ const UserIcon = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 102 102"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M102 51C102 79.1665 79.1665 102 51 102C22.8335 102 0 79.1665 0 51C0 22.8335 22.8335 0 51 0C79.1665 0 102 22.8335 102 51Z"

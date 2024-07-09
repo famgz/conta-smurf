@@ -30,6 +30,7 @@ export default function SideMenuButton({
       {React.cloneElement(icon, {
         fill: svgColor,
         stroke: svgColor,
+        className: 'size-5 stroke-red-500',
       })}
     </Button>
   );

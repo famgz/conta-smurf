@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function EloJobHero() {
   return (
-    <div className="grid h-full max-w-[1780px] grid-cols-[2fr_3fr] items-center justify-center px-[70px] py-3 pr-40">
+    <div className="grid h-full max-w-[1780px] grid-cols-[2fr_3fr] items-center justify-center !overflow-visible px-[70px] py-3 pr-40">
       {/* Section image */}
       <div className="z-1 relative h-full w-full overflow-hidden rounded-3xl border-2 border-[rgba(8,_112,_184,_0.7)] shadow-[0px_0px_73.3px_0px_rgba(0,_255,_224,_0.49)]">
         <Image

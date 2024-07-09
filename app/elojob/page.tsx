@@ -2,6 +2,7 @@ import RocketIcon from '@/app/_components/icons/rocket';
 import SwordIcon from '@/app/_components/icons/sword';
 import TargetIcon from '@/app/_components/icons/target';
 import SnapSections, { SnapSection } from '@/app/_components/snap-sections';
+import EloJobBeAgent from '@/app/elojob/_components/section-be-agent';
 import EloJobHero from '@/app/elojob/_components/section-hero';
 import Order from '@/app/elojob/_components/section-order';
 
@@ -24,7 +25,7 @@ export default function ElojobPage() {
     {
       id: 'elojob-agent',
       label: 'Be An Agent',
-      content: <></>,
+      content: <EloJobBeAgent />,
       icon: <SwordIcon />,
       className: '',
     },

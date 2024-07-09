@@ -91,6 +91,8 @@ const config = {
         effects: "url('/images/bg/effects.png')",
         light:
           'linear-gradient(180deg, rgba(235, 235, 235, 0.4) 0%, rgba(166, 166, 166, 0.4) 100%)',
+        folder:
+          'linear-gradient(168.32deg, rgba(0, 0, 0, 0.3) 8.57%, rgba(20, 0, 62, 0.3) 115.05%)',
       },
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',

@@ -26,6 +26,8 @@
 
     --brass: 40 100% 50%;
 
+    --white: 202 23% 96%;
+
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
@@ -78,6 +80,9 @@
     @apply hide-scrollbar bg-background text-foreground;
   }
 }
+html {
+  @apply antialiased;
+}
 
 html,
 body {
@@ -110,12 +115,16 @@ body {
   }
 }
 
+.text-gradient {
+  @apply inline-block bg-clip-text leading-tight text-transparent;
+}
+
 .text-gradient-dark {
-  @apply inline-block bg-gradient-to-r from-[#000] to-[#4e4e4e] bg-clip-text leading-tight text-transparent;
+  @apply text-gradient bg-gradient-to-r from-[#000] to-[#4e4e4e];
 }
 
 .text-gradient-brass {
-  @apply inline-block bg-gradient-to-b from-[#ffb800] to-[#da8300] bg-clip-text leading-tight text-transparent;
+  @apply text-gradient bg-gradient-to-b from-[#ffb800] to-[#da8300];
 }
 
 .btn-golden-variant {

@@ -47,57 +47,59 @@ export default function Header() {
     // <header className="sticky top-0 z-10 backdrop-blur-lg backdrop-filter">
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">
       <div className="flex h-[40px] bg-header-gradient px-4 backdrop-blur-md backdrop-filter xl:h-[80px]">
-        <div className="mx-auto flex h-full max-w-[1920px] flex-1 items-center gap-10">
-          <Link href={'/'}>
-            <Image
-              src="/images/logo.png"
-              width={67}
-              height={61}
-              className="h-[61px] xl:min-h-[116px] xl:min-w-[126px]"
-              alt="Logo image"
-            />
-          </Link>
-          <div className="hidden flex-1 gap-12 text-4xl 2xl:flex">
-            {links.map((x) => (
-              <Link href={x.href} className="" key={x.label}>
-                {x.label}
-              </Link>
-            ))}
+        <div className="mx-auto flex h-full w-full max-w-[1920px] items-center justify-between gap-10">
+          <div className="flex flex-1 items-center gap-10">
+            <Link href={'/'}>
+              <Image
+                src="/images/logo.png"
+                width={67}
+                height={61}
+                className="h-[61px] xl:min-h-[116px] xl:min-w-[126px]"
+                alt="Logo image"
+              />
+            </Link>
+            <div className="hidden flex-1 gap-12 text-4xl 2xl:flex">
+              {links.map((x) => (
+                <Link href={x.href} className="" key={x.label}>
+                  {x.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center gap-4 xl:gap-10">
-          <Link href={'/cart'} className="hidden xl:block">
-            <ShopBag />
-          </Link>
+          <div className="flex items-center gap-4 xl:gap-10">
+            <Link href={'/cart'} className="hidden xl:block">
+              <ShopBag />
+            </Link>
 
-          <Link href={'/login'} className="">
-            <BellIcon className="size-[40px] xl:size-[70px]" />
-          </Link>
+            <Link href={'/login'} className="">
+              <BellIcon className="size-[40px] xl:size-[70px]" />
+            </Link>
 
-          <Link href={'/login'} className="xl:mt-1">
-            <UserIcon className="size-[45px] xl:size-[110px]" />
-          </Link>
+            <Link href={'/login'} className="xl:mt-1">
+              <UserIcon className="size-[45px] xl:size-[110px]" />
+            </Link>
 
-          <button className="xl:hidden">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <MenuIcon />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-light z-50 rounded-none rounded-bl-2xl border-none py-9 pl-5 pr-8 backdrop-blur-[7px] [box-shadow:inset_0px_69px_71.7px_rgba(0,_0,_0,_0.25)]">
-                {links.map((x) => (
-                  <DropdownMenuItem asChild key={x.label}>
-                    <Link
-                      href={x.href}
-                      className="!text-2xl font-bold uppercase"
-                    >
-                      {x.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </button>
+            <button className="xl:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <MenuIcon />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="z-50 rounded-none rounded-bl-2xl border-none bg-light py-9 pl-5 pr-8 backdrop-blur-[7px] [box-shadow:inset_0px_69px_71.7px_rgba(0,_0,_0,_0.25)]">
+                  {links.map((x) => (
+                    <DropdownMenuItem asChild key={x.label}>
+                      <Link
+                        href={x.href}
+                        className="!text-2xl font-bold uppercase"
+                      >
+                        {x.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </button>
+          </div>
         </div>
       </div>
     </header>

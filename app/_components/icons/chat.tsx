@@ -14,9 +14,9 @@ const ChatIcon = (props: SVGProps<SVGSVGElement>) => (
       <path
         d="M9.10474 13.1514H9.11688M14.4879 13.1514H14.5001M19.8833 13.1514H19.8954"
         stroke={props.stroke}
-        stroke-width={4}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
   </svg>

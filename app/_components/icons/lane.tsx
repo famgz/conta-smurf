@@ -1,7 +1,6 @@
 import { cn } from '@/app/_lib/utils';
+import { Lane, lanes } from '@/app/_types/order/lane';
 import Image from 'next/image';
-
-export type Lane = 'autofill' | 'bottom' | 'jungle' | 'mid' | 'support' | 'top';
 
 interface LaneIconProps {
   lane: Lane;
@@ -14,10 +13,12 @@ export default function LaneIcon({
   className,
   imageSize,
 }: LaneIconProps) {
+  const laneInfo = lanes[lane];
+
   return (
     <Image
-      src={`/images/icons/lane-${lane}.png`}
-      alt={`Lane ${lane} icon`}
+      src={laneInfo.iconImgs.default}
+      alt={`Lane ${laneInfo.label} icon`}
       width={imageSize || 36}
       height={imageSize || 36}
       className={cn(

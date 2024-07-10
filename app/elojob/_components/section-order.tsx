@@ -1,6 +1,6 @@
 'use client';
 
-import LaneIcon, { Lane } from '@/app/_components/icons/lane';
+import LaneIcon from '@/app/_components/icons/lane';
 import { Button } from '@/app/_components/ui/button';
 import {
   Form,
@@ -14,200 +14,44 @@ import { Input } from '@/app/_components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { Slider } from '@/app/_components/ui/slider';
 import { cn } from '@/app/_lib/utils';
+import { Addon, addons } from '@/app/_types/order/addon';
+import { Champion, champions } from '@/app/_types/order/champion';
+import { Game, games } from '@/app/_types/order/game';
+import { Lane, lanes } from '@/app/_types/order/lane';
+import { Rank, ranks } from '@/app/_types/order/rank';
+import { Region, regions } from '@/app/_types/order/region';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 interface Summary {
-  game: string;
-  region: string;
-  starterRank: string;
+  game: Game | '';
+  region: Region | '';
+  starterRank: Rank | '';
   starterTier: number;
-  lp: string;
-  finalRank: string;
+  finalRank: Rank | '';
   finalTier: number;
+  lp: string;
   account: string;
   typeOfClimb: string;
   lanes: Lane[];
-  champions: string[];
-  addons: string[];
+  champions: Champion[];
+  addons: Addon[];
 }
 
 export default function ElojobOrder() {
-  const imagePrefix = '/images/icons/';
   const form = useForm();
   const router = useRouter();
 
-  const infos = {
-    game: {
-      lol: {
-        label: '',
-        icon: imagePrefix + 'lol.png',
-        bg: '/images/register.jpg',
-        imgTitle: '/images/title-lol.png',
-      },
-      valorant: {
-        label: '',
-        icon: imagePrefix + 'valorant.png',
-        bg: '/images/elojob-hero.jpg',
-        imgTitle: '/images/title-valorant.png',
-      },
+  const tiers = ['IV', 'III', 'II', 'I'];
+  const lps = ['0-20', '21-40', '41-60', '61-80', '81-99'];
+  const typeOfClimb = {
+    solo: {
+      bg: '/images/solo.jpg',
     },
-    region: {
-      brazil: {
-        label: 'Brazil',
-        icon: imagePrefix + 'flag-brazil.png',
-        map: imagePrefix + 'map-brazil.png',
-      },
-      'north-america': {
-        label: 'North America',
-        icon: imagePrefix + 'flag-north-america.png',
-        map: imagePrefix + 'map-north-america.png',
-      },
-      'europe-east': {
-        label: 'Europe Nordic & East',
-        icon: imagePrefix + 'flag-europe-east.png',
-        map: imagePrefix + 'map-europe-east.png',
-      },
-      'europe-west': {
-        label: 'Europe West',
-        icon: imagePrefix + 'flag-europe-west.png',
-        map: imagePrefix + 'map-europe-west.png',
-      },
-      japan: {
-        label: 'Japan',
-        icon: imagePrefix + 'flag-japan.png',
-        map: imagePrefix + 'map-japan.png',
-      },
-      korea: {
-        label: 'Korea',
-        icon: imagePrefix + 'flag-korea.png',
-        map: imagePrefix + 'map-korea.png',
-      },
-      'latam-north': {
-        label: 'LATAM North',
-        icon: imagePrefix + 'flag-latam-north.png',
-        map: imagePrefix + 'map-latam-north.png',
-      },
-      'latam-south': {
-        label: 'LATAM South',
-        icon: imagePrefix + 'flag-latam-south.png',
-        map: imagePrefix + 'map-latam-south.png',
-      },
-      oceania: {
-        label: 'Oceania',
-        icon: imagePrefix + 'flag-oceania.png',
-        map: imagePrefix + 'map-oceania.png',
-      },
-      turkey: {
-        label: 'Turkey',
-        icon: imagePrefix + 'flag-turkey.png',
-        map: imagePrefix + 'map-turkey.png',
-      },
-    },
-    rank: {
-      iron: {
-        icon: imagePrefix + 'rank-iron.png',
-      },
-      bronze: {
-        icon: imagePrefix + 'rank-bronze.png',
-      },
-      silver: {
-        icon: imagePrefix + 'rank-silver.png',
-      },
-      gold: {
-        icon: imagePrefix + 'rank-gold.png',
-      },
-      platinum: {
-        icon: imagePrefix + 'rank-platinum.png',
-      },
-      emerald: {
-        icon: imagePrefix + 'rank-emerald.png',
-      },
-      diamond: {
-        icon: imagePrefix + 'rank-diamond.png',
-      },
-      master: {
-        icon: imagePrefix + 'rank-master.png',
-      },
-      grandmaster: {
-        icon: imagePrefix + 'rank-grandmaster.png',
-      },
-    },
-    tiers: ['IV', 'III', 'II', 'I'],
-    lps: ['0-20', '21-40', '41-60', '61-80', '81-99'],
-    typeOfClimb: {
-      solo: {
-        bg: '/images/solo.jpg',
-      },
-      duo: {
-        bg: '/images/duo.jpg',
-      },
-    },
-    lanes: {
-      top: {
-        id: 'top',
-        label: 'Toplane',
-        icon: imagePrefix + 'lane-top-bright.png',
-      },
-      jungle: {
-        id: 'jungle',
-        label: 'Jungle',
-        icon: imagePrefix + 'lane-jungle-bright.png',
-      },
-      mid: {
-        id: 'mid',
-        label: 'Midlane',
-        icon: imagePrefix + 'lane-mid-bright.png',
-      },
-      bottom: {
-        id: 'bottom',
-        label: 'Botlane',
-        icon: imagePrefix + 'lane-bottom-bright.png',
-      },
-      support: {
-        id: 'support',
-        label: 'Support',
-        icon: imagePrefix + 'lane-support-bright.png',
-      },
-    },
-    champions: {
-      'champion-1': {
-        icon: imagePrefix + 'champion-1.jpg',
-      },
-      'champion-2': {
-        icon: imagePrefix + 'champion-2.jpg',
-      },
-      'champion-3': {
-        icon: imagePrefix + 'champion-3.jpg',
-      },
-    },
-    addons: {
-      'chat-offline': {
-        label: 'Chat Offline',
-        percentual: 0,
-      },
-      'live-matches': {
-        label: 'Live Matches',
-        percentual: 0,
-      },
-      'fast-delivery': {
-        label: 'Fast Delivery',
-        percentual: 0.15,
-      },
-      'set-the-times': {
-        label: 'Set the times',
-        percentual: 0.15,
-      },
-      'lp-correction': {
-        label: 'LP correction',
-        percentual: 0.3,
-      },
-      'mono-champion': {
-        label: 'Mono Champion',
-        percentual: 0.3,
-      },
+    duo: {
+      bg: '/images/duo.jpg',
     },
   };
 
@@ -216,9 +60,9 @@ export default function ElojobOrder() {
     region: '',
     starterRank: '',
     starterTier: -1,
-    lp: '',
     finalRank: '',
     finalTier: -1,
+    lp: '',
     account: '',
     typeOfClimb: '',
     lanes: [],
@@ -234,25 +78,30 @@ export default function ElojobOrder() {
           <h3 className="text-3xl">Choose the game you want to boost</h3>
 
           <div className="flex-center h-full flex-1 gap-20">
-            {Object.entries(infos.game).map(([k, v]) => (
+            {Object.entries(games).map(([game, gameInfo]) => (
               <div
                 className={cn(
                   'relative flex h-full w-[350px] cursor-pointer flex-col items-center justify-end overflow-hidden rounded-[30px] p-10',
-                  k === summary.game
+                  game === summary.game
                     ? 'shadow-[0px_0px_30px_0px_rgba(0,_255,_224,_0.49)] outline outline-2 outline-blue-400'
                     : 'shadow-lg'
                 )}
-                key={k}
+                key={game}
                 onClick={() =>
                   setSummary((prev) => ({
                     ...prev,
-                    game: k,
+                    game: game as Game,
                   }))
                 }
               >
-                <Image src={v.bg} fill className="object-cover" alt="" />
                 <Image
-                  src={v.imgTitle}
+                  src={gameInfo.bgImg}
+                  fill
+                  className="object-cover"
+                  alt=""
+                />
+                <Image
+                  src={gameInfo.titleImg}
                   className="z-10"
                   width={200}
                   height={200}
@@ -272,24 +121,29 @@ export default function ElojobOrder() {
           <div className="grid grid-cols-2">
             {/* Flags */}
             <RadioGroup
-              onValueChange={(value) =>
+              onValueChange={(region: Region) =>
                 setSummary((prev) => ({
                   ...prev,
-                  region: value,
+                  region,
                 }))
               }
               className="mx-auto flex w-fit flex-col gap-2"
             >
-              {Object.entries(infos.region).map(([k, v]) => (
-                <div className="flex items-center gap-3" key={k}>
+              {Object.entries(regions).map(([region, regionInfo]) => (
+                <div className="flex items-center gap-3" key={region}>
                   <RadioGroupItem
-                    value={k}
-                    id={k}
-                    checked={k === summary.region}
+                    value={region}
+                    id={region}
+                    checked={region === summary.region}
                     className=""
                   />
-                  <Image src={v.icon} width={33} height={33} alt="" />
-                  <span className="whitespace-nowrap">{v.label}</span>
+                  <Image
+                    src={regionInfo.iconImg}
+                    width={33}
+                    height={33}
+                    alt=""
+                  />
+                  <span className="whitespace-nowrap">{regionInfo.label}</span>
                 </div>
               ))}
             </RadioGroup>
@@ -298,10 +152,7 @@ export default function ElojobOrder() {
             <div className="relative h-full">
               {summary.region && (
                 <Image
-                  src={
-                    infos.region[summary.region as keyof typeof infos.region]
-                      .map
-                  }
+                  src={regions[summary.region].mapImg}
                   alt=""
                   fill
                   className="object-contain"
@@ -324,24 +175,29 @@ export default function ElojobOrder() {
           {/* Start rank and tier */}
           <h3 className="text-3xl">Choose the starter and final rank</h3>
           <div className="flex-center gap-1">
-            {Object.entries(infos.rank).map(([k, v]) => (
+            {Object.entries(ranks).map(([rank, rankInfo]) => (
               <div
                 className={cn(
                   'relative size-[80px] cursor-pointer rounded-md bg-[#21232d]/10',
-                  k === summary.starterRank
+                  rank === summary.starterRank
                     ? 'bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400'
                     : ''
                 )}
-                key={k}
-                title={k}
+                key={rank}
+                title={rank}
                 onClick={() =>
                   setSummary((prev) => ({
                     ...prev,
-                    starterRank: k,
+                    starterRank: rank as Rank,
                   }))
                 }
               >
-                <Image src={v.icon} alt="" fill className="object-contain" />
+                <Image
+                  src={rankInfo.iconImg}
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
               </div>
             ))}
           </div>
@@ -350,7 +206,7 @@ export default function ElojobOrder() {
           <p className="font-light">Which Tier?</p>
           <div className="w-full max-w-[380px] space-y-2">
             <div className="flex w-full justify-between px-1">
-              {infos.tiers.map((x) => (
+              {tiers.map((x) => (
                 <span key={x} className="inline-block w-3 text-center">
                   {x}
                 </span>
@@ -374,7 +230,7 @@ export default function ElojobOrder() {
           {/* LP */}
           <p className="font-light">How much LP do you have?</p>
           <div className="flex-center gap-6">
-            {infos.lps.map((x) => (
+            {lps.map((x) => (
               <div
                 key={x}
                 className={cn(
@@ -392,31 +248,36 @@ export default function ElojobOrder() {
           {/* Final rank and tier */}
           <h3 className="mt-5 text-3xl">Where do you want to get?</h3>
           <div className="flex-center gap-1">
-            {Object.entries(infos.rank).map(([k, v]) => (
+            {Object.entries(ranks).map(([rank, rankInfo]) => (
               <div
                 className={cn(
                   'relative size-[80px] cursor-pointer rounded-md bg-[#21232d]/10',
-                  k === summary.finalRank
+                  rank === summary.finalRank
                     ? 'bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400'
                     : ''
                 )}
-                key={k}
-                title={k}
+                key={rank}
+                title={rank}
                 onClick={() =>
                   setSummary((prev) => ({
                     ...prev,
-                    finalRank: k,
+                    finalRank: rank as Rank,
                   }))
                 }
               >
-                <Image src={v.icon} alt="" fill className="object-contain" />
+                <Image
+                  src={rankInfo.iconImg}
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
               </div>
             ))}
           </div>
           <p className="font-light">Which Tier?</p>
           <div className="w-full max-w-[380px] space-y-2">
             <div className="flex w-full justify-between px-1">
-              {infos.tiers.map((x) => (
+              {tiers.map((x) => (
                 <span key={x} className="inline-block w-3 text-center">
                   {x}
                 </span>
@@ -446,7 +307,7 @@ export default function ElojobOrder() {
           <h3 className="text-3xl">Rank up solo ou duo?</h3>
 
           <div className="flex-center h-full flex-1 gap-20">
-            {Object.entries(infos.typeOfClimb).map(([k, v]) => (
+            {Object.entries(typeOfClimb).map(([k, v]) => (
               <div
                 className={cn(
                   'relative flex h-full w-[350px] cursor-pointer flex-col items-center justify-end overflow-hidden rounded-[30px] p-10',
@@ -486,9 +347,8 @@ export default function ElojobOrder() {
             >
               <Image
                 src={
-                  infos.typeOfClimb[
-                    summary.typeOfClimb as keyof typeof infos.typeOfClimb
-                  ]?.bg
+                  typeOfClimb[summary.typeOfClimb as keyof typeof typeOfClimb]
+                    ?.bg
                 }
                 fill
                 className="object-cover"
@@ -565,28 +425,33 @@ export default function ElojobOrder() {
           <div className="flex flex-1 flex-col justify-end">
             <h4 className="text-2xl">Choose the lane</h4>
             <div className="flex-center mt-2 gap-8">
-              {Object.entries(infos.lanes).map(([k, v]) => (
+              {Object.entries(lanes).map(([lane, laneInfo]) => (
                 <div
                   className={cn(
                     'h-[140px] w-[110px] cursor-pointer rounded-sm p-1 font-medium',
-                    summary.lanes.includes(k as Lane)
+                    summary.lanes.includes(lane as Lane)
                       ? 'bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400'
                       : 'bg-[#21232d]/40 text-muted-foreground'
                   )}
-                  key={k}
-                  title={k}
-                  onClick={() => handleSummaryArrayChange(k, 'lanes')}
+                  key={lane}
+                  title={lane}
+                  onClick={() => handleSummaryArrayChange(lane, 'lanes')}
                 >
-                  <Image src={v.icon} width={100} height={100} alt="" />
+                  <Image
+                    src={laneInfo.iconImgs.bright}
+                    width={100}
+                    height={100}
+                    alt=""
+                  />
                   <span
                     className={cn(
                       'text-2xl',
-                      summary.lanes.includes(k as Lane)
+                      summary.lanes.includes(lane as Lane)
                         ? 'text-gradient-brass'
                         : ''
                     )}
                   >
-                    {v.label}
+                    {laneInfo.label}
                   </span>
                 </div>
               ))}
@@ -599,19 +464,26 @@ export default function ElojobOrder() {
               {`If you don't have a champion or lane preference, don't worry, just don't fill in these fields.`}
             </p>
             <div className="flex-center mt-2 gap-8">
-              {Object.entries(infos.champions).map(([k, v]) => (
+              {Object.entries(champions).map(([champion, championInfo]) => (
                 <div
                   className={cn(
                     'relative h-[120px] w-[120px] cursor-pointer overflow-hidden rounded-2xl border-8',
-                    summary.champions.includes(k)
+                    summary.champions.includes(champion as Champion)
                       ? 'border-[#e3e3e3]/80 shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)]'
                       : 'border-[#21232d]/40'
                   )}
-                  key={k}
-                  title={k}
-                  onClick={() => handleSummaryArrayChange(k, 'champions')}
+                  key={champion}
+                  title={champion}
+                  onClick={() =>
+                    handleSummaryArrayChange(champion, 'champions')
+                  }
                 >
-                  <Image src={v.icon} fill className="object-cover" alt="" />
+                  <Image
+                    src={championInfo.iconImg}
+                    fill
+                    className="object-cover"
+                    alt=""
+                  />
                 </div>
               ))}
             </div>
@@ -635,27 +507,29 @@ export default function ElojobOrder() {
           <div className="flex-center h-full flex-1 gap-20">
             {/* Addons cards */}
             <div className="h-full w-full max-w-[380px] space-y-2">
-              {Object.entries(infos.addons).map(([k, v]) => (
+              {Object.entries(addons).map(([addon, addonInfo]) => (
                 <div
                   className={cn(
                     'flex w-full cursor-pointer items-center justify-between whitespace-nowrap rounded-2xl p-2 pl-4 text-3xl font-normal shadow-md',
-                    summary.addons.includes(k)
+                    summary.addons.includes(addon as Addon)
                       ? 'bg-gradient-to-b from-white/40 to-[#aeaeae]/40 shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400'
                       : 'bg-[#21232d]/40'
                   )}
-                  key={k}
-                  onClick={() => handleSummaryArrayChange(k, 'addons')}
+                  key={addon}
+                  onClick={() => handleSummaryArrayChange(addon, 'addons')}
                 >
-                  <span>{v.label}</span>
+                  <span>{addonInfo.label}</span>
                   <span
                     className={cn(
                       'flex-center min-w-[110px] rounded-2xl px-4 py-1 font-extralight',
-                      summary.addons.includes(k)
+                      summary.addons.includes(addon as Addon)
                         ? 'bg-[#21232d]/40'
                         : 'bg-[#21232d]/80'
                     )}
                   >
-                    {v.percentual ? `+${v.percentual * 100}%` : 'Free'}
+                    {addonInfo.percentual
+                      ? `+${addonInfo.percentual * 100}%`
+                      : 'Free'}
                   </span>
                 </div>
               ))}
@@ -741,7 +615,7 @@ export default function ElojobOrder() {
             <div className="flex-center">
               {summary.game ? (
                 <Image
-                  src={infos.game[summary.game as keyof typeof infos.game].icon}
+                  src={games[summary.game].iconImg}
                   width={33}
                   height={33}
                   alt=""
@@ -753,10 +627,7 @@ export default function ElojobOrder() {
             <div className="flex-center">
               {summary.region ? (
                 <Image
-                  src={
-                    infos.region[summary.region as keyof typeof infos.region]
-                      .icon
-                  }
+                  src={regions[summary.region].iconImg}
                   width={33}
                   height={33}
                   alt=""
@@ -777,17 +648,14 @@ export default function ElojobOrder() {
               {summary.starterRank ? (
                 <>
                   <Image
-                    src={
-                      infos.rank[summary.starterRank as keyof typeof infos.rank]
-                        .icon
-                    }
+                    src={ranks[summary.starterRank].iconImg}
                     alt=""
                     width={36}
                     height={36}
                     className="rounded-md bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400"
                   />
                   <span className="mt-1 text-xs capitalize text-muted-foreground">
-                    {summary.starterRank} {infos.tiers[summary.starterTier]}
+                    {summary.starterRank} {tiers[summary.starterTier]}
                   </span>
                   <span className="text-xs">
                     {summary.lp} {summary.lp && 'LP'}
@@ -801,17 +669,14 @@ export default function ElojobOrder() {
               {summary.finalRank ? (
                 <>
                   <Image
-                    src={
-                      infos.rank[summary.finalRank as keyof typeof infos.rank]
-                        .icon
-                    }
+                    src={ranks[summary.finalRank].iconImg}
                     alt=""
                     width={36}
                     height={36}
                     className="rounded-md bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400"
                   />
                   <span className="mt-1 text-xs capitalize text-muted-foreground">
-                    {summary.finalRank} {infos.tiers[summary.finalTier]}
+                    {summary.finalRank} {tiers[summary.finalTier]}
                   </span>
                 </>
               ) : (
@@ -839,12 +704,8 @@ export default function ElojobOrder() {
             {/* Lanes icons */}
             <div className="flex-center gap-3">
               {summary.lanes.length > 0
-                ? summary.lanes.map((x) => (
-                    <LaneIcon
-                      key={x as unknown as string}
-                      lane={x}
-                      className="size-9"
-                    />
+                ? summary.lanes.map((lane) => (
+                    <LaneIcon key={lane} lane={lane} className="size-9" />
                   ))
                 : '-'}
             </div>
@@ -853,13 +714,10 @@ export default function ElojobOrder() {
             <div className="flex-center gap-3">
               <div className="flex-center gap-3">
                 {summary.champions.length > 0
-                  ? summary.champions.map((x) => (
+                  ? summary.champions.map((champion) => (
                       <Image
-                        src={
-                          infos.champions[x as keyof typeof infos.champions]
-                            .icon
-                        }
-                        key={x}
+                        src={champions[champion].iconImg}
+                        key={champion}
                         alt=""
                         width={40}
                         height={40}
@@ -878,15 +736,14 @@ export default function ElojobOrder() {
           </div>
           {summary.addons.length > 0 ? (
             <div className="flex-center flex-1 flex-wrap gap-3 gap-y-0 py-3 font-light">
-              {summary.addons.map((x, i) => {
-                const content =
-                  infos.addons[x as keyof typeof infos.addons].label;
+              {summary.addons.map((addon, i) => {
+                const content = addons[addon].label;
 
                 const separator =
                   i < summary.addons.length - 1 ? <span>·</span> : '';
                 return (
                   <>
-                    <span key={x} className="whitespace-nowrap">
+                    <span key={addon} className="whitespace-nowrap">
                       {content}
                     </span>
                     {separator}

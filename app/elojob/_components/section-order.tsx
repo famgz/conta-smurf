@@ -1,5 +1,6 @@
 'use client';
 
+import LaneIcon, { Lane } from '@/app/_components/icons/lane';
 import { Button } from '@/app/_components/ui/button';
 import {
   Form,
@@ -28,12 +29,12 @@ interface Summary {
   finalTier: number;
   account: string;
   typeOfClimb: string;
-  lanes: string[];
+  lanes: Lane[];
   champions: string[];
   addons: string[];
 }
 
-export default function Order() {
+export default function ElojobOrder() {
   const imagePrefix = '/images/icons/';
   const form = useForm();
   const router = useRouter();
@@ -146,24 +147,29 @@ export default function Order() {
     },
     lanes: {
       top: {
+        id: 'top',
         label: 'Toplane',
-        icon: imagePrefix + 'lane-top.png',
+        icon: imagePrefix + 'lane-top-bright.png',
       },
       jungle: {
+        id: 'jungle',
         label: 'Jungle',
-        icon: imagePrefix + 'lane-jungle.png',
+        icon: imagePrefix + 'lane-jungle-bright.png',
       },
       mid: {
+        id: 'mid',
         label: 'Midlane',
-        icon: imagePrefix + 'lane-mid.png',
+        icon: imagePrefix + 'lane-mid-bright.png',
       },
       bottom: {
+        id: 'bottom',
         label: 'Botlane',
-        icon: imagePrefix + 'lane-bottom.png',
+        icon: imagePrefix + 'lane-bottom-bright.png',
       },
       support: {
+        id: 'support',
         label: 'Support',
-        icon: imagePrefix + 'lane-support.png',
+        icon: imagePrefix + 'lane-support-bright.png',
       },
     },
     champions: {
@@ -563,7 +569,7 @@ export default function Order() {
                 <div
                   className={cn(
                     'h-[140px] w-[110px] cursor-pointer rounded-sm p-1 font-medium',
-                    summary.lanes.includes(k)
+                    summary.lanes.includes(k as Lane)
                       ? 'bg-[#e3e3e3] shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400'
                       : 'bg-[#21232d]/40 text-muted-foreground'
                   )}
@@ -575,7 +581,9 @@ export default function Order() {
                   <span
                     className={cn(
                       'text-2xl',
-                      summary.lanes.includes(k) ? 'text-gradient-brass' : ''
+                      summary.lanes.includes(k as Lane)
+                        ? 'text-gradient-brass'
+                        : ''
                     )}
                   >
                     {v.label}
@@ -693,7 +701,6 @@ export default function Order() {
   }
 
   function submitOrder() {
-    console.log('submited');
     router.push('/cart');
   }
 
@@ -833,13 +840,10 @@ export default function Order() {
             <div className="flex-center gap-3">
               {summary.lanes.length > 0
                 ? summary.lanes.map((x) => (
-                    <Image
-                      src={infos.lanes[x as keyof typeof infos.lanes].icon}
-                      key={x}
-                      alt=""
-                      width={36}
-                      height={36}
-                      className="rounded-lg bg-gradient-to-b from-white/40 to-[#aeaeae]/40 p-1 shadow-[0px_0px_10px_0px_rgba(0,_255,_224,_0.49)] outline outline-1 outline-blue-400"
+                    <LaneIcon
+                      key={x as unknown as string}
+                      lane={x}
+                      className="size-9"
                     />
                   ))
                 : '-'}

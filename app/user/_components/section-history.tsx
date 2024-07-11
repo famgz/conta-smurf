@@ -170,7 +170,7 @@ export default function UserHistorySection() {
         </div>
 
         {/* body */}
-        <div className="flex flex-1 flex-col gap-9 pl-8 pr-16 pt-5">
+        <div className="flex flex-1 flex-col gap-9 py-5 pl-8 pr-16">
           {/* search input */}
           <div className="flex h-10 w-full max-w-[400px] items-center gap-4 rounded-sm bg-white px-4">
             <input
@@ -182,7 +182,7 @@ export default function UserHistorySection() {
           </div>
 
           {/* table */}
-          <ScrollArea className="max-h-[900px] flex-1">
+          <ScrollArea className="h-[300px] flex-auto">
             <div className="flex flex-col gap-5">
               {Array.from({ length: 20 }).map((_, i) => (
                 <div

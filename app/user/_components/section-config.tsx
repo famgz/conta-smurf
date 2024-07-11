@@ -94,7 +94,7 @@ export default function UserConfigSection() {
             <input
               type="text"
               name="duo-subtitle"
-              placeholder="Your nex love"
+              placeholder="Your next love"
               className="h-11 w-full rounded-sm bg-white px-4 text-xl font-light text-muted placeholder-muted-foreground outline-none"
             />
           </div>
@@ -156,11 +156,11 @@ export default function UserConfigSection() {
           </div>
 
           <div className="!mt-6 flex justify-between">
-            <Button variant={'dark'} className="text-md">
+            <Button variant={'dark'} className="text-md rounded-lg">
               Cancelar
             </Button>
 
-            <Button variant={'dark'} className="text-2xl">
+            <Button variant={'dark'} className="rounded-lg px-6 text-xl">
               Salvar mudanças
             </Button>
           </div>

@@ -69,7 +69,7 @@ export default function HomeProductsSection() {
   return (
     <div className="flex-center">
       <div className="grid h-full max-h-[720px] w-full max-w-[1580px] grid-cols-[1fr_3fr] overflow-hidden rounded-[30px] bg-black/20">
-        {/* Filters */}
+        {/* Column 1 - Filters */}
         <div className="hide-scrollbar max-h-[720px] space-y-2 overflow-y-auto">
           <div className="flex-center gap-1 py-7">
             <SlidersHorizontalIcon />
@@ -80,9 +80,9 @@ export default function HomeProductsSection() {
             <input
               type="text"
               placeholder="Search a Product by name"
-              className="flex-1 text-muted"
+              className="flex-1 bg-transparent text-muted outline-none"
             />
-            <Search className="text-muted-foreground" />
+            <Search className="cursor-pointer text-muted-foreground" />
           </div>
 
           {/* Game */}
@@ -207,10 +207,10 @@ export default function HomeProductsSection() {
           </Accordion>
         </div>
 
-        {/* Products list */}
-        <div className="flex max-h-full flex-col overflow-hidden bg-gradient-to-br from-[#ebebeb]/40 to-[#a6a6a6]/40 px-10 py-7">
+        {/* Column2 -Products list */}
+        <div className="flex max-h-full flex-col gap-5 overflow-hidden bg-gradient-to-br from-[#ebebeb]/40 to-[#a6a6a6]/40 px-10 py-7">
           <h2 className="text-4xl">Products</h2>
-          <ScrollArea className="mt-5 flex-1">
+          <ScrollArea className="h-[200px] flex-auto">
             <div className="flex-center max-h-[600px] flex-wrap gap-12">
               {Array.from({ length: 21 }).map((_, i) => (
                 <MostWantedCard key={i} />

@@ -60,7 +60,11 @@ export default function Header() {
             </Link>
             <div className="hidden flex-1 gap-12 text-4xl 2xl:flex">
               {links.map((x) => (
-                <Link href={x.href} className="" key={x.label}>
+                <Link
+                  href={x.href}
+                  className="hover:shadow-white hover:text-shadow-sm"
+                  key={x.label}
+                >
                   {x.label}
                 </Link>
               ))}
@@ -77,7 +81,7 @@ export default function Header() {
             </Link>
 
             <Link href={'/login'} className="xl:mt-1">
-              <UserIcon className="size-[45px] xl:size-[110px]" />
+              <UserIcon className="hover:shadow-yellow size-[45px] rounded-full xl:size-[110px]" />
             </Link>
 
             <button className="xl:hidden">

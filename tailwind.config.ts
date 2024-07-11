@@ -109,6 +109,8 @@ const config = {
         golden: '0 5px 30px hsl(var(--golden))',
         blue: '0 0 10px 0px rgba(0,255,224,0.49)',
         lime: '0 0 10px 0px #67FF4F',
+        yellow: '0 0 10px 0px #FFB800',
+        bright: '0 0 10px 0px #F2f2f2',
       },
       textShadow: {
         xs: '0 0 4px var(--tw-shadow-color)',

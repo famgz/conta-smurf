@@ -18,6 +18,7 @@ export default function UserChatSection() {
     useState<ChatMessageBalloonProps[]>(chatMessageExample);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // ensure chat box will always scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -51,10 +52,7 @@ export default function UserChatSection() {
 
   return (
     <div className="!max-w-[1530px] py-12">
-      <div
-        id="left-column"
-        className="mx-auto grid h-full w-full grid-cols-[4fr_3fr] overflow-hidden rounded-[30px]"
-      >
+      <div className="mx-auto grid h-full w-full grid-cols-[4fr_3fr] overflow-hidden rounded-[30px]">
         {/* left column */}
         <div className="flex flex-col bg-light">
           {/* header */}
@@ -105,7 +103,7 @@ export default function UserChatSection() {
               </div>
               {/* send button */}
               <Button
-                className="bg-yellow flex-center h-10 w-32 rounded-lg hover:brightness-110"
+                className="flex-center h-10 w-32 rounded-lg bg-yellow hover:brightness-110"
                 onClick={addNewMessage}
               >
                 <RightArrow />

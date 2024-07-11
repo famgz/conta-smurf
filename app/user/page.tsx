@@ -3,6 +3,7 @@ import GearIcon from '@/app/_components/icons/gear';
 import ProfileIcon from '@/app/_components/icons/profile';
 import SnapSections from '@/app/_components/snap-sections';
 import UserChatSection from '@/app/user/_components/section-chat';
+import UserConfigSection from '@/app/user/_components/section-config';
 import UserHistorySection from '@/app/user/_components/section-history';
 
 export default function UserPage() {
@@ -22,7 +23,7 @@ export default function UserPage() {
     {
       id: 'user-config',
       label: 'Configuration',
-      content: <></>,
+      content: <UserConfigSection />,
       icon: <GearIcon />,
     },
   ];

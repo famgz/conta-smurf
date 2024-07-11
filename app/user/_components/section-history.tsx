@@ -120,7 +120,7 @@ export default function UserHistorySection() {
                 alt=""
                 width={50}
                 height={50}
-                className="rounded-md border-[8px] border-muted-foreground bg-gradient-to-b from-white/40 to-[#aeaeae]/40"
+                className="rounded-md border-[8px] border-muted-foreground"
               />
             ))}
           </div>

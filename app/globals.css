@@ -179,3 +179,19 @@ svg {
     @apply drop-shadow-[0px_0px_5px_#ffb800];
   }
 }
+
+.special-border-green {
+  background:
+    linear-gradient(
+        103.69deg,
+        rgba(0, 0, 0, 1) 45.84%,
+        rgba(27, 19, 74, 1) 101.12%
+      )
+      padding-box,
+    linear-gradient(213.42deg, #05ff00 -33.23%, rgba(219, 255, 0, 0) 80.12%)
+      border-box;
+
+  border: 1px solid transparent;
+
+  box-shadow: 0px 0px 7.3px rgba(0, 194, 255, 0.29);
+}

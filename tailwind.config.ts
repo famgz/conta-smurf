@@ -95,6 +95,7 @@ const config = {
         dark: 'linear-gradient(180deg, rgba(79, 79, 79, 0.37) 0%, rgba(0, 0, 0, 0.37) 100%)',
         red: 'linear-gradient(180deg, #CB0000 0%, #A80079 100%)',
         green: 'linear-gradient(180deg, #67FF4F 0%, #00B574 100%)',
+        lime: 'linear-gradient(180deg, #00C620 0%, #97FF86 49.5%, #79FF76 100%)',
         yellow: 'linear-gradient(180deg, #FFB800 0%, #DA8300 100%)',
         folder:
           'linear-gradient(168.32deg, rgba(0, 0, 0, 0.3) 8.57%, rgba(20, 0, 62, 0.3) 115.05%)',
@@ -107,6 +108,7 @@ const config = {
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',
         blue: '0 0 10px 0px rgba(0,255,224,0.49)',
+        lime: '0 0 10px 0px #67FF4F',
       },
       textShadow: {
         xs: '0 0 4px var(--tw-shadow-color)',

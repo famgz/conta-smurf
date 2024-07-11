@@ -1,5 +1,6 @@
 'use client';
 
+import FinishButton from '@/app/_components/buttons/finish-button';
 import LaneIcon from '@/app/_components/icons/lane';
 import { Button } from '@/app/_components/ui/button';
 import {
@@ -601,7 +602,7 @@ export default function ElojobOrderSection() {
     <div className="flex-center py-4">
       <div className="grid h-full max-h-[720px] w-full max-w-[1580px] grid-cols-[1fr_3fr] overflow-hidden rounded-[30px] bg-black/20">
         {/* Order summary */}
-        <div className="max-h-[720px] overflow-y-auto">
+        <div className="flex max-h-[720px] flex-col overflow-y-auto">
           <div className="flex-center gap-1 py-7">
             <h2 className="text-4xl font-light">Order Summary</h2>
           </div>
@@ -734,26 +735,36 @@ export default function ElojobOrderSection() {
             <span>Addons</span>
             <span></span>
           </div>
-          {summary.addons.length > 0 ? (
-            <div className="flex-center flex-1 flex-wrap gap-3 gap-y-0 py-3 font-light">
-              {summary.addons.map((addon, i) => {
-                const content = addons[addon].label;
 
-                const separator =
-                  i < summary.addons.length - 1 ? <span>·</span> : '';
-                return (
-                  <>
-                    <span key={addon} className="whitespace-nowrap">
-                      {content}
-                    </span>
-                    {separator}
-                  </>
-                );
-              })}
-            </div>
-          ) : (
-            '-'
-          )}
+          <div className="flex-1">
+            {summary.addons.length > 0 ? (
+              <div className="flex-center flex-wrap gap-3 gap-y-0 py-3 font-light">
+                {summary.addons.map((addon, i) => {
+                  const content = addons[addon].label;
+
+                  const separator =
+                    i < summary.addons.length - 1 ? <span>·</span> : '';
+                  return (
+                    <>
+                      <span key={addon} className="whitespace-nowrap">
+                        {content}
+                      </span>
+                      {separator}
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              '-'
+            )}
+          </div>
+
+          <div className="flex items-center justify-between bg-[#D9D9D91A] p-5">
+            <FinishButton onClick={submitOrder}>Send to Cart</FinishButton>
+            <Button variant={'dark'} className="h-12 rounded-xl text-4xl">
+              $1200
+            </Button>
+          </div>
         </div>
 
         {/* Order steps*/}

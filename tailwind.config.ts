@@ -106,6 +106,7 @@ const config = {
       },
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',
+        blue: '0 0 10px 0px rgba(0,255,224,0.49)',
       },
       textShadow: {
         xs: '0 0 4px var(--tw-shadow-color)',

@@ -22,6 +22,7 @@ const buttonVariants = cva(
           'bg-golden font-semibold hover:shadow-golden btn-golden-variant',
         white:
           'bg-white font-semibold btn-golden-variant hover:shadow-[0_5px_30px_#FFF]',
+        dark: 'border border-cyan-800 bg-menu hover:bg-secondary/40 px-6 font-light hover:shadow-blue',
       },
       size: {
         default: 'h-10 px-4 py-2',

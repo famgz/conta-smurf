@@ -93,13 +93,16 @@ const config = {
         light:
           'linear-gradient(180deg, rgba(235, 235, 235, 0.4) 0%, rgba(166, 166, 166, 0.4) 100%)',
         dark: 'linear-gradient(180deg, rgba(79, 79, 79, 0.37) 0%, rgba(0, 0, 0, 0.37) 100%)',
+        red: 'linear-gradient(180deg, #CB0000 0%, #A80079 100%)',
+        green: 'linear-gradient(180deg, #67FF4F 0%, #00B574 100%)',
+        yellow: 'linear-gradient(180deg, #FFB800 0%, #DA8300 100%)',
         folder:
           'linear-gradient(168.32deg, rgba(0, 0, 0, 0.3) 8.57%, rgba(20, 0, 62, 0.3) 115.05%)',
         menu: 'linear-gradient(180deg, rgba(33, 35, 45, 0.4) 0%, rgba(33, 35, 45, 0.4) 100%)',
-        red: 'linear-gradient(180deg, #CB0000 0%, #A80079 100%)',
-        green: 'linear-gradient(180deg, #67FF4F 0%, #00B574 100%)',
         selected:
           'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(227, 227, 227, 0.8) 100%)',
+        'tab-header':
+          'linear-gradient(95.63deg, rgba(79, 79, 79, 0.37) 45.52%, rgba(0, 0, 0, 0.37) 109.98%)',
       },
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',

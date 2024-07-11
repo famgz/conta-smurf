@@ -141,7 +141,7 @@ export default function UserHistory() {
       {/* Column 2 - Purchase history */}
       <div className="flex flex-col overflow-hidden rounded-[30px] bg-light">
         {/* header */}
-        <div className="flex-center h-[90px] gap-5 bg-[linear-gradient(91.46deg,_rgba(79,_79,_79,_0.37)_48.76%,_rgba(0,_0,_0,_0.37)_103.45%)] px-8">
+        <div className="flex-center bg-tab-header h-[90px] gap-5 px-8">
           <div className="relative size-20">
             <Image
               src="/images/icons/decoracao-1.png"
@@ -204,7 +204,7 @@ export default function UserHistory() {
                     {/* row 1 */}
                     <div className="flex w-full items-center gap-10 leading-5">
                       <span className="text-muted">Account Grandmaster</span>
-                      <span className="bg-green text-gradient flex-1 text-left">
+                      <span className="text-gradient flex-1 bg-green text-left">
                         Finalized
                       </span>
                       <span className="font-extralight text-muted-foreground">

@@ -52,7 +52,11 @@ export default function LoginPage() {
                   <FormItem>
                     <FormLabel className="text-2xl">Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="KDAgragas@email.com" {...field} />
+                      <Input
+                        placeholder="KDAgragas@email.com"
+                        required
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -69,6 +73,7 @@ export default function LoginPage() {
                       <Input
                         type="password"
                         placeholder="**********"
+                        required
                         {...field}
                       />
                     </FormControl>

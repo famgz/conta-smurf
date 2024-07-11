@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from '@/app/_components/ui/accordion';
 
-export default function HomeFAQ() {
+export default function HomeFAQSection() {
   const faqItems = [
     {
       title: 'What is an inactive account or NFA?',

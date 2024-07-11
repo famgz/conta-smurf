@@ -40,7 +40,7 @@ interface Summary {
   addons: Addon[];
 }
 
-export default function ElojobOrder() {
+export default function ElojobOrderSection() {
   const form = useForm();
   const router = useRouter();
 

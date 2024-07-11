@@ -20,7 +20,7 @@ import { SearchIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function UserHistory() {
+export default function UserHistorySection() {
   const userLanes: Lane[] = [Lane.BOTTOM, Lane.JUNGLE];
   const userChampions: Champion[] = [Champion.CHAMPION_1, Champion.CHAMPION_2];
 
@@ -141,7 +141,7 @@ export default function UserHistory() {
       {/* Column 2 - Purchase history */}
       <div className="flex flex-col overflow-hidden rounded-[30px] bg-light">
         {/* header */}
-        <div className="flex-center bg-tab-header h-[90px] gap-5 px-8">
+        <div className="flex-center h-[90px] gap-5 bg-tab-header px-8">
           <div className="relative size-20">
             <Image
               src="/images/icons/decoracao-1.png"

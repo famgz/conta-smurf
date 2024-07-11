@@ -1,6 +1,6 @@
 import AboutUsCard from '@/app/(home)/_components/about-us-card';
 
-export default function AboutUs() {
+export default function HomeAboutUsSection() {
   return (
     <div className="flex-center py-10">
       <div className="flex h-full max-h-[1080px] max-w-[1200px] flex-col justify-between">

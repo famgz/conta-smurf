@@ -14,13 +14,13 @@ import { Textarea } from '@/app/_components/ui/textarea';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 
-export default function EloJobBeAgent() {
+export default function EloJobBeAgentSection() {
   const form = useForm();
 
   return (
     <div className="grid h-full max-w-[1780px] grid-cols-[3fr_2fr] items-center justify-between gap-5 !overflow-visible px-40 pb-14 pt-4">
       {/* Side info */}
-      <div className="bg-folder hide-scrollbar mx-auto flex h-full w-full max-w-[573px] flex-col space-y-6 overflow-y-auto rounded-[30px] px-20 py-8">
+      <div className="hide-scrollbar mx-auto flex h-full w-full max-w-[573px] flex-col space-y-6 overflow-y-auto rounded-[30px] bg-folder px-20 py-8">
         <h2 className="text-5xl font-bold">Be an agent</h2>
 
         <Form {...form}>

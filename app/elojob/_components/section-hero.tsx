@@ -2,7 +2,7 @@ import { Button } from '@/app/_components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function EloJobHero() {
+export default function EloJobHeroSection() {
   return (
     <div className="grid h-full max-w-[1780px] grid-cols-[2fr_3fr] items-center justify-center !overflow-visible px-[70px] py-3 pr-40">
       {/* Section image */}

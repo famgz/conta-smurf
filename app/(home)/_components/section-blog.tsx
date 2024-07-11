@@ -3,7 +3,7 @@ import { Button } from '@/app/_components/ui/button';
 import { ScrollArea, ScrollBar } from '@/app/_components/ui/scroll-area';
 import Image from 'next/image';
 
-export default function Blog() {
+export default function HomeBlogSection() {
   return (
     <div className="flex !max-h-[700px] !max-w-[1530px] flex-col">
       <h2 className="text-left text-6xl font-extrabold text-brass shadow-brass text-shadow-sm">

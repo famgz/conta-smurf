@@ -1,6 +1,6 @@
 import HeroCard from '@/app/(home)/_components/hero-card';
 
-export default function HomeHero() {
+export default function HomeHeroSection() {
   return (
     <div className="relative flex flex-col justify-end gap-5 pb-20 xl:px-3 xl:pb-0 xl:pt-3">
       {/* Hero image */}

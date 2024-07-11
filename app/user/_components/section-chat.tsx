@@ -12,7 +12,7 @@ import { SmileIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-export default function UserChat() {
+export default function UserChatSection() {
   const [newMessage, setNewMessage] = useState('');
   const [messages, setMessages] =
     useState<ChatMessageBalloonProps[]>(chatMessageExample);

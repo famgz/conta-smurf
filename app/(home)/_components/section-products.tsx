@@ -11,7 +11,7 @@ import { Slider } from '@/app/_components/ui/slider';
 import { Search, SlidersHorizontalIcon } from 'lucide-react';
 import Image from 'next/image';
 
-export default function Products() {
+export default function HomeProductsSection() {
   const imagePrefix = '/images/icons/';
 
   const filters = {

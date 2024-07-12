@@ -4,6 +4,7 @@ import { cn } from '@/app/_lib/utils';
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
+import { Suspense } from 'react';
 
 const outfit = Outfit({ subsets: ['latin'] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="hide-scrollbar">
       <body className={cn(outfit.className)}>
-        <Header />
+        <Suspense>
+          <Header />
+        </Suspense>
         <div className="flex min-h-screen flex-col bg-custom-gradient">
           <main className="mx-auto w-full flex-1">{children}</main>
           <Footer />

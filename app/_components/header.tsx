@@ -1,3 +1,5 @@
+'use client';
+
 import BellIcon from '@/app/_components/icons/bell';
 import MenuIcon from '@/app/_components/icons/menu';
 import ShopBag from '@/app/_components/icons/shop-bag';
@@ -7,9 +9,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/app/_components/ui/dropdown-menu';
+import { cn } from '@/app/_lib/utils';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const links = [
   {
@@ -43,22 +48,46 @@ const links = [
 ];
 
 export default function Header() {
+  const [hash, setHash] = useState('');
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const hideElements = pathname === '/' && hash === '';
+
+  useEffect(() => {
+    setHash(window.location.hash);
+    // console.log({ hash });
+  }, [pathname, searchParams]);
+
   return (
-    // <header className="sticky top-0 z-10 backdrop-blur-lg backdrop-filter">
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">
-      <div className="flex h-[40px] bg-header-gradient px-4 backdrop-blur-md backdrop-filter xl:h-[80px]">
+      <div
+        className={cn(
+          'flex h-[40px] bg-opacity-95 bg-header-gradient px-4 backdrop-blur-md backdrop-filter transition duration-700 xl:h-[80px]',
+          hideElements && 'xl:bg-none xl:backdrop-filter-none'
+        )}
+      >
         <div className="mx-auto flex h-full w-full max-w-[1920px] items-center justify-between gap-10">
           <div className="flex flex-1 items-center gap-10">
-            <Link href={'/'}>
+            <Link
+              href={'/'}
+              className={cn(
+                'relative size-16 xl:size-32',
+                hideElements && 'xl:size-20'
+              )}
+            >
               <Image
                 src="/images/logo.png"
-                width={67}
-                height={61}
-                className="h-[61px] xl:min-h-[116px] xl:min-w-[126px]"
+                fill
+                className="object-contain"
                 alt="Logo image"
               />
             </Link>
-            <div className="hidden flex-1 gap-12 text-4xl 2xl:flex">
+            <div
+              className={cn(
+                'hidden flex-1 gap-12 text-4xl',
+                hideElements ? '' : '2xl:flex'
+              )}
+            >
               {links.map((x) => (
                 <Link
                   href={x.href}
@@ -71,7 +100,13 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 xl:gap-10">
+          <div
+            className={cn(
+              'flex items-center gap-4 xl:gap-10',
+
+              hideElements && 'xl:gap-4'
+            )}
+          >
             <Link href={'/cart'} className="hidden xl:block">
               <ShopBag />
             </Link>
@@ -81,10 +116,16 @@ export default function Header() {
             </Link>
 
             <Link href={'/login'} className="xl:mt-1">
-              <UserIcon className="hover:shadow-yellow size-[45px] rounded-full xl:size-[110px]" />
+              <UserIcon
+                className={cn(
+                  'size-11 rounded-full hover:shadow-yellow xl:size-28',
+                  hideElements && 'xl:size-16'
+                )}
+              />
             </Link>
 
-            <button className="xl:hidden">
+            {/* mobile dropdown menu */}
+            <div className="xl:hidden">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <MenuIcon />
@@ -102,7 +143,7 @@ export default function Header() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-            </button>
+            </div>
           </div>
         </div>
       </div>

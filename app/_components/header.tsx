@@ -125,7 +125,7 @@ export default function Header() {
             </Link>
 
             {/* mobile dropdown menu */}
-            <div className="xl:hidden">
+            <div className="flex items-center xl:hidden">
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <MenuIcon />

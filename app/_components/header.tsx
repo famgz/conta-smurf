@@ -127,7 +127,7 @@ export default function Header() {
             {/* mobile dropdown menu */}
             <div className="xl:hidden">
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+                <DropdownMenuTrigger>
                   <MenuIcon />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="z-50 rounded-none rounded-bl-2xl border-none bg-light py-9 pl-5 pr-8 backdrop-blur-[7px] [box-shadow:inset_0px_69px_71.7px_rgba(0,_0,_0,_0.25)]">

@@ -89,66 +89,79 @@ body {
   @apply !scroll-smooth;
 }
 
-.flex-center {
-  @apply flex items-center justify-center text-center;
-}
-
-.hide-scrollbar {
-  @apply [&::-webkit-scrollbar]:hidden; /* Webkit */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.footer-links-section {
-  @apply text-base font-light xl:text-2xl;
-
-  > h3 {
-    @apply font-semibold;
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center text-center;
   }
-}
 
-.page-section {
-  @apply flex-center h-screen w-full overflow-hidden border bg-effects bg-cover bg-center px-7 pb-24 pt-[116px] xl:px-0 xl:pb-0;
-
-  & > div {
-    @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden rounded-[30px] xl:rounded-none;
+  .hide-scrollbar {
+    @apply [&::-webkit-scrollbar]:hidden; /* Webkit */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
   }
-}
 
-.text-gradient {
-  @apply inline-block bg-clip-text leading-tight text-transparent;
-}
+  .footer-links-section {
+    @apply text-base font-light xl:text-2xl;
 
-.text-gradient-dark {
-  @apply text-gradient bg-gradient-to-r from-[#000] to-[#4e4e4e];
-}
-
-.text-gradient-brass {
-  @apply text-gradient bg-gradient-to-b from-[#ffb800] to-[#da8300];
-}
-
-.btn-golden-variant {
-  > span,
-  > a {
-    @apply text-gradient-dark;
+    > h3 {
+      @apply font-semibold;
+    }
   }
-}
 
-/* to ensure ScrollArea inner divs will expand vertically */
-.scroll-area-viewport > div {
-  @apply h-full;
-}
+  .page-section {
+    @apply flex-center h-screen w-full overflow-hidden border bg-effects bg-cover bg-center px-5 pb-24 pt-24 2xl:p-0 2xl:pt-[116px];
 
-svg {
-  shape-rendering: geometricPrecision;
-}
+    & > div {
+      @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden rounded-[30px] xl:rounded-none;
+    }
+  }
 
-.subtitle-badge {
-  @apply flex-center rounded-lg bg-black/50 px-6 py-2 text-lg font-semibold text-brass hover:outline hover:outline-1 hover:outline-brass;
-}
+  .text-gradient {
+    @apply inline-block bg-clip-text leading-tight text-transparent;
+  }
 
-.active-side-menu-button {
-  /* 
+  .text-gradient-dark {
+    @apply text-gradient bg-gradient-to-r from-[#000] to-[#4e4e4e];
+  }
+
+  .text-gradient-brass {
+    @apply text-gradient bg-gradient-to-b from-[#ffb800] to-[#da8300];
+  }
+
+  .btn-golden-variant {
+    > span,
+    > a {
+      @apply text-gradient-dark;
+    }
+  }
+
+  /* to ensure ScrollArea inner divs will expand vertically */
+  .scroll-area-viewport > div {
+    @apply h-full;
+  }
+
+  svg {
+    shape-rendering: geometricPrecision;
+  }
+
+  .subtitle-badge {
+    @apply flex-center rounded-md font-semibold text-brass opacity-80 hover:shadow-yellow xl:rounded-lg;
+
+    background:
+      linear-gradient(222.9deg, rgb(26, 27, 31) 0%, rgb(25, 27, 33) 100%)
+        padding-box,
+      radial-gradient(
+          120.8% 120.8% at 112.39% -45.45%,
+          #ffb800 0%,
+          rgba(255, 184, 0, 0.11) 100%
+        )
+        border-box;
+
+    border: 2px solid transparent;
+  }
+
+  .active-side-menu-button {
+    /* 
   figma values:
   
   bg
@@ -161,37 +174,38 @@ svg {
   box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
   */
 
-  background:
-    linear-gradient(
-        222.9deg,
-        rgba(8, 16, 37, 0.4) 0%,
-        rgba(33, 67, 153, 0.4) 100%
-      )
-      padding-box,
-    linear-gradient(213.42deg, #0094ff -33.23%, rgba(33, 67, 153, 0.4) 100%)
-      border-box;
+    background:
+      linear-gradient(
+          222.9deg,
+          rgba(8, 16, 37, 0.8) 0%,
+          rgba(33, 67, 153, 0.8) 100%
+        )
+        padding-box,
+      linear-gradient(213.42deg, #0094ff -33.23%, rgba(33, 67, 153, 0.4) 100%)
+        border-box;
 
-  border: 1px solid transparent;
+    border: 1px solid transparent;
 
-  box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
+    box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
 
-  & > svg {
-    @apply drop-shadow-[0px_0px_5px_#ffb800];
+    & > svg {
+      @apply drop-shadow-[0px_0px_2px_#ffb800];
+    }
   }
-}
 
-.special-border-green {
-  background:
-    linear-gradient(
-        103.69deg,
-        rgba(0, 0, 0, 1) 45.84%,
-        rgba(27, 19, 74, 1) 101.12%
-      )
-      padding-box,
-    linear-gradient(213.42deg, #05ff00 -33.23%, rgba(219, 255, 0, 0) 80.12%)
-      border-box;
+  .special-border-green {
+    background:
+      linear-gradient(
+          103.69deg,
+          rgba(0, 0, 0, 1) 45.84%,
+          rgba(27, 19, 74, 1) 101.12%
+        )
+        padding-box,
+      linear-gradient(213.42deg, #05ff00 -33.23%, rgba(219, 255, 0, 0) 80.12%)
+        border-box;
 
-  border: 1px solid transparent;
+    border: 1px solid transparent;
 
-  box-shadow: 0px 0px 7.3px rgba(0, 194, 255, 0.29);
+    box-shadow: 0px 0px 7.3px rgba(0, 194, 255, 0.29);
+  }
 }

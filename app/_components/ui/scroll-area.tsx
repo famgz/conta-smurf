@@ -5,7 +5,6 @@ import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 import { cn } from '@/app/_lib/utils';
 
-// Define the type for your ScrollArea props
 interface ScrollAreaProps
   extends React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> {
   hideScrollbar?: boolean;
@@ -23,21 +22,28 @@ const ScrollArea = React.forwardRef<
       ref={ref}
       className={cn(
         'scroll-area-viewport h-full w-full rounded-[inherit]',
-        hideScrollbar && 'hide-scrollbar'
+        hideScrollbar && '!hide-scrollbar'
       )}
     >
       {children}
     </ScrollAreaPrimitive.Viewport>
-    <ScrollBar />
+    <ScrollBar hideScrollbar={hideScrollbar} />
     <ScrollAreaPrimitive.Corner />
   </ScrollAreaPrimitive.Root>
 ));
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 
+interface ScrollBarProps
+  extends React.ComponentPropsWithoutRef<
+    typeof ScrollAreaPrimitive.ScrollAreaScrollbar
+  > {
+  hideScrollbar?: boolean;
+}
+
 const ScrollBar = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
->(({ className, orientation = 'vertical', ...props }, ref) => (
+  ScrollBarProps
+>(({ className, orientation = 'vertical', hideScrollbar, ...props }, ref) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
@@ -47,6 +53,7 @@ const ScrollBar = React.forwardRef<
         'h-full w-3.5 border-l border-l-transparent p-[2px]',
       orientation === 'horizontal' &&
         'h-3.5 flex-col border-t border-t-transparent p-[2px]',
+      hideScrollbar && '!hidden',
       className
     )}
     {...props}

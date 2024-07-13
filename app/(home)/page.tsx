@@ -41,7 +41,7 @@ export default function Home() {
       label: 'About Us',
       content: <HomeAboutUsSection />,
       icon: <AboutUsIcon />,
-      className: '',
+      className: '!max-xl:px-0',
     },
     {
       id: 'home-faq',

@@ -19,7 +19,7 @@ export default function HomeHeroSection() {
       </div>
 
       {/* Cards */}
-      <div className="hide-scrollbar z-10 flex flex-wrap justify-center gap-2 p-5 xl:flex-nowrap xl:gap-4 xl:overflow-x-auto">
+      <div className="hide-scrollbar z-10 flex flex-wrap justify-center gap-2 p-5 xl:flex-nowrap xl:justify-start xl:gap-4 xl:overflow-x-auto 2xl:justify-center">
         <HeroCard href="/" imageUrl="/images/accounts.png" />
         <HeroCard href="/elojob" imageUrl="/images/elojob.png" />
         <HeroCard href="/" imageUrl="/images/services.png" />

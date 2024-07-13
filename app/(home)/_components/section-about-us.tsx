@@ -1,53 +1,59 @@
 import AboutUsCard from '@/app/(home)/_components/about-us-card';
 
 export default function HomeAboutUsSection() {
+  const items = [
+    {
+      imageUrl: '/images/our-mission.png',
+      title: 'Your trust, Our Mission',
+      text: 'Founded in 2023, we earn your trust through quality assurance with our products and services, guaranteeing an unparalleled gaming journey. Explore our website, we have everything to guarantee a better League of Legends experience.',
+      className: '',
+    },
+    {
+      imageUrl: '/images/satisfaction.png',
+      title: 'Your satisfaction is essential!',
+      text: 'Since the beginning, ContaSmurf has been the definitive League of Legends portal. Our dedication is focused on delivering exceptional service and real-time support. Elevate your game with our carefully chosen top-tier accounts!',
+      className: '',
+    },
+    {
+      imageUrl: '/images/we-care.png',
+      title: 'We care about you!',
+      text: 'Our focus is to deliver incredible service to all of our customers. ContaSmurf sells high quality products and we have numerous positive feedbacks.',
+      className: '',
+    },
+  ];
+
+  const text = `Lörem ipsum ninde sperefel vanar fastän ofang kroda inte telell.
+          Sehena hexanade, pren rerat, och olig såsom nätvandra. Föliligen suk
+          dösonyss för att religen de orik megande att bektigt. Prio nevav, i
+          ber lase därför att antikrati tåktiga till hexarat. Laheten heterodat
+          exoliga nysam heteroligen vengen i parapp. Någonstansare vissa, fastän
+          sitskate traktiga. Fönat milig soskade heterovababel. Lagelingar
+          hoheng nidölig. On rerengen reska. För teraktigt om kak, rasam.
+          Paradiktisk fajisk har trahingar telett es jungen såsom åpese i
+          detöhet. Dira anar. Homoling pana ker drevkultur rent alltså kontrade
+          i bill. Inism rehärade samt valing att hjulboja dins. Nyktig
+          kroföfaktig en mast geos misusade i ässade som sin.`;
+
   return (
-    <div className="flex-center py-10">
-      <div className="flex h-full max-h-[1080px] max-w-[1200px] flex-col justify-between">
-        <h2 className="text-6xl font-extrabold text-brass shadow-brass text-shadow-sm">
+    <div className="flex-center !overflow-x-visible !overflow-y-scroll !rounded-none px-8 xl:py-10">
+      <div className="flex h-full max-w-[1200px] flex-col justify-center gap-4 xl:justify-between">
+        <h2 className="text-left text-3xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-center xl:text-6xl">
           About us
         </h2>
 
-        <div className="flex justify-between">
-          <AboutUsCard
-            imageUrl="/images/our-mission.png"
-            title="Your trust, Our Mission"
-            text="Founded in 2023, we earn your trust through quality assurance with our products and services, guaranteeing an unparalleled gaming journey. Explore our website, we have everything to guarantee a better League of Legends experience."
-            className="mt-5"
-          />
+        {/* TODO: map over array passing index to card, which will behavior based on odd/even index */}
 
-          <AboutUsCard
-            imageUrl="/images/satisfaction.png"
-            title="Your satisfaction is essential!"
-            text="Since the beginning, ContaSmurf has been the definitive League of Legends portal. Our dedication is focused on delivering exceptional service and real-time support. Elevate your game with our carefully chosen top-tier accounts!"
-            className="mt-20"
-          />
-
-          <AboutUsCard
-            imageUrl="/images/we-care.png"
-            title="We care about you!"
-            text="Our focus is to deliver incredible service to all of our customers. ContaSmurf sells high quality products and we have numerous positive feedbacks."
-            className="mt-5"
-          />
+        <div className="flex flex-col gap-8 xl:flex-row xl:justify-between">
+          {items.map((x, index) => (
+            <AboutUsCard index={index} {...x} key={x.title} />
+          ))}
         </div>
 
-        <p className="text-justify text-xs font-light">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-          quisquam esse voluptatibus dolore, excepturi similique recusandae
-          tempore sapiente veritatis earum maxime doloremque porro, illum ut
-          impedit perspiciatis ad laboriosam! Corrupti. Commodi provident
-          repudiandae sapiente voluptatibus, recusandae accusamus magnam numquam
-          omnis atque praesentium officiis enim eum, reiciendis eveniet. Sunt
-          porro cupiditate voluptatibus quam earum suscipit, numquam sequi quas
-          facilis in iure! Voluptates officia quaerat maxime mollitia temporibus
-          natus, nihil iste quidem tenetur minima! Ab iste possimus maxime
-          pariatur consectetur maiores, velit dolor nihil architecto. Natus
-          ducimus porro quas enim, consequatur nesciunt. Praesentium, natus?
-          Voluptates sint vitae distinctio eligendi consequuntur recusandae,
-          similique quibusdam repellendus cumque necessitatibus, adipisci
-          impedit ratione dolor quia maxime inventore reprehenderit. Natus velit
-          minus porro architecto omnis ipsam deserunt. Adipisci distinctio dicta
-          recusandae error mollitia eum culpa omnis tempora nemo ratione?
+        <p
+          className="text-justify text-[10px] font-light max-xl:line-clamp-5 xl:text-sm"
+          title={text}
+        >
+          {text}
         </p>
       </div>
     </div>

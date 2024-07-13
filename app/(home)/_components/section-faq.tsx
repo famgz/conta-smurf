@@ -32,7 +32,8 @@ export default function HomeFAQSection() {
   ];
 
   return (
-    <div className="flex-center">
+    <div className="flex flex-col gap-4 py-10 xl:py-20">
+      <h2 className="text-left text-4xl font-semibold xl:hidden">FAQ</h2>
       <Accordion
         type="single"
         collapsible
@@ -45,13 +46,14 @@ export default function HomeFAQSection() {
             className="overflow-hidden rounded-[30px] border-none backdrop-blur-sm"
           >
             <AccordionTrigger
+              icon="plus"
               className={
-                'bg-gradient-to-r from-[#acacac]/40 to-[#b1b1b1]/40 px-10 py-7 text-4xl'
+                'flex h-[60px] items-center gap-2 bg-gradient-to-r from-[#acacac]/40 to-[#b1b1b1]/40 pl-10 pr-5 max-xl:leading-4 xl:h-[100px] xl:px-10 xl:text-4xl'
               }
             >
               {x.title}
             </AccordionTrigger>
-            <AccordionContent className="mt-2 bg-gradient-to-r from-[#222]/40 to-[#373737]/40 px-10 py-7 text-left text-sm font-light">
+            <AccordionContent className="mt-2 bg-gradient-to-r from-[#222]/40 to-[#373737]/40 px-10 py-7 text-left text-[10px] font-light xl:text-sm">
               {x.text}
             </AccordionContent>
           </AccordionItem>

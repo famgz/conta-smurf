@@ -66,8 +66,10 @@ export default function Header() {
           hideElements && 'xl:bg-none xl:backdrop-filter-none'
         )}
       >
+        {/* left items */}
         <div className="mx-auto flex h-full w-full max-w-[1920px] items-center justify-between gap-10">
           <div className="flex flex-1 items-center gap-10">
+            {/* logo */}
             <Link
               href={'/'}
               className={cn(
@@ -82,6 +84,7 @@ export default function Header() {
                 alt="Logo image"
               />
             </Link>
+            {/* links - desktop only */}
             <div
               className={cn(
                 'hidden flex-1 gap-12 text-4xl',
@@ -100,6 +103,7 @@ export default function Header() {
             </div>
           </div>
 
+          {/* right items */}
           <div
             className={cn(
               'flex items-center gap-4 xl:gap-10',

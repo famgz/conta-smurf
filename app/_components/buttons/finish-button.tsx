@@ -12,11 +12,11 @@ export default function FinishButton({
 }: FinishButtonProps) {
   return (
     <Button
-      className="special-border-green hover:shadow-lime flex h-[45px] w-[200px] items-center py-0"
+      className="special-border-green flex h-10 w-[200px] items-center py-0 hover:shadow-lime"
       {...props}
     >
-      <HexagonIcon className="size-10" />
-      <span className="text-gradient bg-lime text-xl font-bold">
+      <HexagonIcon className="size-8 xl:size-10" />
+      <span className="text-gradient bg-lime font-bold xl:text-xl">
         {children}
       </span>
     </Button>

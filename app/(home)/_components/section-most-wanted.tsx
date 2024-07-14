@@ -12,7 +12,7 @@ export default function HomeMostWantedSection() {
 
         {/* cards */}
         <ScrollArea className="hide-scrollbar mt-5 flex-auto">
-          <div className="flex-center flex-wrap gap-2.5 pb-3 xl:gap-10">
+          <div className="flex-center flex-wrap gap-x-2.5 gap-y-5 pb-3 xl:gap-10">
             <MostWantedCard />
             <MostWantedCard />
             <MostWantedCard />

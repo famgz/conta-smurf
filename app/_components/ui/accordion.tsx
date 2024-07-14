@@ -43,8 +43,8 @@ const AccordionTrigger = React.forwardRef<
         <ChevronDown className="size-6 shrink-0 rounded bg-[#e7e7e7]/40 transition-transform duration-300" />
       ) : (
         <>
-          <Plus className="size-6 shrink-0 stroke-[3px] transition-transform duration-200 group-data-[state=open]:hidden xl:size-12" />
-          <Minus className="size-6 shrink-0 stroke-[3px] transition-transform duration-200 group-data-[state=closed]:hidden xl:size-12" />
+          <Plus className="ml-auto size-6 w-fit shrink-0 stroke-[3px] transition-transform duration-200 group-data-[state=open]:hidden xl:size-12" />
+          <Minus className="ml-auto size-6 w-fit shrink-0 stroke-[3px] transition-transform duration-200 group-data-[state=closed]:hidden xl:size-12" />
         </>
       )}
     </AccordionPrimitive.Trigger>

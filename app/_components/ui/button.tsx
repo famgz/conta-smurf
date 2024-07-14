@@ -31,6 +31,8 @@ const buttonVariants = cva(
         lg2: 'h-[80px] rounded-3xl px-8',
         xl: 'h-24 rounded-3xl px-8',
         icon: 'size-14',
+        'elojob-order-step':
+          'flex-center h-8 px-4 xl:px-6 py-0 text-xs xl:h-14 xl:text-3xl',
       },
     },
     defaultVariants: {

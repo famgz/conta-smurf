@@ -107,6 +107,8 @@ const config = {
           'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(227, 227, 227, 0.8) 100%)',
         'tab-header':
           'linear-gradient(95.63deg, rgba(79, 79, 79, 0.37) 45.52%, rgba(0, 0, 0, 0.37) 109.98%)',
+        golden:
+          'radial-gradient(circle at calc(50% - 100px) calc(50% + 50px), #9D7926, #FFE500)',
       },
       boxShadow: {
         golden: '0 5px 30px hsl(var(--golden))',

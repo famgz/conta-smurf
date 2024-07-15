@@ -109,10 +109,10 @@ body {
   }
 
   .page-section {
-    @apply flex-center h-screen w-full overflow-hidden border bg-effects bg-cover bg-center px-5 pb-24 pt-24 2xl:p-0 2xl:pt-[116px];
+    @apply flex-center h-screen w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-24 pt-24 xl:p-0 xl:pt-[116px];
 
     & > div {
-      @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden rounded-[30px] xl:rounded-none;
+      @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden rounded-[30px] xl:rounded-none xl:py-4;
     }
   }
 

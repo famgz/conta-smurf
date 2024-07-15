@@ -136,7 +136,14 @@ export default function HomeProductsSection() {
                       {filters.game.map((x) => (
                         <div className="flex items-center gap-4" key={x.title}>
                           <Checkbox className="size-6" />
-                          <Image src={x.icon} width={33} height={33} alt="" />
+                          <div className="relative size-[33px]">
+                            <Image
+                              src={x.icon}
+                              fill
+                              className="object-contain"
+                              alt=""
+                            />
+                          </div>
                           <span className="text-base font-light">
                             {x.title}
                           </span>
@@ -158,7 +165,14 @@ export default function HomeProductsSection() {
                       {filters.rank.map((x) => (
                         <div className="flex items-center gap-2" key={x.title}>
                           <Checkbox className="size-6" />
-                          <Image src={x.icon} width={33} height={33} alt="" />
+                          <div className="relative size-[33px]">
+                            <Image
+                              src={x.icon}
+                              fill
+                              className="object-contain"
+                              alt=""
+                            />
+                          </div>
                           <span className="text-base font-light capitalize">
                             {x.title}
                           </span>
@@ -255,7 +269,7 @@ export default function HomeProductsSection() {
           <ScrollArea
             className="h-[200px] flex-auto pb-7"
             type={'always'}
-            hideScrollbar={true}
+            hideScrollbar={false}
           >
             <div className="flex-center flex-wrap gap-2.5 gap-y-4 xl:gap-12">
               {Array.from({ length: 21 }).map((_, i) => (

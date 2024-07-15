@@ -552,7 +552,7 @@ export default function ElojobOrderSection() {
   }
 
   return (
-    <div className="flex-center py-4">
+    <div className="flex-center">
       <div className="flex h-full w-full max-w-[1580px] flex-col overflow-hidden rounded-[30px] bg-black/20 xl:grid xl:max-h-[720px] xl:grid-cols-[1fr_3fr]">
         {/* Order summary */}
         <div className="flex max-h-[720px] flex-col xl:overflow-y-auto">

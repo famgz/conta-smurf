@@ -35,7 +35,7 @@ export default function HomeAboutUsSection() {
           kroföfaktig en mast geos misusade i ässade som sin.`;
 
   return (
-    <div className="flex-center !overflow-x-visible !overflow-y-scroll !rounded-none px-8 xl:py-10">
+    <div className="flex-center !overflow-x-visible !overflow-y-scroll !rounded-none px-8">
       <div className="flex h-full max-w-[1200px] flex-col justify-center gap-4 xl:justify-between">
         <h2 className="text-left text-3xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-center xl:text-6xl">
           About us

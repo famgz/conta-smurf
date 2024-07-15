@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function HomeBlogSection() {
   return (
-    <div className="flex items-center !rounded-none xl:py-10">
+    <div className="flex items-center !rounded-none">
       <div className="mx-auto flex h-full max-h-[700px] max-w-[1530px] flex-col items-start">
         <h2 className="text-left text-4xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-6xl">
           Blog

@@ -32,7 +32,7 @@ export default function HomeFAQSection() {
   ];
 
   return (
-    <div className="mx-auto flex flex-col items-center gap-4 py-10 xl:py-20">
+    <div className="mx-auto flex flex-col items-center gap-4 py-10">
       <h2 className="w-full text-left text-4xl font-semibold xl:hidden">FAQ</h2>
       <Accordion
         type="single"

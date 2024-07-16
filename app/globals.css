@@ -108,11 +108,19 @@ body {
     }
   }
 
+  .page-sections-wrapper {
+    @apply hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth;
+  }
+
+  .floating-side-menu {
+    @apply flex-center absolute bottom-7 z-10 w-full gap-2 xl:right-[max(90px,calc((100vw-1920px)/2))] xl:top-0 xl:min-h-screen xl:w-fit xl:flex-col;
+  }
+
   .page-section {
-    @apply flex-center h-screen w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-24 pt-24 xl:p-0 xl:pt-[116px];
+    @apply flex-center h-screen w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-20 pt-24 xl:p-0 xl:pt-[116px];
 
     & > div {
-      @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden rounded-[30px] xl:rounded-none xl:py-4;
+      @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] overflow-hidden max-xl:rounded-[30px] xl:py-4;
     }
   }
 
@@ -161,19 +169,6 @@ body {
   }
 
   .active-side-menu-button {
-    /* 
-  figma values:
-  
-  bg
-  linear-gradient(222.9deg, rgba(55, 111, 255, 0.4) -5.91%, rgba(33, 67, 153, 0.4) 71.55%)
-  
-  border
-  linear-gradient(213.42deg, #0094FF -33.23%, rgba(0, 255, 194, 0) 80.12%) 
-
-  box-shadow: 
-  box-shadow: 0px 0px 4px 0px rgba(0, 148, 255, 0.61);
-  */
-
     background:
       linear-gradient(
           222.9deg,

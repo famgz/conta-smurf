@@ -1,4 +1,5 @@
-// /src/hooks/useIntersectionObserver.ts
+'use client';
+
 import { useEffect, useRef, MutableRefObject } from 'react';
 
 type SetActiveSection = (id: string) => void;
@@ -16,10 +17,14 @@ export default function useIntersectionObserver(
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
-          window.history.pushState(null, '', `#${entry.target.id}`);
+          window.history.pushState(
+            null,
+            '',
+            `#${index > 0 ? entry.target.id : ''}`
+          );
         }
       });
     }, options);

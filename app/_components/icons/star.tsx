@@ -7,6 +7,7 @@ const StarIcon = (props: SVGProps<SVGSVGElement>) => (
     width={21}
     height={20}
     fill=""
+    viewBox="0 0 21 20"
     {...props}
   >
     <path

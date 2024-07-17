@@ -7,7 +7,7 @@ type WindowDimentions = {
   height: number;
 };
 
-const useWindowDimensions = (): WindowDimentions => {
+function useWindowDimensions(): WindowDimentions {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimentions>({
     width: 0,
     height: 0,
@@ -28,6 +28,6 @@ const useWindowDimensions = (): WindowDimentions => {
   }, []);
 
   return windowDimensions;
-};
+}
 
 export default useWindowDimensions;

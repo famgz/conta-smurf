@@ -9,12 +9,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/app/_components/ui/dropdown-menu';
+import useURLHash from '@/app/_hooks/use-url-hash';
 import { cn } from '@/app/_lib/utils';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -48,14 +48,9 @@ const links = [
 ];
 
 export default function Header() {
-  const [hash, setHash] = useState('');
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const hash = useURLHash();
   const hideElements = pathname === '/' && hash === '';
-
-  useEffect(() => {
-    setHash(window.location.hash);
-  }, [pathname, searchParams]);
 
   return (
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">

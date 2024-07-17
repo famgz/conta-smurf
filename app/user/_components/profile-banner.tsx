@@ -16,7 +16,7 @@ export default function ProfileBanner() {
   const userChampions: Champion[] = [Champion.CHAMPION_1, Champion.CHAMPION_2];
 
   return (
-    <div className="relative flex flex-col overflow-hidden rounded-[30px] bg-dark">
+    <div className="relative flex h-full min-w-[300px] max-w-[400px] flex-col overflow-hidden rounded-[30px] bg-dark">
       {/* header with background image */}
       <div className="relative max-h-[160px] min-h-[120px] flex-1">
         {/* bg image */}
@@ -41,7 +41,7 @@ export default function ProfileBanner() {
 
       {/* body */}
       <div className="hide-scrollbar flex-auto overflow-y-auto">
-        <div className="flex h-full flex-1 flex-col items-center justify-between gap-1 px-10 pb-5 xl:px-16">
+        <div className="flex h-full flex-1 flex-col items-center justify-between gap-2 px-10 pb-5 2xl:px-16">
           {/* avatar */}
           <div className="absolute">
             <div className="relative mx-auto -mt-20 size-40 overflow-hidden rounded-full">
@@ -55,7 +55,7 @@ export default function ProfileBanner() {
           </div>
 
           {/* name and title */}
-          <div className="mt-20">
+          <div className="mt-[90px]">
             <p className="text-3xl">User12345</p>
             <p className="font-light">The feeder</p>
           </div>

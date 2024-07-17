@@ -30,8 +30,8 @@ export default function PurchaseHistoryTable() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-[30px] bg-light">
       {/* header */}
-      <div className="flex-center h-[90px] gap-2 bg-tab-header px-4 sm:px-8 xl:gap-5">
-        <div className="relative size-14 xl:size-20">
+      <div className="flex-center h-[90px] gap-2 bg-tab-header px-4 sm:px-8 2xl:gap-5">
+        <div className="relative size-14 shrink-0 2xl:size-20">
           <Image
             src="/images/icons/decoracao-1.png"
             alt=""
@@ -40,13 +40,13 @@ export default function PurchaseHistoryTable() {
           />
         </div>
 
-        <h2 className="flex-1 text-left xl:text-3xl">Purchase History</h2>
+        <h2 className="flex-1 text-left 2xl:text-3xl">Purchase History</h2>
 
-        <div className="flex-center gap-5">
+        <div className="flex-center gap-2 2xl:gap-5">
           {purchaseHistoryTabs.map((tab, index) => (
             <Button
               className={cn(
-                'flex-center h-11 w-20 rounded-[3px] border-[2px] border-white bg-transparent text-white hover:text-muted',
+                'flex-center h-7 w-16 rounded-[3px] border-[1px] border-white bg-transparent text-white hover:text-muted 2xl:h-11 2xl:w-20 2xl:border-[2px]',
                 index > 0 && 'max-xl:hidden',
                 tab === currentHistoryTab ? 'bg-selected text-muted' : ''
               )}
@@ -60,7 +60,7 @@ export default function PurchaseHistoryTable() {
       </div>
 
       {/* body */}
-      <div className="flex flex-1 flex-col gap-9 px-5 py-5 xl:px-8">
+      <div className="flex flex-1 flex-col gap-5 px-5 py-5 xl:px-8 2xl:gap-9">
         {/* search input */}
         <div className="flex h-10 w-full items-center rounded-sm bg-white px-4 sm:gap-4 xl:max-w-[400px]">
           <input
@@ -72,15 +72,15 @@ export default function PurchaseHistoryTable() {
         </div>
 
         {/* table */}
-        <ScrollArea className="-mr-4 h-[300px] flex-auto" type={'auto'}>
-          <div className="flex flex-col gap-5">
+        <ScrollArea className="h-[300px] flex-auto max-sm:-mr-3" type={'auto'}>
+          <div className="flex flex-col">
             {Array.from({ length: 12 }).map((_, i) => (
               <div
-                className="mr-5 flex items-center gap-2 border-b border-white pb-2.5 xl:mr-8 xl:gap-5"
+                className="mr-5 flex items-center gap-2 border-b border-white py-2.5 sm:mr-7 2xl:gap-5"
                 key={i}
               >
                 {/* product image */}
-                <div className="relative size-12 overflow-hidden rounded-2xl max-xs:hidden xl:size-20">
+                <div className="relative size-12 overflow-hidden rounded-lg max-xs:hidden sm:size-20 sm:rounded-2xl">
                   <Image
                     src="/images/icons/product-example.jpg"
                     alt="product image"
@@ -90,7 +90,7 @@ export default function PurchaseHistoryTable() {
                 </div>
 
                 {/* information card */}
-                <div className="flex h-20 flex-1 flex-col items-center justify-center rounded-2xl bg-white px-3 py-2">
+                <div className="flex flex-1 flex-col items-center justify-center rounded-2xl bg-white px-3 py-2 sm:h-20">
                   {/* row 1 */}
                   <div className="flex w-full items-center gap-2 leading-5 xl:gap-10">
                     <span className="whitespace-nowrap text-muted max-sm:text-xs">
@@ -124,7 +124,7 @@ export default function PurchaseHistoryTable() {
                       {Array.from({ length: 5 }).map((x, i) => (
                         <StarIcon
                           className={cn(
-                            'max-sm:size-3',
+                            'size-3 sm:size-4 2xl:size-5',
                             i === 4
                               ? 'fill-muted-foreground'
                               : 'fill-[url(#svg-linear-gradient)]'
@@ -141,7 +141,7 @@ export default function PurchaseHistoryTable() {
                 </div>
 
                 {/* buttons - desktop */}
-                <div className="flex-center gap-5 max-md:hidden">
+                <div className="flex-center gap-2 max-md:hidden 2xl:gap-5">
                   <Button className="flex-center size-12 rounded-2xl bg-white p-0">
                     <DialogIcon className="fill-muted" />
                   </Button>

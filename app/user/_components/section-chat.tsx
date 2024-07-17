@@ -58,7 +58,7 @@ export default function UserChatSection() {
   }
 
   return (
-    <div>
+    <>
       {currentChat && (
         <div className="relative mx-auto flex h-full w-full overflow-hidden rounded-[30px] xl:grid xl:grid-cols-[4fr_3fr]">
           {/* left column */}
@@ -133,6 +133,6 @@ export default function UserChatSection() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

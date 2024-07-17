@@ -89,6 +89,11 @@ body {
   @apply !scroll-smooth;
 }
 
+input,
+textarea {
+  @apply min-w-0;
+}
+
 @layer utilities {
   .flex-center {
     @apply flex items-center justify-center text-center;

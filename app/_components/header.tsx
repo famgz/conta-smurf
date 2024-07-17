@@ -130,7 +130,7 @@ export default function Header() {
 
             {/* mobile dropdown menu */}
             <div className="flex items-center lg:hidden">
-              <DropdownMenu>
+              <DropdownMenu modal={false}>
                 <DropdownMenuTrigger>
                   <MenuIcon />
                 </DropdownMenuTrigger>

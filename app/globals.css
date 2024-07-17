@@ -121,6 +121,10 @@ textarea {
     @apply flex-center absolute bottom-7 z-10 w-full gap-2 xl:right-[max(50px,calc((100vw-1920px)/2))] xl:top-0 xl:min-h-screen xl:w-fit xl:flex-col;
   }
 
+  .floating-chat-button {
+    @apply flex-center absolute bottom-7 right-7 size-11 cursor-pointer rounded-full bg-dark shadow-blue xl:right-[max(36px,calc((100vw-1920px)/2))] 2xl:size-20;
+  }
+
   .page-section {
     @apply flex-center h-screen w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-[90px] pt-24 xl:px-[max(120px,calc((100vw-1780px)/2))] xl:pb-[40px] 2xl:pt-[calc(116px+20px)];
 

@@ -1,5 +1,6 @@
 'use client';
 
+import FloatingChatButton from '@/app/_components/buttons/floating-chat-button';
 import FloatingSideMenu from '@/app/_components/floating-side-menu';
 import useIntersectionObserver from '@/app/_hooks/use-intersection-observer';
 import { getDuplicateSectionIds } from '@/app/_lib/get-duplicate-section-ids';
@@ -46,6 +47,7 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
         activeSectionId={activeSectionId}
         onClick={handleScrollToSection}
       />
+      <FloatingChatButton />
       {sections.map((section, index) => (
         <section
           key={section.id}

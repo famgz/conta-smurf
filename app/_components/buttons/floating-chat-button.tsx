@@ -8,7 +8,7 @@ export default function FloatingChatButton() {
   const hash = useURLHash();
   const pathname = usePathname();
 
-  const hideElements = pathname === '/' && hash === '';
+  const hideElements = pathname === '/'; // && hash === ''
 
   return (
     <>

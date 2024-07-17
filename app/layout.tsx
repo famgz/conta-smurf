@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="hide-scrollbar">
       <body className={cn(outfit.className)}>
-        <Suspense>
+        <Suspense fallback={<h1>Loading...</h1>}>
           <Header />
+          <div className="flex min-h-screen flex-col bg-custom-gradient">
+            <main className="mx-auto w-full flex-1">{children}</main>
+            <Footer />
+          </div>
         </Suspense>
-        <div className="flex min-h-screen flex-col bg-custom-gradient">
-          <main className="mx-auto w-full flex-1">{children}</main>
-          <Footer />
-        </div>
       </body>
     </html>
   );

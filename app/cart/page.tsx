@@ -5,6 +5,7 @@ import FinishButton from '@/app/_components/buttons/finish-button';
 import MinusButton from '@/app/_components/buttons/minus-button';
 import PlusButton from '@/app/_components/buttons/plus-button';
 import { Button } from '@/app/_components/ui/button';
+import { Input } from '@/app/_components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { config } from '@/app/config';
@@ -46,24 +47,29 @@ export default function CartPage() {
   }
 
   return (
-    <div className="page-section" id="cart-home">
-      <div className="!max-w-[1260px] py-12">
-        <div className="grid h-full grid-cols-[1fr_2fr] overflow-hidden rounded-[30px]">
+    <div className="page-section max-sm:px-0 max-sm:pb-0" id="cart">
+      <div className="sm:!max-h-[800px] sm:!max-w-[1260px]">
+        <div className="flex h-full flex-col-reverse overflow-hidden rounded-[30px] max-sm:rounded-none sm:grid sm:grid-cols-[1fr_2fr]">
           {/* left column - summary */}
-          <div className="flex flex-col bg-dark">
+          <div className="flex flex-col bg-dark max-sm:rounded-t-[30px]">
             {/* header */}
-            <div className="flex h-32 items-center gap-6 px-9 py-3">
-              <h2 className="text-4xl font-semibold">Resumo</h2>
+            <div className="flex h-20 items-center px-4 max-sm:hidden xl:px-9 2xl:h-32">
+              <h2 className="text-xl font-semibold 2xl:text-4xl">Resumo</h2>
             </div>
 
             {/* payment methods */}
-            <div className="flex flex-1 flex-col justify-between p-10 pt-0">
+            <div className="flex flex-1 flex-col justify-between gap-3 p-4 sm:pt-0 xl:px-10 xl:pb-10">
               <div className="space-y-2">
-                <h3 className="text-left text-xl">Método de pagamento</h3>
-                <RadioGroup className="gap-1" defaultValue={'pix'}>
+                <h3 className="text-left text-lg 2xl:text-xl">
+                  Método de pagamento
+                </h3>
+                <RadioGroup className="gap-1.5" defaultValue={'pix'}>
                   {paymentMethods.map((x) => (
-                    <div className="flex items-center gap-3" key={x.id}>
-                      <div className="relative size-6">
+                    <div
+                      className="flex items-center gap-2 xl:gap-3"
+                      key={x.id}
+                    >
+                      <div className="relative size-5 xl:size-6">
                         <Image
                           src={x.img}
                           alt={`payment method ${x}`}
@@ -71,8 +77,8 @@ export default function CartPage() {
                           className="object-contain"
                         />
                       </div>
-                      <RadioGroupItem value={x.id} />
-                      <span className="whitespace-nowrap text-sm font-light">
+                      <RadioGroupItem value={x.id} className="max-xl:size-4" />
+                      <span className="whitespace-nowrap text-xs font-light xl:text-sm">
                         {x.label}
                       </span>
                     </div>
@@ -81,17 +87,17 @@ export default function CartPage() {
               </div>
 
               {/* discount coupon */}
-              <div className="space-y-1">
+              <div className="flex flex-col space-y-1 max-sm:items-center">
                 <p className="text-left font-extralight text-muted-foreground">
                   Cupom de desconto ou de Parceria?
                 </p>
 
-                <div className="flex items-center gap-1">
-                  <input
+                <div className="flex max-w-[400px] items-center gap-1">
+                  <Input
                     type="text"
                     name="discount-coupon"
                     placeholder="SMURFNOTA10"
-                    className="h-10 w-48 flex-1 rounded-sm bg-white px-4 text-lg font-light text-muted placeholder-muted-foreground outline-none"
+                    className="h-10 flex-1 rounded-sm bg-white px-4 text-lg font-light text-muted placeholder-muted-foreground outline-none sm:max-w-48"
                   />
                   <Button variant={'dark'} className="px-6">
                     Apply
@@ -114,7 +120,9 @@ export default function CartPage() {
                   <FinishButton onClick={finishOrder}>
                     Finish Order
                   </FinishButton>
-                  <span className="text-4xl font-light">$22,5</span>
+                  <span className="text-3xl font-light 2xl:text-4xl">
+                    $22,5
+                  </span>
                 </div>
                 <p className="text-left text-xs font-extralight text-muted-foreground">
                   Você será redirecionado ao Sellix
@@ -124,16 +132,16 @@ export default function CartPage() {
           </div>
 
           {/* right column - cart ietms */}
-          <div className="flex flex-col bg-light">
+          <div className="flex flex-1 flex-col sm:bg-light">
             {/* header */}
-            <div className="flex h-32 items-center gap-6 bg-tab-header px-9 py-3">
-              <h2 className="text-4xl font-semibold">Carrinho</h2>
+            <div className="flex items-center px-9 sm:h-20 sm:bg-tab-header 2xl:h-32">
+              <h2 className="text-xl font-semibold 2xl:text-4xl">Carrinho</h2>
             </div>
 
-            <div className="flex flex-1 flex-col p-8">
-              <ScrollArea className="-mr-2 h-[300px] flex-auto pr-6">
+            <div className="flex flex-1 flex-col p-8 max-sm:pt-2">
+              <ScrollArea className="-mr-2 h-[100px] flex-auto pr-6">
                 <div className="space-y-2">
-                  {Array.from({ length: 6 }).map((_, i) => (
+                  {Array.from({ length: 9 }).map((_, i) => (
                     <div
                       key={i}
                       className="flex gap-3 rounded-2xl bg-black/20 p-3"
@@ -149,7 +157,9 @@ export default function CartPage() {
 
                       <div className="flex flex-1 justify-between">
                         <div className="text-left">
-                          <p className="text-xl leading-5">LoL Account</p>
+                          <p className="text-lg leading-5 2xl:text-xl">
+                            LoL Account
+                          </p>
                           <p className="text-sm font-extralight leading-5">
                             GrandMaster Account
                           </p>
@@ -160,9 +170,11 @@ export default function CartPage() {
 
                           <div className="flex items-center gap-2">
                             <MinusButton />
-                            <span className="text-2xl">1</span>
+                            <span className="text-xl 2xl:text-2xl">1</span>
                             <PlusButton />
-                            <span className="text-3xl">$25</span>
+                            <span className="xl:text-2xl 2xl:text-3xl">
+                              $25
+                            </span>
                           </div>
                         </div>
                       </div>

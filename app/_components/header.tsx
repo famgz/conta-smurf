@@ -27,23 +27,23 @@ const links = [
   },
   {
     label: 'Services',
-    href: '/',
+    href: '/services',
   },
   {
     label: 'Lootbox',
-    href: '/',
+    href: '/lootbox',
   },
   {
     label: 'Cheats',
-    href: '/',
+    href: '/cheats',
   },
   {
     label: 'Gifts',
-    href: '/',
+    href: '/gifts',
   },
   {
     label: 'Community',
-    href: '/',
+    href: '/community',
   },
 ];
 
@@ -62,18 +62,18 @@ export default function Header() {
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">
       <div
         className={cn(
-          'flex h-[40px] bg-opacity-95 bg-header-gradient px-4 backdrop-blur-md backdrop-filter transition duration-700 xl:h-[80px]',
+          'flex h-[40px] bg-opacity-95 bg-header-gradient px-4 backdrop-blur-md backdrop-filter transition duration-700 2xl:h-[80px]',
           hideElements && 'xl:bg-none xl:backdrop-filter-none'
         )}
       >
         {/* left items */}
         <div className="mx-auto flex h-full w-full max-w-[1920px] items-center justify-between gap-10">
-          <div className="flex flex-1 items-center gap-10">
+          <div className="flex flex-1 items-center gap-5 2xl:gap-10">
             {/* logo */}
             <Link
               href={'/'}
               className={cn(
-                'relative size-16 xl:size-32',
+                'relative size-16 2xl:size-32',
                 hideElements && 'xl:size-20'
               )}
             >
@@ -87,8 +87,8 @@ export default function Header() {
             {/* links - desktop only */}
             <div
               className={cn(
-                'hidden flex-1 gap-12 text-4xl',
-                hideElements ? '' : '2xl:flex'
+                'hidden flex-1 gap-8 text-xl min-[1700px]:gap-12 min-[1700px]:text-4xl',
+                hideElements ? '' : 'lg:flex'
               )}
             >
               {links.map((x) => (
@@ -106,7 +106,7 @@ export default function Header() {
           {/* right items */}
           <div
             className={cn(
-              'flex items-center gap-4 xl:gap-10',
+              'flex items-center gap-4 2xl:gap-10',
 
               hideElements && 'xl:gap-4'
             )}
@@ -122,14 +122,14 @@ export default function Header() {
             <Link href={'/login'} className="xl:mt-1">
               <UserIcon
                 className={cn(
-                  'size-11 rounded-full hover:shadow-yellow xl:size-28',
+                  'size-11 rounded-full hover:shadow-yellow xl:size-16 2xl:size-24',
                   hideElements && 'xl:size-16'
                 )}
               />
             </Link>
 
             {/* mobile dropdown menu */}
-            <div className="flex items-center xl:hidden">
+            <div className="flex items-center lg:hidden">
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <MenuIcon />

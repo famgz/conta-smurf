@@ -64,7 +64,6 @@ export default function RestorePasswordPage() {
                       <Input
                         type="email"
                         placeholder="KDAgragas@email.com"
-                        required
                         {...field}
                       />
                     </FormControl>
@@ -83,7 +82,6 @@ export default function RestorePasswordPage() {
                       <Input
                         type="email"
                         placeholder="KDAgragas@email.com"
-                        required
                         {...field}
                       />
                     </FormControl>

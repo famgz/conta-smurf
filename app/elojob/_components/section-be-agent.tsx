@@ -17,15 +17,15 @@ export default function EloJobBeAgentSection() {
   const form = useForm();
 
   return (
-    <div className="grid h-full max-w-[1780px] items-center justify-center gap-5 !overflow-visible md:grid-cols-2 md:justify-between xl:px-40">
+    <div className="relative flex h-full flex-col-reverse items-center justify-center gap-3 !overflow-visible sm:gap-5 xl:grid xl:grid-cols-2 xl:justify-between 2xl:px-40">
       {/* Side info */}
-      <div className="hide-scrollbar mx-auto flex h-full w-full max-w-[573px] flex-col gap-3 overflow-y-auto rounded-[30px] bg-folder px-10 py-6 xl:gap-6 xl:px-20 xl:py-8">
-        <h2 className="text-3xl font-bold xl:text-5xl">Be an agent</h2>
+      <div className="hide-scrollbar mx-auto flex h-full w-full max-w-[400px] flex-col gap-3 overflow-y-auto rounded-[30px] bg-folder px-10 py-6 2xl:max-w-[573px] 2xl:gap-6 2xl:px-20 2xl:py-8">
+        <h2 className="text-3xl font-bold 2xl:text-5xl">Be an agent</h2>
 
         <Form {...form}>
           <form
             onSubmit={() => {}}
-            className="flex h-full w-full flex-1 flex-col gap-4 text-start"
+            className="flex h-full w-full flex-1 flex-col gap-2 text-start 2xl:gap-4"
           >
             <FormField
               name="user"
@@ -59,7 +59,7 @@ export default function EloJobBeAgentSection() {
                     Why do you want to be an agent?
                   </FormLabel>
                   <textarea
-                    className="w-full flex-1 rounded-md p-2 text-sm text-muted xl:text-lg"
+                    className="w-full flex-1 rounded-md p-2 text-sm text-muted 2xl:text-lg"
                     placeholder="Talk about your ranks, playing time, favorite roles and characters"
                   />
                 </FormItem>
@@ -75,7 +75,7 @@ export default function EloJobBeAgentSection() {
                   </FormLabel>
                   <FormControl>
                     <textarea
-                      className="w-full flex-1 rounded-md p-2 text-sm text-muted xl:text-lg"
+                      className="w-full flex-1 rounded-md p-2 text-sm text-muted 2xl:text-lg"
                       placeholder="Talk about your ranks, playing time, favorite roles and characters"
                     />
                   </FormControl>
@@ -85,7 +85,7 @@ export default function EloJobBeAgentSection() {
             />
 
             <Button
-              className="active-side-menu-button h-[54px] w-full text-3xl hover:shadow-[0px_0px_20px_0px_rgba(0,_255,_224,_0.49)]"
+              className="active-side-menu-button mt-3 w-full text-xl hover:shadow-[0px_0px_20px_0px_rgba(0,_255,_224,_0.49)] xl:h-[54px] xl:text-3xl"
               variant={'secondary'}
             >
               Send
@@ -95,11 +95,11 @@ export default function EloJobBeAgentSection() {
       </div>
 
       {/* Section image */}
-      <div className="z-1 relative h-full w-full overflow-hidden rounded-3xl border-2 border-[rgba(8,_112,_184,_0.7)] shadow-[0px_0px_50px_0px_rgba(0,_255,_224,_0.49)] max-md:hidden">
+      <div className="z-1 relative top-0 h-full w-full max-w-[600px] overflow-hidden rounded-3xl border-2 border-[rgba(8,_112,_184,_0.7)] shadow-[0px_0px_50px_0px_rgba(0,_255,_224,_0.49)] max-lg:max-h-[200px] max-md:max-h-[120px]">
         <Image
           src="/images/be-agent.jpg"
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           alt="PC game cartoon character wearing a garment."
         />
       </div>

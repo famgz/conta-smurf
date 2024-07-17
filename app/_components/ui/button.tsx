@@ -28,11 +28,11 @@ const buttonVariants = cva(
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
-        lg2: 'h-[80px] rounded-3xl px-8',
-        xl: 'h-24 rounded-3xl px-8',
+        lg2: 'h-[50px] xl:h-[80px] rounded-lg xl:rounded-3xl px-8',
+        xl: 'h-16 lg:h-24 rounded-xl lg:rounded-3xl px-8',
         icon: 'size-14',
         'elojob-order-step':
-          'flex-center h-8 px-4 xl:px-6 py-0 text-xs xl:h-14 xl:text-3xl',
+          'flex-center h-8 px-4 2xl:px-6 py-0 text-xs 2xl:h-14 2xl:text-3xl',
       },
     },
     defaultVariants: {

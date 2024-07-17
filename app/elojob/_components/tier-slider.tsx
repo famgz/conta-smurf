@@ -12,12 +12,12 @@ export default function TierSlider({
   onValueChange,
 }: TierSliderProps) {
   return (
-    <div className="w-full max-w-[240px] space-y-2 xl:max-w-[380px]">
+    <div className="w-full max-w-[240px] space-y-2 2xl:max-w-[380px]">
       <div className="flex w-full justify-between px-1">
         {tiers.map((x) => (
           <span
             key={x}
-            className="inline-block w-3 text-center font-light max-xl:text-xs"
+            className="inline-block w-3 text-center font-light max-2xl:text-xs"
           >
             {x}
           </span>

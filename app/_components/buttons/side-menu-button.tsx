@@ -27,14 +27,14 @@ export default function SideMenuButton({
       className={cn(
         className,
         btnStyle,
-        'flex-center size-[45px] overflow-hidden xl:size-[52px]'
+        'flex-center size-[45px] overflow-hidden 2xl:size-[52px]'
       )}
       onClick={onClick}
     >
       {React.cloneElement(icon, {
         fill: svgColor,
         stroke: svgColor,
-        className: 'size-6 xl:size-8',
+        className: 'size-6 2xl:size-8',
       })}
     </Button>
   );

@@ -2,7 +2,7 @@ import HeroCard from '@/app/(home)/_components/hero-card';
 
 export default function HomeHeroSection() {
   return (
-    <div className="relative flex !max-w-[2000px] flex-col justify-end gap-5 pb-20 xl:px-3 xl:pb-0 xl:pt-3">
+    <div className="relative flex !max-w-[2000px] flex-col justify-end pb-20 xl:px-3 xl:pb-0 xl:pt-3 2xl:gap-5">
       {/* Hero image */}
       <div className="absolute inset-4 flex flex-1 items-center justify-start rounded-[40px] bg-[url('/images/home-hero.jpg')] bg-cover bg-top xl:static">
         <div className="space-y-5 pl-3 text-left xl:pl-28">

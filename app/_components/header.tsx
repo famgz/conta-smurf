@@ -55,7 +55,6 @@ export default function Header() {
 
   useEffect(() => {
     setHash(window.location.hash);
-    // console.log({ hash });
   }, [pathname, searchParams]);
 
   return (

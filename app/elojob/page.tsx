@@ -9,7 +9,7 @@ import ElojobOrderSection from '@/app/elojob/_components/section-order';
 export default function ElojobPage() {
   const sections: SnapSection[] = [
     {
-      id: 'elojob-hero',
+      id: '',
       label: 'Hero',
       content: <EloJobHeroSection />,
       icon: <RocketIcon />,
@@ -17,7 +17,7 @@ export default function ElojobPage() {
       className: '!bg-[url(/images/bg/elojob-hero.png)]',
     },
     {
-      id: 'elojob-order',
+      id: 'order',
       label: 'Order',
       content: <ElojobOrderSection />,
       icon: <TargetIcon />,
@@ -25,7 +25,7 @@ export default function ElojobPage() {
       className: '',
     },
     {
-      id: 'elojob-agent',
+      id: 'be-agent',
       label: 'Be An Agent',
       content: <EloJobBeAgentSection />,
       icon: <SwordIcon />,

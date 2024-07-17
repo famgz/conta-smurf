@@ -15,7 +15,7 @@ import SnapSections, { SnapSection } from '@/app/_components/snap-sections';
 export default function Home() {
   const sections: SnapSection[] = [
     {
-      id: 'home-hero',
+      id: '',
       label: 'Hero',
       content: <HomeHeroSection />,
       icon: <HomeIcon />,
@@ -23,7 +23,7 @@ export default function Home() {
       className: '!p-0',
     },
     {
-      id: 'home-most-wanted',
+      id: 'most-wanted',
       label: 'Most Wanted',
       content: <HomeMostWantedSection />,
       icon: <MostWantedIcon />,
@@ -31,7 +31,7 @@ export default function Home() {
       className: '',
     },
     {
-      id: 'home-products',
+      id: 'products',
       label: 'Products',
       content: <HomeProductsSection />,
       icon: <ProductsIcon />,
@@ -39,7 +39,7 @@ export default function Home() {
       className: '',
     },
     {
-      id: 'home-about-us',
+      id: 'about-us',
       label: 'About Us',
       content: <HomeAboutUsSection />,
       icon: <AboutUsIcon />,
@@ -47,7 +47,7 @@ export default function Home() {
       className: '!max-xl:px-0',
     },
     {
-      id: 'home-faq',
+      id: 'faq',
       label: 'FAQ',
       content: <HomeFAQSection />,
       icon: <FaqIcon />,
@@ -55,7 +55,7 @@ export default function Home() {
       className: '!bg-[url(/images/bg/faq.png)]',
     },
     {
-      id: 'home-blog',
+      id: 'blog',
       label: 'Blog',
       content: <HomeBlogSection />,
       icon: <BlogIcon />,

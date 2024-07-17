@@ -23,7 +23,8 @@ export default function useIntersectionObserver(
           window.history.pushState(
             null,
             '',
-            `#${index > 0 ? entry.target.id : ''}`
+            // `#${index > 0 ? entry.target.id : ''}`
+            `#${entry.target.id}`
           );
         }
       });

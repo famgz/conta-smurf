@@ -16,7 +16,7 @@ export default function UserPage() {
 
   const sections: SnapSection[] = [
     {
-      id: 'user-profile',
+      id: '',
       label: 'User Profile and History',
       content: <UserProfileAndPurchaseHistorySection />,
       icon: <ProfileIcon />,
@@ -24,7 +24,7 @@ export default function UserPage() {
       className: '',
     },
     {
-      id: 'user-history',
+      id: 'purchase-history',
       label: 'Purchase History',
       content: <UserPurchaseHistorySection />,
       icon: <ListIcon />,
@@ -32,7 +32,7 @@ export default function UserPage() {
       className: '',
     },
     {
-      id: 'user-chat',
+      id: 'chat',
       label: 'Chat',
       content: <UserChatSection />,
       icon: <ChatIcon />,
@@ -40,7 +40,7 @@ export default function UserPage() {
       className: '',
     },
     {
-      id: 'user-config',
+      id: 'config',
       label: 'Configuration',
       content: <UserConfigSection />,
       icon: <GearIcon />,

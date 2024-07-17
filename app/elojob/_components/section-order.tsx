@@ -533,8 +533,6 @@ export default function ElojobOrderSection() {
     router.push('/cart');
   }
 
-  // console.log(summary);
-
   function handleSummaryArrayChange(value: string, arrayKey: string): void {
     const array = summary[arrayKey as keyof typeof summary] as string[];
     setSummary((prev) => {

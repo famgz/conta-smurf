@@ -2,6 +2,7 @@
 
 import FloatingSideMenu from '@/app/_components/floating-side-menu';
 import useIntersectionObserver from '@/app/_hooks/use-intersection-observer';
+import { getDuplicateSectionIds } from '@/app/_lib/get-duplicate-section-ids';
 import { cn } from '@/app/_lib/utils';
 import { ReactElement, useState } from 'react';
 
@@ -29,6 +30,13 @@ export default function SnapSections({ sections }: SnapSectionsProps) {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  const duplicateIds = getDuplicateSectionIds(sections);
+
+  if (duplicateIds.length > 0) {
+    const message = `Duplicate IDs found in sections: ${JSON.stringify(duplicateIds)}`;
+    throw new Error(message);
   }
 
   return (

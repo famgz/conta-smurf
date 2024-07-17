@@ -20,7 +20,7 @@ export default function ChatMessageBalloon({
     >
       <div
         className={cn(
-          'w-[min(50%,350px)] rounded-2xl px-6 py-2.5 text-left',
+          'line-clamp-[10] w-[min(60%,350px)] rounded-xl px-6 py-2.5 text-left xl:rounded-2xl',
           position === 'left' ? 'bg-folder' : 'bg-light'
         )}
       >

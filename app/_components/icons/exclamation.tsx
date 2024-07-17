@@ -6,7 +6,8 @@ const ExclamationIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={8}
     height={26}
-    fill="none"
+    viewBox="0 0 8 26"
+    fill=""
     {...props}
   >
     <path

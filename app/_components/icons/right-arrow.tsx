@@ -6,7 +6,8 @@ const RightArrow = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={35}
     height={24}
-    fill="none"
+    viewBox="0 0 35 24"
+    fill=""
     {...props}
   >
     <path fill="#21232D" d="m.5 0 10.791 11.758L.5 24l34-12.242L.5 0Z" />

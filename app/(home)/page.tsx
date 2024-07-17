@@ -10,23 +10,24 @@ import FaqIcon from '@/app/_components/icons/faq';
 import HomeIcon from '@/app/_components/icons/home';
 import MostWantedIcon from '@/app/_components/icons/most-wanted';
 import ProductsIcon from '@/app/_components/icons/products';
-import SnapSections from '@/app/_components/snap-sections';
+import SnapSections, { SnapSection } from '@/app/_components/snap-sections';
 
 export default function Home() {
-  const sections = [
+  const sections: SnapSection[] = [
     {
-      // id: 'home-hero',
-      id: '',
+      id: 'home-hero',
       label: 'Hero',
       content: <HomeHeroSection />,
       icon: <HomeIcon />,
-      className: '!p-0 !xl:pt-[116px] !xl:p-0',
+      enabled: true,
+      className: '!p-0',
     },
     {
       id: 'home-most-wanted',
       label: 'Most Wanted',
       content: <HomeMostWantedSection />,
       icon: <MostWantedIcon />,
+      enabled: true,
       className: '',
     },
     {
@@ -34,6 +35,7 @@ export default function Home() {
       label: 'Products',
       content: <HomeProductsSection />,
       icon: <ProductsIcon />,
+      enabled: true,
       className: '',
     },
     {
@@ -41,6 +43,7 @@ export default function Home() {
       label: 'About Us',
       content: <HomeAboutUsSection />,
       icon: <AboutUsIcon />,
+      enabled: true,
       className: '!max-xl:px-0',
     },
     {
@@ -48,6 +51,7 @@ export default function Home() {
       label: 'FAQ',
       content: <HomeFAQSection />,
       icon: <FaqIcon />,
+      enabled: true,
       className: '!bg-[url(/images/bg/faq.png)]',
     },
     {
@@ -55,6 +59,7 @@ export default function Home() {
       label: 'Blog',
       content: <HomeBlogSection />,
       icon: <BlogIcon />,
+      enabled: true,
       className: '',
     },
   ];

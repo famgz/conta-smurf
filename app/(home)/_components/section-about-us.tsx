@@ -35,27 +35,23 @@ export default function HomeAboutUsSection() {
           kroföfaktig en mast geos misusade i ässade som sin.`;
 
   return (
-    <div className="flex-center !overflow-x-visible !overflow-y-scroll !rounded-none px-8">
-      <div className="flex h-full max-w-[1200px] flex-col justify-center gap-4 xl:justify-between">
-        <h2 className="text-left text-3xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-center xl:text-6xl">
-          About us
-        </h2>
+    <div className="flex h-full !max-h-[800px] !max-w-[1100px] flex-col justify-center max-xl:!max-h-[700px] max-xl:!max-w-[400px] max-xl:gap-6 xl:justify-between">
+      <h2 className="text-left text-3xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-center xl:text-6xl">
+        About us
+      </h2>
 
-        {/* TODO: map over array passing index to card, which will behavior based on odd/even index */}
-
-        <div className="flex flex-col gap-8 xl:flex-row xl:justify-between">
-          {items.map((x, index) => (
-            <AboutUsCard index={index} {...x} key={x.title} />
-          ))}
-        </div>
-
-        <p
-          className="text-justify text-[10px] font-light max-xl:line-clamp-5 xl:text-sm"
-          title={text}
-        >
-          {text}
-        </p>
+      <div className="flex w-full flex-1 flex-col justify-between gap-8 xl:flex-row xl:items-center">
+        {items.map((x, index) => (
+          <AboutUsCard index={index} {...x} key={x.title} />
+        ))}
       </div>
+
+      <p
+        className="text-justify text-[10px] font-light max-xl:line-clamp-5 xl:text-sm"
+        title={text}
+      >
+        {text}
+      </p>
     </div>
   );
 }

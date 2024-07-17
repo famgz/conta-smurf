@@ -50,7 +50,7 @@ const ScrollBar = React.forwardRef<
     className={cn(
       'flex touch-none select-none rounded-full bg-muted-foreground transition-colors',
       orientation === 'vertical' &&
-        'h-full w-3.5 border-l border-l-transparent p-[2px]',
+        'h-full w-3.5 border-l border-l-transparent py-1 pl-[2px] pr-[3px]',
       orientation === 'horizontal' &&
         'h-3.5 flex-col border-t border-t-transparent p-[2px]',
       hideScrollbar && '!hidden',

@@ -32,12 +32,14 @@ export default function HomeFAQSection() {
   ];
 
   return (
-    <div className="mx-auto flex flex-col items-center gap-4 py-10">
-      <h2 className="w-full text-left text-4xl font-semibold xl:hidden">FAQ</h2>
+    <div className="flex !max-w-[1400px] flex-col items-center gap-4 max-2xl:!max-w-[700px] 2xl:pt-10">
+      <h2 className="w-full text-left text-4xl font-semibold 2xl:text-6xl">
+        FAQ
+      </h2>
       <Accordion
         type="single"
         collapsible
-        className="flex w-full max-w-[1524px] flex-col gap-5"
+        className="flex w-full flex-col gap-5"
       >
         {faqItems.map((x, i) => (
           <AccordionItem
@@ -48,7 +50,7 @@ export default function HomeFAQSection() {
             <AccordionTrigger
               icon="plus"
               className={
-                'flex h-[60px] items-center gap-2 bg-gradient-to-r from-[#acacac]/40 to-[#b1b1b1]/40 pl-10 pr-5 max-xl:leading-4 xl:h-[100px] xl:justify-center xl:px-10 xl:text-4xl'
+                'flex h-[60px] items-center gap-2 bg-gradient-to-r from-[#acacac]/40 to-[#b1b1b1]/40 pl-10 pr-5 max-xl:leading-4 xl:justify-center xl:px-10 2xl:h-[100px] 2xl:text-4xl'
               }
             >
               {x.title}

@@ -21,14 +21,14 @@ export default function AboutUsCard({
   return (
     <div
       className={cn(
-        'border-1 relative flex flex-col justify-end space-y-2 rounded-[30px] border border-brass/20 bg-gradient-to-br from-[#7b7b7b]/40 to-[#a6a6a6]/40 px-5 py-3 xl:h-[400px] xl:w-[300px] xl:space-y-4 xl:p-8',
+        'border-1 relative flex h-full max-h-[130px] flex-col justify-end space-y-2 rounded-[30px] border border-brass/20 bg-gradient-to-br from-[#7b7b7b]/40 to-[#a6a6a6]/40 px-5 py-3 xl:max-h-[400px] xl:w-[300px] xl:space-y-4 xl:p-8',
         isEven ? 'xl:mt-5' : 'xl:mt-20',
         className
       )}
     >
       <h3
         className={cn(
-          'text-gradient-brass whitespace-nowrap text-xl font-semibold xl:-mx-4 xl:text-center xl:text-3xl',
+          'text-gradient-brass text-xl font-semibold max-xl:whitespace-nowrap xl:-mx-4 xl:text-center xl:text-3xl',
           isEven ? 'text-left' : 'text-right'
         )}
       >
@@ -42,7 +42,7 @@ export default function AboutUsCard({
           'absolute top-0 -translate-y-2/3',
           isEven
             ? 'max-xl:right-0 max-xl:translate-x-1/4'
-            : 'max-xl:left-0 max-xl:-translate-x-1/4'
+            : 'max-xl:left-0 max-xl:-translate-x-1/4 xl:mt-4'
         )}
       >
         <div className="relative size-32 xl:size-64">

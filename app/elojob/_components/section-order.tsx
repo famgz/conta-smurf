@@ -553,7 +553,7 @@ export default function ElojobOrderSection() {
   }
 
   return (
-    <div className="flex !max-w-[1400px] flex-col overflow-hidden rounded-[30px] bg-black/20 text-center xl:grid xl:grid-cols-[1fr_3fr]">
+    <div className="flex !max-w-[1500px] flex-col overflow-hidden rounded-[30px] bg-black/20 text-center xl:grid xl:grid-cols-[1fr_3fr]">
       {/* Order summary */}
       <div className="flex flex-col xl:overflow-y-hidden">
         {/* header */}

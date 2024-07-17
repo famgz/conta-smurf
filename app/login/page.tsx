@@ -57,11 +57,7 @@ export default function LoginPage() {
                   <FormItem>
                     <FormLabel className="">Email</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="KDAgragas@email.com"
-                        required
-                        {...field}
-                      />
+                      <Input placeholder="KDAgragas@email.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -78,7 +74,6 @@ export default function LoginPage() {
                       <Input
                         type="password"
                         placeholder="**********"
-                        required
                         {...field}
                       />
                     </FormControl>
@@ -117,7 +112,7 @@ export default function LoginPage() {
             </form>
           </Form>
 
-          <p className="my-4 text-center font-light xl:text-3xl">OR</p>
+          <p className="my-2 text-center font-light xl:my-4 xl:text-3xl">OR</p>
 
           <Button
             type="button"

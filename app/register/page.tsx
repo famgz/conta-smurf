@@ -60,7 +60,6 @@ export default function RegisterPage() {
                       <Input
                         type="email"
                         placeholder="KDAgragas@email.com"
-                        required
                         {...field}
                       />
                     </FormControl>
@@ -79,7 +78,6 @@ export default function RegisterPage() {
                       <Input
                         type="password"
                         placeholder="**********"
-                        required
                         {...field}
                       />
                     </FormControl>
@@ -98,7 +96,6 @@ export default function RegisterPage() {
                       <Input
                         type="password"
                         placeholder="**********"
-                        required
                         {...field}
                       />
                     </FormControl>

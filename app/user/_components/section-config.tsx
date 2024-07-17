@@ -10,7 +10,7 @@ import { cn } from '@/app/_lib/utils';
 import { Champion, champions } from '@/app/_types/order/champion';
 import { Lane, lanes } from '@/app/_types/order/lane';
 import { UploadIcon } from 'lucide-react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 export default function UserConfigSection() {
   const configTabs = [
@@ -308,10 +308,8 @@ export default function UserConfigSection() {
 
   const currentTab = configTabs[currentTabIndex];
 
-  console.log(currentTabIndex);
-
   return (
-    <div className="!max-w-[1260px] py-12">
+    <div className="!max-w-[1260px]">
       <div className="grid h-full grid-cols-[1fr_2fr] overflow-hidden rounded-[30px]">
         {/* left column - menu */}
         <div className="flex flex-col gap-8 bg-dark p-10">
@@ -319,7 +317,7 @@ export default function UserConfigSection() {
 
           <div className="flex flex-1 flex-col">
             {configTabs.map((tab, i, a) => (
-              <>
+              <Fragment key={tab.title}>
                 <div
                   className={cn(
                     'flex w-full cursor-pointer items-center whitespace-nowrap py-4 text-2xl hover:font-medium',
@@ -330,7 +328,7 @@ export default function UserConfigSection() {
                   {tab.title}
                 </div>
                 {i < a.length - 1 && <Separator />}
-              </>
+              </Fragment>
             ))}
           </div>
         </div>

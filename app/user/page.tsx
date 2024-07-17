@@ -1,30 +1,51 @@
+'use client';
+
 import ChatIcon from '@/app/_components/icons/chat';
 import GearIcon from '@/app/_components/icons/gear';
+import ListIcon from '@/app/_components/icons/list';
 import ProfileIcon from '@/app/_components/icons/profile';
-import SnapSections from '@/app/_components/snap-sections';
+import SnapSections, { SnapSection } from '@/app/_components/snap-sections';
+import useWindowDimensions from '@/app/_hooks/use-window-dimensions';
 import UserChatSection from '@/app/user/_components/section-chat';
 import UserConfigSection from '@/app/user/_components/section-config';
-import UserHistorySection from '@/app/user/_components/section-history';
+import UserPurchaseHistorySection from '@/app/user/_components/section-history';
+import UserProfileAndPurchaseHistorySection from '@/app/user/_components/section-profile-history';
 
 export default function UserPage() {
-  const sections = [
+  const { width, height } = useWindowDimensions();
+
+  const sections: SnapSection[] = [
     {
-      id: '',
-      label: 'History',
-      content: <UserHistorySection />,
+      id: 'user-profile',
+      label: 'User Profile and History',
+      content: <UserProfileAndPurchaseHistorySection />,
       icon: <ProfileIcon />,
+      enabled: true,
+      className: '',
+    },
+    {
+      id: 'user-history',
+      label: 'Purchase History',
+      content: <UserPurchaseHistorySection />,
+      icon: <ListIcon />,
+      enabled: !!width && width < 1280,
+      className: '',
     },
     {
       id: 'user-chat',
       label: 'Chat',
       content: <UserChatSection />,
       icon: <ChatIcon />,
+      enabled: true,
+      className: '',
     },
     {
       id: 'user-config',
       label: 'Configuration',
       content: <UserConfigSection />,
       icon: <GearIcon />,
+      enabled: true,
+      className: '',
     },
   ];
 

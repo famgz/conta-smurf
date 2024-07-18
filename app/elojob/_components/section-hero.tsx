@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 export default function EloJobHeroSection() {
   return (
-    <div className="flex-center flex-col !overflow-visible xl:grid xl:grid-cols-[2fr_3fr]">
+    <div className="flex-center hide-scrollbar flex-col !overflow-x-visible !rounded-none px-5 max-sm:justify-start max-sm:!overflow-y-auto xl:grid xl:grid-cols-[2fr_3fr]">
       {/* left column - section image */}
-      <div className="flex h-[420px] w-full flex-auto flex-col justify-end gap-3 rounded-[30px] border-2 border-[rgba(8,_112,_184,_0.7)] bg-[url('/images/elojob-hero.jpg')] bg-cover bg-right bg-no-repeat p-10 shadow-[0px_0px_73.3px_0px_rgba(0,_255,_224,_0.49)] max-xl:max-w-[600px] max-xl:flex-1 xl:h-full xl:rounded-3xl">
+      <div className="flex h-[420px] w-full flex-auto flex-col justify-end gap-3 rounded-[30px] border-2 border-[rgba(8,_112,_184,_0.7)] bg-[url('/images/elojob-hero.jpg')] bg-cover bg-right bg-no-repeat p-10 max-xl:max-w-[600px] max-xl:flex-1 sm:shadow-[0px_0px_30px_0px_rgba(0,_255,_224,_0.49)] xl:h-full xl:rounded-3xl">
         <div className="subtitle-badge -ml-14 flex h-[30px] max-w-[266px] items-center gap-3 px-4 text-lg xl:hidden">
           <Image
             src="/images/icons/ultimate-skin.png"

@@ -21,7 +21,7 @@ export default function AboutUsCard({
   return (
     <div
       className={cn(
-        'border-1 relative flex h-full max-h-[130px] flex-col justify-end space-y-2 rounded-[30px] border border-brass/20 bg-gradient-to-br from-[#7b7b7b]/40 to-[#a6a6a6]/40 px-5 py-3 xl:max-h-[400px] xl:w-[300px] xl:space-y-4 xl:p-8',
+        'border-1 relative flex h-full max-h-[130px] flex-col justify-end space-y-2 rounded-[30px] border border-brass/20 bg-gradient-to-br from-[#7b7b7b]/40 to-[#a6a6a6]/40 px-5 py-3 transition-transform duration-500 ease-in-out sm:hover:scale-110 xl:max-h-[400px] xl:w-[300px] xl:space-y-4 xl:p-8',
         isEven ? 'xl:mt-5' : 'xl:mt-20',
         className
       )}

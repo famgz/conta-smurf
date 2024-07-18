@@ -19,9 +19,9 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline !p-0 !h-fit',
         golden:
-          'bg-golden font-semibold hover:shadow-golden btn-golden-variant',
+          'bg-golden font-semibold shadow-md shadow-brass hover:shadow-golden btn-golden-variant',
         white:
-          'bg-white font-semibold btn-golden-variant hover:shadow-[0_5px_30px_#FFF]',
+          'bg-white font-semibold shadow-md shadow-white btn-golden-variant hover:shadow-[0_5px_30px_#FFF]',
         dark: 'border border-cyan-800 bg-menu hover:bg-secondary/40 px-6 font-light hover:shadow-blue',
       },
       size: {

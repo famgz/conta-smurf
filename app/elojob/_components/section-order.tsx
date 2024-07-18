@@ -109,6 +109,7 @@ export default function ElojobOrderSection() {
                   className="object-cover"
                   alt=""
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
                 {/* title image */}
                 <div className="relative z-10 aspect-square size-[100px] xl:size-[200px]">
                   <Image
@@ -306,6 +307,7 @@ export default function ElojobOrderSection() {
                 }
               >
                 <Image src={v.bg} fill className="object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#01232E]" />
                 <span className="z-10 text-4xl font-bold capitalize sm:text-6xl 2xl:text-8xl">
                   {k}
                 </span>
@@ -340,6 +342,7 @@ export default function ElojobOrderSection() {
                 className="object-cover"
                 alt=""
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#01232E]" />
               <span className="z-10 text-4xl font-bold capitalize sm:text-6xl 2xl:text-8xl">
                 {summary.typeOfClimb}
               </span>
@@ -502,6 +505,7 @@ export default function ElojobOrderSection() {
                 className="object-cover object-center"
                 alt=""
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#01232E]" />
             </div>
           </div>
         </div>
@@ -718,9 +722,10 @@ export default function ElojobOrderSection() {
           <FinishButton onClick={submitOrder}>Send to Cart</FinishButton>
           <Button
             variant={'dark'}
-            className="h-[30px] rounded-md text-xl 2xl:h-12 2xl:rounded-xl 2xl:text-4xl"
+            className="h-[30px] rounded-md text-xl 2xl:h-12 2xl:rounded-xl 2xl:text-3xl"
+            asChild
           >
-            $1200
+            <span>$1200</span>
           </Button>
         </div>
       </div>

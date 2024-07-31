@@ -1,10 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { useForm } from 'react-hook-form';
-
 import { Button } from '@/app/_components/ui/button';
-import { Checkbox } from '@/app/_components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -14,9 +10,11 @@ import {
   FormMessage,
 } from '@/app/_components/ui/form';
 import { Input } from '@/app/_components/ui/input';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FormEvent } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function RestorePasswordPage() {
   const form = useForm();

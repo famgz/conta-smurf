@@ -1,3 +1,5 @@
+'use client';
+
 import BoostIcon from '@/app/_components/icons/boost';
 import ChallengeExpertiseIcon from '@/app/_components/icons/challenge-expertise';
 import ChallengeImaginationIcon from '@/app/_components/icons/challenge-imagination';
@@ -9,11 +11,21 @@ import LaneIcon from '@/app/_components/icons/lane';
 import { Button } from '@/app/_components/ui/button';
 import { Champion, champions } from '@/app/_types/order/champion';
 import { Lane } from '@/app/_types/order/lane';
+import Loading from '@/app/loading';
+import LogoutButton from '@/app/user/_components/logout-button';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
 export default function ProfileBanner() {
+  const { data, status } = useSession();
+  const user = data?.user;
+
   const userLanes: Lane[] = [Lane.BOTTOM, Lane.JUNGLE];
   const userChampions: Champion[] = [Champion.CHAMPION_1, Champion.CHAMPION_2];
+
+  if (status !== 'authenticated') {
+    return <Loading />;
+  }
 
   return (
     <div className="relative flex h-full min-w-[300px] max-w-[400px] flex-col overflow-hidden rounded-[30px] bg-dark">
@@ -37,6 +49,11 @@ export default function ProfileBanner() {
         <Button className="flex-center absolute right-3 top-3 size-9 rounded-full bg-light p-0">
           <EditIcon />
         </Button>
+
+        {/* logout button */}
+        <div className="absolute right-3 top-14">
+          <LogoutButton />
+        </div>
       </div>
 
       {/* body */}
@@ -56,7 +73,7 @@ export default function ProfileBanner() {
 
           {/* name and title */}
           <div className="mt-[90px]">
-            <p className="text-3xl">User12345</p>
+            <p className="text-3xl">{user?.name}</p>
             <p className="font-light">The feeder</p>
           </div>
 

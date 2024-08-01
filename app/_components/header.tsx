@@ -109,11 +109,11 @@ export default function Header() {
               <ShopBag />
             </Link>
 
-            <Link href={'/login'} className="">
+            <Link href={'/user'} className="">
               <BellIcon className="size-[40px] xl:size-[70px]" />
             </Link>
 
-            <Link href={'/login'} className="xl:mt-1">
+            <Link href={'/user'} className="xl:mt-1">
               <UserIcon
                 className={cn(
                   'size-11 rounded-full hover:shadow-yellow xl:size-16 2xl:size-24',

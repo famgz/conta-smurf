@@ -18,7 +18,7 @@ export default function UserPage() {
     {
       id: '',
       label: 'User Profile and History',
-      content: <UserProfileAndPurchaseHistorySection />,
+      content: <UserProfileAndPurchaseHistorySection windowWidth={width} />,
       icon: <ProfileIcon />,
       enabled: true,
       className: '',

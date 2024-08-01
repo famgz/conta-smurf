@@ -6,21 +6,42 @@ import LaneIcon from '@/app/_components/icons/lane';
 import { Button } from '@/app/_components/ui/button';
 import { Checkbox } from '@/app/_components/ui/checkbox';
 import { Input } from '@/app/_components/ui/input';
-import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { Separator } from '@/app/_components/ui/separator';
 import { Textarea } from '@/app/_components/ui/textarea';
 import useWindowDimensions from '@/app/_hooks/use-window-dimensions';
 import { cn } from '@/app/_lib/utils';
 import { Champion, champions } from '@/app/_types/order/champion';
 import { Lane, lanes } from '@/app/_types/order/lane';
+import Loading from '@/app/loading';
 import { ChevronLeftIcon, UploadIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { Fragment, useEffect, useState } from 'react';
 
 export default function UserConfigSection() {
+  const { data, status } = useSession();
+  const user = data?.user;
+
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const { width } = useWindowDimensions();
   const isMobile = !!width && width < 640;
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setIsConfigModalOpen(false);
+    }
+  }, [isMobile]);
+
+  function handleChatClick(index: number) {
+    setCurrentTabIndex(index);
+    if (isMobile) {
+      setIsConfigModalOpen(true);
+    }
+  }
+
+  if (!user) {
+    return <Loading />;
+  }
 
   const configTabs = [
     // Account
@@ -38,7 +59,7 @@ export default function UserConfigSection() {
                 Change username
               </Button>
             </div>
-            <p className="text-muted-foreground">Gragasfofinho</p>
+            <p className="text-muted-foreground">{user.name}</p>
           </div>
 
           <div className="flex flex-col text-left">
@@ -85,7 +106,7 @@ export default function UserConfigSection() {
         <div className="space-y-10 text-left font-light">
           <div className="xl:text-xl">
             <p>Email</p>
-            <p className="text-muted-foreground">Gragasfofinho@email.com</p>
+            <p className="text-muted-foreground">{user.email}</p>
           </div>
 
           <div>
@@ -331,19 +352,6 @@ export default function UserConfigSection() {
     },
   ];
   const currentTab = configTabs[currentTabIndex];
-
-  useEffect(() => {
-    if (!isMobile) {
-      setIsConfigModalOpen(false);
-    }
-  }, [isMobile]);
-
-  function handleChatClick(index: number) {
-    setCurrentTabIndex(index);
-    if (isMobile) {
-      setIsConfigModalOpen(true);
-    }
-  }
 
   return (
     <div className="relative flex h-full w-full !max-w-[1260px] overflow-hidden rounded-[30px] xl:grid xl:grid-cols-[1fr_2fr]">

@@ -1,10 +1,13 @@
 import Footer from '@/app/_components/footer';
 import Header from '@/app/_components/header';
 import { cn } from '@/app/_lib/utils';
+import Loading from '@/app/loading';
 import type { Metadata } from 'next';
+import { SessionProvider } from 'next-auth/react';
 import { Outfit } from 'next/font/google';
-import './globals.css';
 import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+import './globals.css';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -24,17 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="hide-scrollbar">
       <body className={cn(outfit.className)}>
-        <Suspense
-          fallback={
-            <div className="flex-center absolute inset-0">Loading...</div>
-          }
-        >
-          <Header />
+        <SessionProvider>
+          <Suspense fallback={<Loading />}>
+            <Header />
+          </Suspense>
           <div className="flex min-h-screen flex-col bg-custom-gradient">
+            <Toaster />
             <main className="mx-auto w-full flex-1">{children}</main>
             <Footer />
           </div>
-        </Suspense>
+        </SessionProvider>
       </body>
     </html>
   );

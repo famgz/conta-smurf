@@ -114,11 +114,11 @@ textarea {
   }
 
   .page-sections-wrapper {
-    @apply hide-scrollbar h-dvh snap-y snap-mandatory overflow-y-scroll scroll-smooth;
+    @apply hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth;
   }
 
   .page-section {
-    @apply flex-center h-full w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-[90px] pt-24 xl:px-[max(120px,calc((100vw-1780px)/2))] xl:pb-[40px] 2xl:pt-[calc(116px+20px)];
+    @apply flex-center h-screen w-full overflow-hidden bg-effects bg-cover bg-center px-5 pb-[90px] pt-24 xl:px-[max(120px,calc((100vw-1780px)/2))] xl:pb-[40px] 2xl:pt-[calc(116px+20px)];
 
     & > div {
       @apply h-full max-h-[min(100%,1080px)] w-full max-w-[min(100%,1920px)] max-xl:rounded-[30px];
@@ -211,5 +211,13 @@ textarea {
     border: 1px solid transparent;
 
     box-shadow: 0px 0px 7.3px rgba(0, 194, 255, 0.29);
+  }
+
+  .custom-checkbox {
+    @apply relative size-5 shrink-0 appearance-none rounded-sm border border-primary ring-offset-background before:absolute before:font-bold checked:bg-primary checked:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .custom-checkbox:checked::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>');
   }
 }

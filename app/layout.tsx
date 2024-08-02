@@ -1,11 +1,9 @@
 import Footer from '@/app/_components/footer';
 import Header from '@/app/_components/header';
 import { cn } from '@/app/_lib/utils';
-import Loading from '@/app/loading';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { Outfit } from 'next/font/google';
-import { Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
 
@@ -28,9 +26,7 @@ export default function RootLayout({
     <html lang="en" className="hide-scrollbar">
       <body className={cn(outfit.className)}>
         <SessionProvider>
-          <Suspense fallback={<Loading />}>
-            <Header />
-          </Suspense>
+          <Header />
           <div className="flex min-h-screen flex-col bg-custom-gradient">
             <Toaster />
             <main className="mx-auto w-full flex-1">{children}</main>

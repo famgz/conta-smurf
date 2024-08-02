@@ -8,7 +8,7 @@ import { Input } from '@/app/_components/ui/input';
 import { Label } from '@/app/_components/ui/label';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { EyeIcon, EyeOffIcon, LoaderCircleIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -34,9 +34,12 @@ export default function LoginPage() {
     const { email, password } = data;
 
     await login({ email, password })
-      .then(() => {
-        toast.success('Login successful');
-        router.push('/user');
+      .then((res) => {
+        if (res.success) {
+          toast.success('Login successful');
+          return router.push('/');
+        }
+        toast.error(`Error: ${res.error}`);
       })
       .catch((err) => {
         toast.error(`Error: ${err.message}`);
@@ -128,9 +131,16 @@ export default function LoginPage() {
               type="submit"
               size="xl"
               variant="golden"
-              className="mt-4 w-full text-4xl xl:text-6xl"
+              className="relative mt-4 w-full text-4xl xl:text-6xl"
+              disabled={isSubmitting}
             >
               <span>Login</span>
+              {isSubmitting && (
+                <LoaderCircleIcon
+                  className="absolute bottom-4 right-4 animate-spin"
+                  strokeWidth={3}
+                />
+              )}
             </Button>
           </form>
 

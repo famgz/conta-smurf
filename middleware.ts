@@ -12,16 +12,17 @@ function isRouteProtected(pathname: string) {
 
 export default auth((req) => {
   const pathname = req.nextUrl.pathname;
+  const user = req.auth?.user;
 
   console.log('[middleware]', { pathname, auth: req.auth });
 
   // redirect login/register if already logged in
-  if (req.auth && (pathname.startsWith('/login') || pathname === '/register')) {
+  if (user && (pathname.startsWith('/login') || pathname === '/register')) {
     return NextResponse.redirect(new URL('/user', req.nextUrl.origin));
   }
 
   // redirect dashboard if not logged in
-  if (!req.auth && isRouteProtected(pathname)) {
+  if (!user && isRouteProtected(pathname)) {
     return NextResponse.redirect(new URL('/login', req.nextUrl.origin));
   }
 

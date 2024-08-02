@@ -33,9 +33,11 @@ export default function RegisterPage() {
 
     await registerUser({ name, email, password })
       .then((res) => {
-        toast.success(`User ${res.name} successfully registered`);
-        console.log(res);
-        router.push(`/login?email=${email}`);
+        if (res.success) {
+          toast.success(`User ${res.user?.name} successfully registered`);
+          return router.push(`/login?email=${email}`);
+        }
+        toast.error(`Error: ${res.error}`);
       })
       .catch((err) => {
         toast.error(`Error: ${err.message}`);

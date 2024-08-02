@@ -37,7 +37,9 @@ export default function LoginForm() {
       .then((res) => {
         if (res.success) {
           toast.success('Login successful');
-          return router.push('/');
+          return setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         }
         toast.error(`Error: ${res.error}`);
       })

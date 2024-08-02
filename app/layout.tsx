@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { Outfit } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
+import { Suspense } from 'react';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -26,7 +27,9 @@ export default function RootLayout({
     <html lang="en" className="hide-scrollbar">
       <body className={cn(outfit.className)}>
         <SessionProvider>
-          <Header />
+          <Suspense>
+            <Header />
+          </Suspense>
           <div className="flex min-h-screen flex-col bg-custom-gradient">
             <Toaster />
             <main className="mx-auto w-full flex-1">{children}</main>

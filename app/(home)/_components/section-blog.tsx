@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 export default function HomeBlogSection() {
   return (
-    <div className="flex flex-col items-center gap-5 max-xl:!max-w-[400px]">
+    <div className="flex flex-col items-center gap-5 overflow-hidden !rounded-none max-xl:!max-w-[400px]">
       <h2 className="w-full text-left text-4xl font-extrabold text-brass shadow-brass text-shadow-sm xl:text-6xl">
         Blog
       </h2>
 
       <div className="flex flex-1 flex-col gap-5 xl:grid xl:grid-cols-[2fr_3fr]">
         {/* Main card */}
-        <div className="flex aspect-square flex-col gap-1 rounded-[30px] bg-gradient-to-b from-[#7b7b7b]/50 to-[#a6a6a6]/50 p-6 md:gap-3 xl:justify-between">
+        <div className="flex flex-col gap-1 rounded-[30px] bg-gradient-to-b from-[#7b7b7b]/50 to-[#a6a6a6]/50 p-3 xs:p-6 min-[390px]:aspect-square md:gap-3 xl:justify-between">
           <div className="relative min-h-[50%] overflow-hidden rounded-[30px]">
             <Image
               src="/images/blog.jpg"
@@ -21,7 +21,7 @@ export default function HomeBlogSection() {
               className="object-cover"
             />
           </div>
-          <h3 className="text-xl leading-6 2xl:text-4xl">
+          <h3 className="line-clamp-2 text-lg leading-6 xs:text-xl 2xl:text-4xl">
             The Role of Smurf Accounts in the League of Legends Community
           </h3>
           <p className="text-justify font-light leading-3 max-2xl:overflow-hidden max-2xl:text-[10px] max-xl:flex-1 2xl:line-clamp-5 2xl:leading-5">

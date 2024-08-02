@@ -8,6 +8,7 @@ const nameMaxChars = 255;
 
 const passwordField = z
   .string()
+  .min(1, requiredMessage('password'))
   .min(
     passwordMinChars,
     `Password must have at least ${passwordMinChars} characters`
@@ -22,10 +23,10 @@ export const userRegisterSchema = z
   .object({
     name: z
       .string()
-      .min(1, requiredMessage('nome'))
+      .min(1, requiredMessage('name'))
       .min(nameMinChars, 'Name must have at least ${nameMinChars} characters')
       .max(nameMaxChars, 'Name is too long'),
-    email: emailField, // min(1) stands for required
+    email: emailField,
     password: passwordField,
     confirm_password: passwordField,
     terms: z.literal<boolean>(true, {
@@ -33,15 +34,27 @@ export const userRegisterSchema = z
     }),
   })
   .refine((data) => data.password === data.confirm_password, {
-    message: 'Password must match',
-    path: ['confirm-password'],
+    message: 'Passwords must match',
+    path: ['confirm_password'],
   });
 
-export type UserRegister = z.infer<typeof userRegisterSchema>;
-
 export const userLoginSchema = z.object({
-  email: emailField, // min(1) stands for required
+  email: emailField,
   password: passwordField,
 });
 
-export type UserLogin = z.infer<typeof userLoginSchema>;
+export const restorePasswordSchema = z
+  .object({
+    email: emailField,
+    confirm_email: emailField,
+  })
+  .refine((data) => data.email === data.confirm_email, {
+    message: 'Emails must match',
+    path: ['confirm_email'],
+  });
+
+export type UserRegisterSchema = z.infer<typeof userRegisterSchema>;
+
+export type RestorePasswordSchema = z.infer<typeof restorePasswordSchema>;
+
+export type UserLoginSchema = z.infer<typeof userLoginSchema>;

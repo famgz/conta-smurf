@@ -13,19 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String    @unique
-  email         String?   @unique
-  emailVerified DateTime?
-  password      String?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+// Auth tables
 
 model Account {
   id                String  @id @default(cuid())
@@ -66,4 +54,192 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+
+  role             Role             @default(USER)
+  bio              String
+  Rank             Rank             @relation(fields: [rankId], references: [id])
+  communityMedals  CommunityMedal[]
+  lanes            Lane[]
+  champions        Champion[]
+  leagueAccounts   String[]
+  valorantAccounts String[]
+  rankId           String
+  productOrders    ProductOrder[]
+  elojob           Elojob?
+
+  accounts  Account[]
+  sessions  Session[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+//  data tables
+
+model Product {
+  id          String          @id @default(cuid())
+  title       String
+  slug        String          @unique
+  imageUrl    String
+  description String
+  game        Game            @relation(fields: [gameId], references: [id])
+  gameId      String
+  rank        Rank            @relation(fields: [rankId], references: [id])
+  rankId      String
+  price       Decimal         @db.Decimal(10, 2)
+  region      Region          @relation(fields: [regionId], references: [id])
+  regionId    String
+  status      ProductStatus
+  extras      ProductExtras[]
+
+  ProductOrder ProductOrder[]
+}
+
+model ProductOrder {
+  id            String               @id @default(cuid())
+  products      Product[]
+  paymentMethod ProductPaymentMethod
+  coupon        Coupon?              @relation(fields: [couponId], references: [id])
+  couponId      String?
+  user          User                 @relation(fields: [userId], references: [id])
+  userId        String
+}
+
+model Elojob {
+  id            String            @id @default(cuid())
+  User          User              @relation(fields: [userId], references: [id])
+  userId        String            @unique
+  game          Game              @relation(fields: [gameId], references: [id])
+  gameId        String
+  region        Region            @relation(fields: [regionId], references: [id])
+  regionId      String
+  starterRank   Rank              @relation("StarterRank", fields: [starterRankId], references: [id])
+  starterRankId String
+  finalRank     Rank              @relation("FinalRank", fields: [finalRankId], references: [id])
+  finalRankId   String
+  account       String
+  tyeOfClimb    ElojobTypeOfClimb
+  lanes         Lane[]
+  champions     Champion[]
+  addons        ElojobAddon[]
+}
+
+enum ElojobTypeOfClimb {
+  SOLO
+  DUO
+}
+
+enum ProductStatus {
+  ACTIVE
+  DISABLED
+  NFA
+  NO_BANS
+  NO_RANKED_PLAYED
+}
+
+enum ProductExtras {
+  GIFT_CARDS
+  RIOT_POINTS
+  VALORANT_POINTS
+}
+
+enum ProductPaymentMethod {
+  PIX
+  NATIONAL_CREDITCARD_MASTERCARD
+  NATIONAL_CREDITCARD_VISA
+  CRIPTO
+  INTERNATIONAL_CREDITCARD
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model ElojobAddon {
+  id                      String   @id @default(cuid())
+  title                   String
+  slug                    String   @unique
+  priceIncreasePercentage Int
+  imageUrl                String?
+  elojobs                 Elojob[]
+}
+
+model Coupon {
+  id                 String         @id @default(cuid())
+  name               String         @unique
+  discountPercentage Int            @default(0)
+  createdAt          DateTime       @default(now())
+  expiresAt          DateTime
+  ProductOrder       ProductOrder[]
+}
+
+model Game {
+  id       String    @id @default(cuid())
+  title    String
+  slug     String    @unique
+  imageUrl String
+  product  Product[]
+  elojob   Elojob[]
+}
+
+model Rank {
+  id             String    @id @default(cuid())
+  title          String
+  slug           String    @unique
+  imageUrl       String
+  user           User[]
+  product        Product[]
+  elojobStarters Elojob[]  @relation("StarterRank")
+  elojobFinals   Elojob[]  @relation("FinalRank")
+}
+
+model CommunityMedal {
+  id       String @id @default(cuid())
+  title    String
+  slug     String @unique
+  imageUrl String
+  User     User[]
+}
+
+model Lane {
+  id       String   @id @default(cuid())
+  title    String
+  slug     String   @unique
+  imageUrl String
+  user     User[]
+  elojobs  Elojob[]
+}
+
+model Champion {
+  id       String   @id @default(cuid())
+  name     String
+  slug     String   @unique
+  key      String   @unique
+  title    String
+  blurb    String
+  imageUrl String
+  tags     String[]
+  partype  String
+
+  users   User[]
+  elojobs Elojob[]
+}
+
+model Region {
+  id           String    @id @default(cuid())
+  title        String
+  slug         String    @unique
+  flagImageUrl String
+  mapImageUrl  String
+  product      Product[]
+  elojob       Elojob[]
 }

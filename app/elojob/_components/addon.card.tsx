@@ -32,7 +32,7 @@ export default function AddonCard({
           highlight ? 'bg-[#21232d]/40' : 'bg-[#21232d]/80'
         )}
       >
-        {addonInfo.percentual ? `+${addonInfo.percentual * 100}%` : 'Free'}
+        {addonInfo.percentage ? `+${addonInfo.percentage * 100}%` : 'Free'}
       </span>
     </div>
   );

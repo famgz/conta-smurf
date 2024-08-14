@@ -65,14 +65,14 @@ model User {
   image         String?
 
   role             Role             @default(USER)
-  bio              String
-  Rank             Rank             @relation(fields: [rankId], references: [id])
+  bio              String?
+  Rank             Rank?             @relation(fields: [rankId], references: [id])
   communityMedals  CommunityMedal[]
   lanes            Lane[]
   champions        Champion[]
   leagueAccounts   String[]
   valorantAccounts String[]
-  rankId           String
+  rankId           String?
   productOrders    ProductOrder[]
   elojob           Elojob?
 

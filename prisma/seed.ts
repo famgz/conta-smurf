@@ -6,15 +6,24 @@ import {
   Game,
   Lane,
   PrismaClient,
+  Product,
+  ProductExtras,
+  ProductStatus,
   Rank,
   Region,
 } from '@prisma/client';
 import { addDays } from 'date-fns';
 import axios from 'axios';
+import { Decimal } from '@prisma/client/runtime/library';
 
 const prisma = new PrismaClient();
 
 const now = new Date();
+
+function getRandomItem<T>(arr: T[]): T {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
 
 type ChampionFromApi = {
   version: string;
@@ -281,7 +290,83 @@ const region: Omit<Region, 'id'>[] = [
   },
 ];
 
-async function main() {
+const coreProducts = [
+  {
+    slug: 'bronze',
+    title: 'Bronze Account',
+    imageUrl: 'account-bronze.jpg',
+    description: 'Bronze account to boost your rank',
+    rankId: 'clzu4a337000etcoxjyvcnlqf',
+  },
+  {
+    slug: 'diamond',
+    title: 'Diamond Account',
+    imageUrl: 'account-diamond.jpg',
+    description: 'Diamond account to boost your rank',
+    rankId: 'clzu4a35o000jtcoxra8zlgtz',
+  },
+  {
+    slug: 'emerald',
+    title: 'Emerald Account',
+    imageUrl: 'account-emerald.jpg',
+    description: 'Emerald account to boost your rank',
+    rankId: 'clzu4a33f000gtcoxb4no20x9',
+  },
+  {
+    slug: 'gold',
+    title: 'Gold Account',
+    imageUrl: 'account-gold.jpg',
+    description: 'Gold account to boost your rank',
+    rankId: 'clzu4a35p000ktcoxkmxxhh4y',
+  },
+  {
+    slug: 'gold-2',
+    title: 'Gold-2 Account',
+    imageUrl: 'account-gold-2.jpg',
+    description: 'Gold-2 account to boost your rank',
+    rankId: 'clzu4a35p000ktcoxkmxxhh4y',
+  },
+  {
+    slug: 'iron',
+    title: 'Iron Account',
+    imageUrl: 'account-iron.jpg',
+    description: 'Iron account to boost your rank',
+    rankId: 'clzu4a2v50003tcox63jr4v2w',
+  },
+  {
+    slug: 'iron-2',
+    title: 'Iron-2 Account',
+    imageUrl: 'account-iron-2.jpg',
+    description: 'Iron-2 account to boost your rank',
+    rankId: 'clzu4a2v50003tcox63jr4v2w',
+  },
+  {
+    slug: 'platinum',
+    title: 'Platinum Account',
+    imageUrl: 'account-platinum.jpg',
+    description: 'Platinum account to boost your rank',
+    rankId: 'clzu4a31u000ctcox8x4nqeti',
+  },
+  {
+    slug: 'silver',
+    title: 'Silver Account',
+    imageUrl: 'account-silver.jpg',
+    description: 'Silver account to boost your rank',
+    rankId: 'clzu4a354000htcoxlxn8hfwy',
+  },
+];
+
+const products: Omit<Product, 'id'>[] = coreProducts.map((p) => ({
+  ...p,
+  gameId: 'clzu4a2yp0009tcoxm9ewxmbf',
+  price: (Math.random() * 50 + 10) as unknown as Decimal,
+  quantity: Math.floor(Math.random() * 20) + 1,
+  regionId: 'clzu4a355000itcoxihldlotv',
+  status: getRandomItem(Object.values(ProductStatus)) as ProductStatus,
+  extras: Object.values(ProductExtras) as ProductExtras[],
+}));
+
+async function insertCoreData() {
   elojobAddon.forEach(async (data) => {
     await prisma.elojobAddon.create({
       data,
@@ -333,7 +418,17 @@ async function main() {
   });
 }
 
-main()
+async function insertProducts() {
+  products.forEach(async (data) => {
+    await prisma.product.create({ data });
+  });
+}
+
+async function test() {
+  await insertProducts();
+}
+
+test()
   .catch((e) => {
     console.error(e);
     process.exit(1);

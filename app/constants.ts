@@ -1,4 +1,4 @@
-export const config = {
+export const basePaths = {
   imagesPath: '/images/',
   iconsPath: '/images/icons/',
 };

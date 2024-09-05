@@ -8,7 +8,7 @@ import { Button } from '@/app/_components/ui/button';
 import { Input } from '@/app/_components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
-import { config } from '@/app/config';
+import { basePaths } from '@/app/constants';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -18,27 +18,27 @@ export default function CartPage() {
     {
       id: 'pix',
       label: 'Pix',
-      img: config.iconsPath + 'payment-pix.png',
+      img: basePaths.iconsPath + 'payment-pix.png',
     },
     {
       id: 'card-mastercard',
       label: 'Cartão de credito Nacional Mastercard',
-      img: config.iconsPath + 'payment-card-mastercard.png',
+      img: basePaths.iconsPath + 'payment-card-mastercard.png',
     },
     {
       id: 'card-visa',
       label: 'Cartão de credito Nacional Visa',
-      img: config.iconsPath + 'payment-card-visa.png',
+      img: basePaths.iconsPath + 'payment-card-visa.png',
     },
     {
       id: 'crypto',
       label: 'Cripto',
-      img: config.iconsPath + 'payment-crypto.png',
+      img: basePaths.iconsPath + 'payment-crypto.png',
     },
     {
       id: 'card-intl',
       label: 'Cartão de credito Internacional',
-      img: config.iconsPath + 'payment-card-intl.png',
+      img: basePaths.iconsPath + 'payment-card-intl.png',
     },
   ];
 

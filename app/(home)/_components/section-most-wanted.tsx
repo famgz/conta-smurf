@@ -1,7 +1,12 @@
-import MostWantedCard from '@/app/(home)/_components/most-wanted-card';
+import ProductCard from '@/app/(home)/_components/product-card';
+import { getProducts } from '@/app/_actions/prisma';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
+import db from '@/app/_lib/db';
+import { plainify } from '@/app/_lib/utils';
 
-export default function HomeMostWantedSection() {
+export default async function HomeMostWantedSection() {
+  const products = await getProducts();
+
   return (
     <div className="flex h-full max-w-[1580px] flex-col rounded-[30px] bg-folder p-1 py-4 xl:p-14 xl:pt-8">
       {/* title */}
@@ -12,14 +17,13 @@ export default function HomeMostWantedSection() {
       {/* cards */}
       <ScrollArea className="hide-scrollbar mt-5 flex-auto">
         <div className="flex-center flex-wrap gap-x-2.5 gap-y-5 pb-3 xl:gap-10">
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
-          <MostWantedCard />
+          {products.length > 0 ? (
+            products.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))
+          ) : (
+            <p>No products available</p>
+          )}
         </div>
       </ScrollArea>
     </div>

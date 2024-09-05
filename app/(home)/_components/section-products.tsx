@@ -1,6 +1,7 @@
 'use client';
 
-import MostWantedCard from '@/app/(home)/_components/most-wanted-card';
+import ProductCard from '@/app/(home)/_components/product-card';
+import { getProducts } from '@/app/_actions/prisma';
 import SortArrowsIcon from '@/app/_components/icons/sort-arrows';
 import {
   Accordion,
@@ -11,10 +12,23 @@ import {
 import { Checkbox } from '@/app/_components/ui/checkbox';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { Slider } from '@/app/_components/ui/slider';
+import { Product } from '@prisma/client';
 import { Search, SlidersHorizontalIcon } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function HomeProductsSection() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const data = await getProducts();
+      setProducts(data);
+    }
+
+    fetchProducts();
+  }, []);
+
   const imagePrefix = '/images/icons/';
 
   const filters = {
@@ -269,9 +283,13 @@ export default function HomeProductsSection() {
           hideScrollbar={false}
         >
           <div className="flex-center flex-wrap gap-2.5 gap-y-4 xl:gap-12">
-            {Array.from({ length: 21 }).map((_, i) => (
-              <MostWantedCard key={i} />
-            ))}
+            {products.length > 0 ? (
+              products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <p>No products available</p>
+            )}
           </div>
         </ScrollArea>
       </div>

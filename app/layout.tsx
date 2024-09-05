@@ -7,6 +7,7 @@ import { Outfit } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
 import { Suspense } from 'react';
+import '@/prisma/decimal-override';
 
 const outfit = Outfit({
   subsets: ['latin'],

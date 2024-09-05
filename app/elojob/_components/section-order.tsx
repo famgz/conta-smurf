@@ -785,7 +785,7 @@ export default function ElojobOrderSection() {
                 className=""
                 variant={'secondary'}
                 onClick={handleNextStep}
-                disabled={false && !currentOrderStep.canProceed}
+                disabled={!currentOrderStep.canProceed}
               >
                 Next
               </Button>

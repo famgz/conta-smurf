@@ -32,7 +32,7 @@ export default function MostWantedCard() {
       </div>
 
       <Link
-        href=""
+        href="#"
         className="subtitle-badge flex-center absolute -bottom-3.5 h-[24px] w-[84px] overflow-hidden text-sm xl:-bottom-8 xl:right-2 xl:h-[46px] xl:w-[136px] xl:text-xl"
       >
         See more

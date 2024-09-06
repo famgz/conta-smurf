@@ -85,21 +85,21 @@ model User {
 //  data tables
 
 model Product {
-  id          String          @id @default(cuid())
-  title       String
-  slug        String          @unique
-  imageUrl    String
-  description String
-  game        Game            @relation(fields: [gameId], references: [id])
-  gameId      String
-  rank        Rank            @relation(fields: [rankId], references: [id])
-  rankId      String
-  price       Decimal         @db.Decimal(10, 2)
-  quantity    Int             @default(1)
-  region      Region          @relation(fields: [regionId], references: [id])
-  regionId    String
-  status      ProductStatus
-  extras      ProductExtras[]
+  id                String          @id @default(cuid())
+  title             String
+  slug              String          @unique
+  imageUrl          String
+  description       String
+  game              Game            @relation(fields: [gameId], references: [id])
+  gameId            String
+  rank              Rank            @relation(fields: [rankId], references: [id])
+  rankId            String
+  price             Decimal         @db.Decimal(10, 2)
+  availableQuantity Int             @default(1)
+  region            Region          @relation(fields: [regionId], references: [id])
+  regionId          String
+  status            ProductStatus
+  extras            ProductExtras[]
 
   ProductOrder ProductOrder[]
 }

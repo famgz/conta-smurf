@@ -360,7 +360,7 @@ const products: Omit<Product, 'id'>[] = coreProducts.map((p) => ({
   ...p,
   gameId: 'clzu4a2yp0009tcoxm9ewxmbf',
   price: (Math.random() * 50 + 10) as unknown as Decimal,
-  quantity: Math.floor(Math.random() * 20) + 1,
+  availableQuantity: Math.floor(Math.random() * 20) + 1,
   regionId: 'clzu4a355000itcoxihldlotv',
   status: getRandomItem(Object.values(ProductStatus)) as ProductStatus,
   extras: Object.values(ProductExtras) as ProductExtras[],

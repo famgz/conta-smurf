@@ -8,12 +8,22 @@ import { Button } from '@/app/_components/ui/button';
 import { Input } from '@/app/_components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
+import { formatPrice } from '@/app/_lib/utils';
+import { CartProduct, useCartStore } from '@/app/_store/cart-store';
 import { basePaths } from '@/app/constants';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function CartPage() {
   const router = useRouter();
+
+  const { addToCart, cart, cartTotalItems, removeFromCart, cartTotalPrice } =
+    useCartStore();
+
+  const totalItems = cartTotalItems();
+  const totalPrice = cartTotalPrice();
+
   const paymentMethods = [
     {
       id: 'pix',
@@ -44,6 +54,16 @@ export default function CartPage() {
 
   function finishOrder() {
     router.push('/user');
+  }
+
+  function handleIncreaseProductQuantity(product: CartProduct) {
+    if (product.quantity >= product.availableQuantity) return;
+    addToCart(product);
+  }
+
+  function handleDecreaseProductQuantity(product: CartProduct) {
+    if (product.quantity <= 1) return;
+    removeFromCart(product);
   }
 
   return (
@@ -116,12 +136,12 @@ export default function CartPage() {
                 <p className="text-right text-xs font-extralight text-muted-foreground">
                   Final order Price
                 </p>
-                <div className="flex items-center justify-between py-1">
+                <div className="flex items-center justify-between gap-4 py-1">
                   <FinishButton onClick={finishOrder}>
                     Finish Order
                   </FinishButton>
                   <span className="text-3xl font-light 2xl:text-4xl">
-                    $22,5
+                    {formatPrice(totalPrice)}
                   </span>
                 </div>
                 <p className="text-left text-xs font-extralight text-muted-foreground">
@@ -141,45 +161,72 @@ export default function CartPage() {
             <div className="flex flex-1 flex-col p-8 max-sm:pt-2">
               <ScrollArea className="-mr-2 h-[100px] flex-auto pr-6">
                 <div className="space-y-2">
-                  {Array.from({ length: 9 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="flex gap-3 rounded-2xl bg-black/20 p-3"
-                    >
-                      <div className="relative size-20 overflow-hidden rounded-2xl">
-                        <Image
-                          src="/images/icons/product-example.jpg"
-                          alt="product image"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-
-                      <div className="flex flex-1 justify-between">
-                        <div className="text-left">
-                          <p className="text-lg leading-5 2xl:text-xl">
-                            LoL Account
-                          </p>
-                          <p className="text-sm font-extralight leading-5">
-                            GrandMaster Account
-                          </p>
+                  {cart.length > 0 ? (
+                    cart.map((product) => (
+                      <div
+                        key={product.id}
+                        className="flex gap-3 rounded-2xl bg-black/20 p-3"
+                      >
+                        <div className="relative size-20 overflow-hidden rounded-2xl">
+                          <Image
+                            src={basePaths.imagesPath + product.imageUrl}
+                            alt="product image"
+                            fill
+                            className="object-cover"
+                          />
                         </div>
 
-                        <div className="flex flex-col items-end justify-between">
-                          <DeleteButton />
+                        <div className="flex flex-1 justify-between">
+                          <div className="text-left">
+                            <p className="text-lg leading-5 2xl:text-xl">
+                              {product.title}
+                            </p>
+                            <p className="text-sm font-extralight leading-5">
+                              {product.description}
+                            </p>
+                          </div>
 
-                          <div className="flex items-center gap-2">
-                            <MinusButton />
-                            <span className="text-xl 2xl:text-2xl">1</span>
-                            <PlusButton />
-                            <span className="xl:text-2xl 2xl:text-3xl">
-                              $25
-                            </span>
+                          <div className="flex flex-col items-end justify-between">
+                            <DeleteButton />
+
+                            <div className="flex items-center gap-2">
+                              <MinusButton
+                                onClick={() =>
+                                  handleDecreaseProductQuantity(product)
+                                }
+                              />
+                              <span className="text-xl 2xl:text-2xl">
+                                {product.quantity}
+                              </span>
+                              <PlusButton
+                                onClick={() =>
+                                  handleIncreaseProductQuantity(product)
+                                }
+                              />
+                              <span className="w-[150px] text-right xl:text-2xl 2xl:text-3xl">
+                                {formatPrice(
+                                  Number(product.price) * product.quantity
+                                )}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="space-y-4 text-xl">
+                      <p>Cart is empty.</p>
+                      <div>
+                        Go to{' '}
+                        <Link
+                          href={'/#products'}
+                          className="font-bold hover:underline"
+                        >
+                          Products
+                        </Link>
+                      </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               </ScrollArea>
             </div>

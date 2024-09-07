@@ -1,4 +1,4 @@
-import { config } from '@/app/config';
+import { basePaths } from '@/app/constants';
 
 export enum Lane {
   AUTOFILL = 'autofill',
@@ -21,43 +21,43 @@ export const lanes: Record<Lane, LaneDetails> = {
   [Lane.AUTOFILL]: {
     label: 'Autofill',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.AUTOFILL}.png`,
-      bright: `${config.iconsPath}lane-${Lane.AUTOFILL}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.AUTOFILL}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.AUTOFILL}-bright.png`,
     },
   },
   [Lane.BOTTOM]: {
     label: 'Botlane',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.BOTTOM}.png`,
-      bright: `${config.iconsPath}lane-${Lane.BOTTOM}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.BOTTOM}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.BOTTOM}-bright.png`,
     },
   },
   [Lane.JUNGLE]: {
     label: 'Jungle',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.JUNGLE}.png`,
-      bright: `${config.iconsPath}lane-${Lane.JUNGLE}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.JUNGLE}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.JUNGLE}-bright.png`,
     },
   },
   [Lane.MID]: {
     label: 'Midlane',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.MID}.png`,
-      bright: `${config.iconsPath}lane-${Lane.MID}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.MID}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.MID}-bright.png`,
     },
   },
   [Lane.SUPPORT]: {
     label: 'Support',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.SUPPORT}.png`,
-      bright: `${config.iconsPath}lane-${Lane.SUPPORT}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.SUPPORT}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.SUPPORT}-bright.png`,
     },
   },
   [Lane.TOP]: {
     label: 'Toplane',
     iconImgs: {
-      default: `${config.iconsPath}lane-${Lane.TOP}.png`,
-      bright: `${config.iconsPath}lane-${Lane.TOP}-bright.png`,
+      default: `${basePaths.iconsPath}lane-${Lane.TOP}.png`,
+      bright: `${basePaths.iconsPath}lane-${Lane.TOP}-bright.png`,
     },
   },
 };

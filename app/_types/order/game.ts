@@ -1,4 +1,4 @@
-import { config } from '@/app/config';
+import { basePaths } from '@/app/constants';
 
 export enum Game {
   LOL = 'lol',
@@ -15,14 +15,14 @@ interface GameDetails {
 export const games: Record<Game, GameDetails> = {
   [Game.LOL]: {
     label: 'League of Legends',
-    iconImg: `${config.iconsPath}${Game.LOL}.png`,
-    bgImg: `${config.imagesPath}register.jpg`,
-    titleImg: `${config.imagesPath}title-${Game.LOL}.png`,
+    iconImg: `${basePaths.iconsPath}${Game.LOL}.png`,
+    bgImg: `${basePaths.imagesPath}register.jpg`,
+    titleImg: `${basePaths.imagesPath}title-${Game.LOL}.png`,
   },
   [Game.VALORANT]: {
     label: 'Valorant',
-    iconImg: `${config.iconsPath}${Game.VALORANT}.png`,
-    bgImg: `${config.imagesPath}elojob-hero.jpg`,
-    titleImg: `${config.imagesPath}title-${Game.VALORANT}.png`,
+    iconImg: `${basePaths.iconsPath}${Game.VALORANT}.png`,
+    bgImg: `${basePaths.imagesPath}elojob-hero.jpg`,
+    titleImg: `${basePaths.imagesPath}title-${Game.VALORANT}.png`,
   },
 };

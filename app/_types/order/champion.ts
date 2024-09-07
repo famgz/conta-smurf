@@ -1,4 +1,4 @@
-import { config } from '@/app/config';
+import { basePaths } from '@/app/constants';
 
 export enum Champion {
   CHAMPION_1 = 'champion-1',
@@ -14,14 +14,14 @@ interface ChampionDetails {
 export const champions: Record<Champion, ChampionDetails> = {
   [Champion.CHAMPION_1]: {
     label: '',
-    iconImg: `${config.iconsPath}${Champion.CHAMPION_1}.jpg`,
+    iconImg: `${basePaths.iconsPath}${Champion.CHAMPION_1}.jpg`,
   },
   [Champion.CHAMPION_2]: {
     label: '',
-    iconImg: `${config.iconsPath}${Champion.CHAMPION_2}.jpg`,
+    iconImg: `${basePaths.iconsPath}${Champion.CHAMPION_2}.jpg`,
   },
   [Champion.CHAMPION_3]: {
     label: '',
-    iconImg: `${config.iconsPath}${Champion.CHAMPION_3}.jpg`,
+    iconImg: `${basePaths.iconsPath}${Champion.CHAMPION_3}.jpg`,
   },
 };

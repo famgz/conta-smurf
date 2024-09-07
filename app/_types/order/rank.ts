@@ -1,4 +1,4 @@
-import { config } from '@/app/config';
+import { basePaths } from '@/app/constants';
 
 export enum Rank {
   IRON = 'iron',
@@ -20,38 +20,38 @@ interface RankDetails {
 export const ranks: Record<Rank, RankDetails> = {
   [Rank.IRON]: {
     label: 'Iron',
-    iconImg: `${config.iconsPath}rank-${Rank.IRON}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.IRON}.png`,
   },
   [Rank.BRONZE]: {
     label: 'Bronze',
-    iconImg: `${config.iconsPath}rank-${Rank.BRONZE}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.BRONZE}.png`,
   },
   [Rank.SILVER]: {
     label: 'Silver',
-    iconImg: `${config.iconsPath}rank-${Rank.SILVER}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.SILVER}.png`,
   },
   [Rank.GOLD]: {
     label: 'Gold',
-    iconImg: `${config.iconsPath}rank-${Rank.GOLD}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.GOLD}.png`,
   },
   [Rank.PLATINUM]: {
     label: 'Platinum',
-    iconImg: `${config.iconsPath}rank-${Rank.PLATINUM}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.PLATINUM}.png`,
   },
   [Rank.EMERALD]: {
     label: 'Emerald',
-    iconImg: `${config.iconsPath}rank-${Rank.EMERALD}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.EMERALD}.png`,
   },
   [Rank.DIAMOND]: {
     label: 'Diamond',
-    iconImg: `${config.iconsPath}rank-${Rank.DIAMOND}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.DIAMOND}.png`,
   },
   [Rank.MASTER]: {
     label: 'Master',
-    iconImg: `${config.iconsPath}rank-${Rank.MASTER}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.MASTER}.png`,
   },
   [Rank.GRANDMASTER]: {
     label: 'Grandmaster',
-    iconImg: `${config.iconsPath}rank-${Rank.GRANDMASTER}.png`,
+    iconImg: `${basePaths.iconsPath}rank-${Rank.GRANDMASTER}.png`,
   },
 };

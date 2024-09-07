@@ -10,19 +10,23 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/app/_components/ui/dialog';
+import { formatPrice } from '@/app/_lib/utils';
+import { useCartStore } from '@/app/_store/cart-store';
 import { Product } from '@prisma/client';
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const opts = ['Active', 'No bans', '[NFA]', 'No Ranked Seasons played'];
 
 interface Props {
-  product?: Product;
+  product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const totalPrice = useMemo(
     () => (product?.price as unknown as number) * quantity,
@@ -36,7 +40,14 @@ export default function ProductCard({ product }: Props) {
   }
 
   function handleIncreaseQuantity() {
-    if (quantity < 10) setQuantity((prev) => prev + 1);
+    if (quantity < product.availableQuantity) setQuantity((prev) => prev + 1);
+  }
+
+  function handleAddToCart() {
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    toast.success(`Product ${product.title} successfully added to Cart`);
   }
 
   return (
@@ -54,7 +65,7 @@ export default function ProductCard({ product }: Props) {
       <p className="whitespace-nowrap text-sm xl:text-3xl">{product.title}</p>
 
       <div>
-        <div className="flex flex-wrap items-center gap-1 xl:justify-center xl:gap-3">
+        <div className="flex flex-wrap items-center gap-1 !gap-y-0 xl:justify-center xl:gap-3">
           {opts.map((x) => (
             <div className="flex-center gap-px xl:gap-1" key={x}>
               <div className="h-[2px] w-2.5 bg-brass" />
@@ -103,7 +114,10 @@ export default function ProductCard({ product }: Props) {
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-4">
                 <DialogClose asChild>
-                  <Button className="subtitle-badge w-full text-xl">
+                  <Button
+                    className="subtitle-badge w-full text-xl"
+                    onClick={handleAddToCart}
+                  >
                     Add to Cart
                   </Button>
                 </DialogClose>
@@ -116,7 +130,10 @@ export default function ProductCard({ product }: Props) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2">
+                <p className="text-center font-light">
+                  {product.availableQuantity} items available
+                </p>
+                <div className="flex-center gap-2">
                   <MinusButton onClick={handleDecreaseQuantity} />
                   <span className="w-6 text-center text-xl 2xl:text-2xl">
                     {quantity}
@@ -124,7 +141,7 @@ export default function ProductCard({ product }: Props) {
                   <PlusButton onClick={handleIncreaseQuantity} />
                 </div>
                 <p className="w-full rounded-xl bg-menu py-2 text-center text-2xl text-white 2xl:text-3xl">
-                  ${totalPrice as unknown as number}
+                  {formatPrice(totalPrice)}
                 </p>
               </div>
             </div>

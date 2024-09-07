@@ -1,11 +1,11 @@
 import ProductCard from '@/app/(home)/_components/product-card';
 import { getProducts } from '@/app/_actions/prisma';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
-import db from '@/app/_lib/db';
-import { plainify } from '@/app/_lib/utils';
 
 export default async function HomeMostWantedSection() {
-  const products = await getProducts();
+  let products = await getProducts();
+
+  products = products.slice(0, 8);
 
   return (
     <div className="flex h-full max-w-[1580px] flex-col rounded-[30px] bg-folder p-1 py-4 xl:p-14 xl:pt-8">

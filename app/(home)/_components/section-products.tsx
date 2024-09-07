@@ -1,7 +1,11 @@
 'use client';
 
 import ProductCard from '@/app/(home)/_components/product-card';
-import { getProducts } from '@/app/_actions/prisma';
+import {
+  IProductFilters,
+  getProductFilters,
+  getProducts,
+} from '@/app/_actions/prisma';
 import SortArrowsIcon from '@/app/_components/icons/sort-arrows';
 import {
   Accordion,
@@ -12,26 +16,50 @@ import {
 import { Checkbox } from '@/app/_components/ui/checkbox';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { Slider } from '@/app/_components/ui/slider';
-import { Product } from '@prisma/client';
+import { Product, ProductExtras, ProductStatus } from '@prisma/client';
 import { Search, SlidersHorizontalIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+interface ProductFilters extends IProductFilters {
+  status: ProductStatus[];
+  price: { min: number; max: number };
+  extra: ProductExtras[];
+}
+
 export default function HomeProductsSection() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filters, setFilters] = useState<ProductFilters | undefined>();
 
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchData() {
       const data = await getProducts();
       setProducts(data);
+
+      let filters: ProductFilters;
+
+      const dbFilters = await getProductFilters();
+
+      filters = {
+        ...dbFilters,
+        status: Object.values(ProductStatus),
+        price: {
+          min: 0,
+          max: 2500,
+        },
+        extra: Object.values(ProductExtras),
+      };
+
+      setFilters(filters);
+      console.log(filters);
     }
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   const imagePrefix = '/images/icons/';
 
-  const filters = {
+  const filters_ = {
     game: [
       {
         title: 'League of legends',
@@ -112,11 +140,17 @@ export default function HomeProductsSection() {
         <div className="grid h-11 grid-cols-3 items-center justify-end px-5 xl:hidden">
           <div className="flex-center gap-2">
             Game
-            {filters.game.slice(0, 2).map((x) => (
-              <div className="relative size-4" key={x.title}>
-                <Image src={x.icon} alt="" fill className="object-contain" />
-              </div>
-            ))}
+            {filters &&
+              filters.game.slice(0, 2).map((x) => (
+                <div className="relative size-4" key={x.id}>
+                  <Image
+                    src={x.imageUrl}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
           </div>
           <div className="flex-center gap-2">
             Price
@@ -138,138 +172,144 @@ export default function HomeProductsSection() {
             collapsible
             className="hide-scrollbar w-full pb-5"
           >
-            {/* Game */}
-            <AccordionItem value="game" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Game
-              </AccordionTrigger>
-              <AccordionContent>
-                <ScrollArea>
-                  <div className="flex max-h-[160px] flex-col gap-2 p-6">
-                    {filters.game.map((x) => (
-                      <div className="flex items-center gap-4" key={x.title}>
-                        <Checkbox className="size-6" />
-                        <div className="relative size-[33px]">
-                          <Image
-                            src={x.icon}
-                            fill
-                            className="object-contain"
-                            alt=""
-                          />
-                        </div>
-                        <span className="text-base font-light">{x.title}</span>
+            {filters && (
+              <>
+                {/* Game */}
+                <AccordionItem value="game" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Game
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ScrollArea>
+                      <div className="flex max-h-[160px] flex-col gap-2 p-6">
+                        {filters.game.map((x) => (
+                          <div className="flex items-center gap-4" key={x.id}>
+                            <Checkbox className="size-6" />
+                            <div className="relative size-[33px]">
+                              <Image
+                                src={x.imageUrl}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                            <span className="text-base font-light">
+                              {x.title}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </AccordionContent>
-            </AccordionItem>
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
 
-            {/* Rank */}
-            <AccordionItem value="ranking" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Rank
-              </AccordionTrigger>
-              <AccordionContent>
-                <ScrollArea>
-                  <div className="grid max-h-[160px] grid-cols-2 gap-2 p-6">
-                    {filters.rank.map((x) => (
-                      <div className="flex items-center gap-2" key={x.title}>
-                        <Checkbox className="size-6" />
-                        <div className="relative size-[33px]">
-                          <Image
-                            src={x.icon}
-                            fill
-                            className="object-contain"
-                            alt=""
-                          />
-                        </div>
-                        <span className="text-base font-light capitalize">
-                          {x.title}
-                        </span>
+                {/* Rank */}
+                <AccordionItem value="ranking" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Rank
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ScrollArea>
+                      <div className="grid max-h-[160px] grid-cols-2 gap-2 p-6">
+                        {filters.rank.map((x) => (
+                          <div className="flex items-center gap-2" key={x.id}>
+                            <Checkbox className="size-6" />
+                            <div className="relative size-[33px]">
+                              <Image
+                                src={x.imageUrl}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                            <span className="text-base font-light capitalize">
+                              {x.title}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </AccordionContent>
-            </AccordionItem>
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
 
-            {/* Price */}
-            <AccordionItem value="price" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Price
-              </AccordionTrigger>
-              <AccordionContent className="p-6">
-                <Slider
-                  defaultValue={[filters.price.max / 3]}
-                  max={filters.price.max}
-                  step={1}
-                />
-              </AccordionContent>
-            </AccordionItem>
+                {/* Price */}
+                <AccordionItem value="price" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Price
+                  </AccordionTrigger>
+                  <AccordionContent className="p-6">
+                    <Slider
+                      defaultValue={[filters.price.max / 3]}
+                      max={filters.price.max}
+                      step={1}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
 
-            {/* Region */}
-            <AccordionItem value="region" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Region
-              </AccordionTrigger>
-              <AccordionContent>
-                <ScrollArea>
-                  <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
-                    {filters.region.map((x) => (
-                      <div className="flex items-center gap-2" key={x}>
-                        <Checkbox className="size-6" />
-                        <span className="text-base font-light capitalize">
-                          {x}
-                        </span>
+                {/* Region */}
+                <AccordionItem value="region" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Region
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ScrollArea>
+                      <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
+                        {filters.region.map((x) => (
+                          <div className="flex items-center gap-2" key={x.id}>
+                            <Checkbox className="size-6" />
+                            <span className="text-base font-light capitalize">
+                              {x.title}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </AccordionContent>
-            </AccordionItem>
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
 
-            {/* Status */}
-            <AccordionItem value="status" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Status
-              </AccordionTrigger>
-              <AccordionContent>
-                <ScrollArea>
-                  <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
-                    {filters.status.map((x) => (
-                      <div className="flex items-center gap-2" key={x}>
-                        <Checkbox className="size-6" />
-                        <span className="text-base font-light capitalize">
-                          {x}
-                        </span>
+                {/* Status */}
+                <AccordionItem value="status" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Status
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ScrollArea>
+                      <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
+                        {filters.status.map((x) => (
+                          <div className="flex items-center gap-2" key={x}>
+                            <Checkbox className="size-6" />
+                            <span className="text-base font-light capitalize">
+                              {x}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </AccordionContent>
-            </AccordionItem>
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
 
-            {/* Other */}
-            <AccordionItem value="other" className="">
-              <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
-                Other
-              </AccordionTrigger>
-              <AccordionContent>
-                <ScrollArea>
-                  <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
-                    {filters.other.map((x) => (
-                      <div className="flex items-center gap-2" key={x}>
-                        <Checkbox className="size-6" />
-                        <span className="text-base font-light capitalize">
-                          {x}
-                        </span>
+                {/* Extra */}
+                <AccordionItem value="extra" className="">
+                  <AccordionTrigger className="bg-[#d9d9d9]/40 p-6 text-2xl font-light">
+                    Extra
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ScrollArea>
+                      <div className="grid max-h-[160px] grid-cols-2 gap-3 p-6">
+                        {filters.extra.map((x) => (
+                          <div className="flex items-center gap-2" key={x}>
+                            <Checkbox className="size-6" />
+                            <span className="text-base font-light capitalize">
+                              {x}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </AccordionContent>
-            </AccordionItem>
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
+              </>
+            )}
           </Accordion>
         </ScrollArea>
       </div>

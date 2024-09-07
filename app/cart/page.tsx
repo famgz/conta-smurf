@@ -140,7 +140,7 @@ export default function CartPage() {
                   <FinishButton onClick={finishOrder}>
                     Finish Order
                   </FinishButton>
-                  <span className="text-3xl font-light 2xl:text-4xl">
+                  <span className="w-[160px] text-right text-3xl font-light 2xl:text-4xl">
                     {formatPrice(totalPrice)}
                   </span>
                 </div>

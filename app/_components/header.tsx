@@ -11,11 +11,11 @@ import {
 } from '@/app/_components/ui/dropdown-menu';
 import useURLHash from '@/app/_hooks/use-url-hash';
 import { cn } from '@/app/_lib/utils';
+import { useCartStore } from '@/app/_store/cart-store';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Suspense } from 'react';
 
 const links = [
   {
@@ -52,6 +52,8 @@ export default function Header() {
   const pathname = usePathname();
   const hash = useURLHash();
   const hideElements = pathname === '/' && hash === '';
+
+  const cartTotalItems = useCartStore((state) => state.cartTotalItems());
 
   return (
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">
@@ -106,14 +108,22 @@ export default function Header() {
               hideElements && 'xl:gap-4'
             )}
           >
-            <Link href={'/cart'} className="hidden xl:block">
+            {/* cart */}
+            <Link href={'/cart'} className="relative hidden xl:block">
               <ShopBag />
+              {!!cartTotalItems && (
+                <div className="flex-center absolute -bottom-1 -right-1 size-5 rounded-full bg-gradient-to-b from-[#850000] to-[#f00] text-sm font-bold">
+                  {cartTotalItems}
+                </div>
+              )}
             </Link>
 
+            {/* notifications */}
             <Link href={'/user'} className="">
               <BellIcon className="size-[40px] xl:size-[70px]" />
             </Link>
 
+            {/* user */}
             <Link href={'/user'} className="xl:mt-1">
               <UserIcon
                 className={cn(

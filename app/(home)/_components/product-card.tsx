@@ -63,14 +63,14 @@ export default function ProductCard({ product }: Props) {
         />
       </div>
 
-      <p className="whitespace-nowrap text-sm xl:text-3xl">{product.title}</p>
+      <p className="whitespace-nowrap text-sm xl:text-2xl">{product.title}</p>
 
       <div>
         <div className="flex flex-wrap items-center gap-1 !gap-y-0 xl:justify-center xl:gap-3">
           {opts.map((x) => (
             <div className="flex-center gap-px xl:gap-1" key={x}>
               <div className="h-[2px] w-2.5 bg-brass" />
-              <span className="whitespace-nowrap text-[10px] font-extralight xl:text-base xl:font-medium">
+              <span className="whitespace-nowrap text-[10px] font-extralight xl:text-sm xl:font-medium">
                 {x}
               </span>
             </div>

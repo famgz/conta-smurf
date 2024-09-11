@@ -12,6 +12,7 @@ import {
 } from '@/app/_components/ui/dialog';
 import { formatPrice } from '@/app/_lib/utils';
 import { useCartStore } from '@/app/_store/cart-store';
+import useStore from '@/app/_store/use-store';
 import { Product } from '@prisma/client';
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog';
 import Image from 'next/image';
@@ -26,14 +27,12 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
-  const addToCart = useCartStore((state) => state.addToCart);
+  const cartStore = useStore(useCartStore, (state) => state)!;
 
   const totalPrice = useMemo(
     () => (product?.price as unknown as number) * quantity,
     [quantity, product]
   );
-
-  if (!product) return 'Invalid product';
 
   function handleDecreaseQuantity() {
     if (quantity > 1) setQuantity((prev) => prev - 1);
@@ -45,10 +44,12 @@ export default function ProductCard({ product }: Props) {
 
   function handleAddToCart() {
     for (let i = 0; i < quantity; i++) {
-      addToCart(product);
+      cartStore.addToCart(product);
     }
     toast.success(`Product ${product.title} successfully added to Cart`);
   }
+
+  if (!product) return 'Invalid product';
 
   return (
     <div className="relative flex max-w-[150px] flex-col items-center gap-px rounded-[10px] bg-gradient-to-br from-[#fff]/30 to-[#1e1e1e]/30 p-2 shadow-md hover:outline-1 hover:outline-white xl:max-w-[318px] xl:gap-2 xl:rounded-[20px] xl:p-3">

@@ -10,6 +10,7 @@ import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { formatPrice } from '@/app/_lib/utils';
 import { CartProduct, useCartStore } from '@/app/_store/cart-store';
+import useStore from '@/app/_store/use-store';
 import { basePaths } from '@/app/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,11 +19,12 @@ import { useRouter } from 'next/navigation';
 export default function CartPage() {
   const router = useRouter();
 
-  const { addToCart, cart, cartTotalItems, removeFromCart, cartTotalPrice } =
-    useCartStore();
+  const cartStore = useStore(useCartStore, (state) => state)!;
 
-  const totalItems = cartTotalItems();
-  const totalPrice = cartTotalPrice();
+  if (!cartStore) return;
+
+  const totalItems = cartStore.cartTotalItems();
+  const totalPrice = cartStore.cartTotalPrice();
 
   const paymentMethods = [
     {
@@ -58,12 +60,12 @@ export default function CartPage() {
 
   function handleIncreaseProductQuantity(product: CartProduct) {
     if (product.quantity >= product.availableQuantity) return;
-    addToCart(product);
+    cartStore.addToCart(product);
   }
 
   function handleDecreaseProductQuantity(product: CartProduct) {
     if (product.quantity <= 1) return;
-    removeFromCart(product);
+    cartStore.removeFromCart(product);
   }
 
   return (
@@ -161,8 +163,8 @@ export default function CartPage() {
             <div className="flex flex-1 flex-col p-8 max-sm:pt-2">
               <ScrollArea className="-mr-2 h-[100px] flex-auto pr-6">
                 <div className="space-y-2">
-                  {cart.length > 0 ? (
-                    cart.map((product) => (
+                  {cartStore.cart.length > 0 ? (
+                    cartStore.cart.map((product) => (
                       <div
                         key={product.id}
                         className="flex gap-3 rounded-2xl bg-black/20 p-3"

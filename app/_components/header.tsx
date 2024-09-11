@@ -12,6 +12,7 @@ import {
 import useURLHash from '@/app/_hooks/use-url-hash';
 import { cn } from '@/app/_lib/utils';
 import { useCartStore } from '@/app/_store/cart-store';
+import useStore from '@/app/_store/use-store';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -53,7 +54,9 @@ export default function Header() {
   const hash = useURLHash();
   const hideElements = pathname === '/' && hash === '';
 
-  const cartTotalItems = useCartStore((state) => state.cartTotalItems());
+  const cartTotalItems = useStore(useCartStore, (state) =>
+    state.cartTotalItems()
+  )!;
 
   return (
     <header className="fixed top-4 z-50 h-[116px] w-full py-4 xl:top-0">

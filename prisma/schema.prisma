@@ -101,7 +101,6 @@ model Product {
   status            ProductStatus
   extras            ProductExtras[]
 
-  ProductOrder     ProductOrder[]
   ProductOrderItem ProductOrderItem[]
 }
 
@@ -118,7 +117,6 @@ model ProductOrderItem {
 
 model ProductOrder {
   id                String               @id @default(cuid())
-  products          Product[]
   paymentMethod     ProductPaymentMethod
   status            ProductOrderStatus   @default(PENDING)
   totalPriceInCents Int

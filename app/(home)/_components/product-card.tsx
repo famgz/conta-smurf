@@ -30,7 +30,7 @@ export default function ProductCard({ product }: Props) {
   const cartStore = useStore(useCartStore, (state) => state)!;
 
   const totalPrice = useMemo(
-    () => (product?.price as unknown as number) * quantity,
+    () => (product?.priceInCents / 100) * quantity,
     [quantity, product]
   );
 

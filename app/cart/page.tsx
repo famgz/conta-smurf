@@ -1,5 +1,6 @@
 'use client';
 
+import { createProductOrder } from '@/app/_actions/prisma';
 import DeleteButton from '@/app/_components/buttons/delete-button';
 import FinishButton from '@/app/_components/buttons/finish-button';
 import MinusButton from '@/app/_components/buttons/minus-button';
@@ -11,13 +12,19 @@ import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { formatPrice } from '@/app/_lib/utils';
 import { CartProduct, useCartStore } from '@/app/_store/cart-store';
 import useStore from '@/app/_store/use-store';
+import CartItemCard from '@/app/cart/_components/cart-item-card';
 import { basePaths } from '@/app/constants';
+import { signOut } from '@/auth';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function CartPage() {
   const router = useRouter();
+  const { data } = useSession();
+  const user = data?.user;
 
   const cartStore = useStore(useCartStore, (state) => state)!;
 
@@ -28,35 +35,31 @@ export default function CartPage() {
 
   const paymentMethods = [
     {
-      id: 'pix',
+      code: 'PIX',
       label: 'Pix',
       img: basePaths.iconsPath + 'payment-pix.png',
     },
     {
-      id: 'card-mastercard',
+      code: 'NATIONAL_CREDITCARD_MASTERCARD',
       label: 'Cartão de credito Nacional Mastercard',
       img: basePaths.iconsPath + 'payment-card-mastercard.png',
     },
     {
-      id: 'card-visa',
+      code: 'NATIONAL_CREDITCARD_VISA',
       label: 'Cartão de credito Nacional Visa',
       img: basePaths.iconsPath + 'payment-card-visa.png',
     },
     {
-      id: 'crypto',
+      code: 'CRYPTO',
       label: 'Cripto',
       img: basePaths.iconsPath + 'payment-crypto.png',
     },
     {
-      id: 'card-intl',
+      code: 'INTERNATIONAL_CREDITCARD',
       label: 'Cartão de credito Internacional',
       img: basePaths.iconsPath + 'payment-card-intl.png',
     },
   ];
-
-  function finishOrder() {
-    router.push('/user');
-  }
 
   function handleIncreaseProductQuantity(product: CartProduct) {
     if (product.quantity >= product.availableQuantity) return;
@@ -67,6 +70,36 @@ export default function CartPage() {
     if (product.quantity <= 1) return;
     cartStore.removeFromCart(product);
   }
+
+  async function handleCheckout() {
+    if (!(user && user.id)) {
+      toast.error('Invalid user');
+      await signOut();
+      window.location.reload();
+    }
+
+    const userId = user!.id;
+
+    try {
+      const cartProducts = cartStore.cart;
+
+      const productOrder = await createProductOrder(
+        userId,
+        'CRYPTO',
+        cartProducts,
+        'cm0y93ihv0000js42je1zrprm'
+      );
+      console.log(productOrder);
+      cartStore.clearCart();
+      toast.success('Order succesfully submitted');
+      router.push('/user');
+    } catch (err) {
+      console.log(err);
+      toast.error(err as string);
+    }
+  }
+
+  if (!(cartStore && user)) return;
 
   return (
     <div className="page-section max-sm:px-0 max-sm:pb-0" id="cart">
@@ -89,7 +122,7 @@ export default function CartPage() {
                   {paymentMethods.map((x) => (
                     <div
                       className="flex items-center gap-2 xl:gap-3"
-                      key={x.id}
+                      key={x.code}
                     >
                       <div className="relative size-5 xl:size-6">
                         <Image
@@ -99,7 +132,10 @@ export default function CartPage() {
                           className="object-contain"
                         />
                       </div>
-                      <RadioGroupItem value={x.id} className="max-xl:size-4" />
+                      <RadioGroupItem
+                        value={x.code}
+                        className="max-xl:size-4"
+                      />
                       <span className="whitespace-nowrap text-xs font-light xl:text-sm">
                         {x.label}
                       </span>
@@ -139,11 +175,11 @@ export default function CartPage() {
                   Final order Price
                 </p>
                 <div className="flex items-center justify-between gap-4 py-1">
-                  <FinishButton onClick={finishOrder}>
+                  <FinishButton onClick={handleCheckout}>
                     Finish Order
                   </FinishButton>
                   <span className="w-[160px] text-right text-3xl font-light 2xl:text-4xl">
-                    {formatPrice(totalPrice)}
+                    {formatPrice(totalPrice / 100)}
                   </span>
                 </div>
                 <p className="text-left text-xs font-extralight text-muted-foreground">
@@ -156,8 +192,13 @@ export default function CartPage() {
           {/* right column - cart ietms */}
           <div className="flex flex-1 flex-col sm:bg-light">
             {/* header */}
-            <div className="flex items-center px-9 sm:h-20 sm:bg-tab-header 2xl:h-32">
+            <div className="flex items-center justify-between px-9 sm:h-20 sm:bg-tab-header 2xl:h-32">
               <h2 className="text-xl font-semibold 2xl:text-4xl">Carrinho</h2>
+              <DeleteButton
+                onClick={cartStore.clearCart}
+                iconSize={20}
+                className="!size-8"
+              />
             </div>
 
             <div className="flex flex-1 flex-col p-8 max-sm:pt-2">
@@ -165,55 +206,12 @@ export default function CartPage() {
                 <div className="space-y-2">
                   {cartStore.cart.length > 0 ? (
                     cartStore.cart.map((product) => (
-                      <div
+                      <CartItemCard
                         key={product.id}
-                        className="flex gap-3 rounded-2xl bg-black/20 p-3"
-                      >
-                        <div className="relative size-20 overflow-hidden rounded-2xl">
-                          <Image
-                            src={basePaths.imagesPath + product.imageUrl}
-                            alt="product image"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-
-                        <div className="flex flex-1 justify-between">
-                          <div className="text-left">
-                            <p className="text-lg leading-5 2xl:text-xl">
-                              {product.title}
-                            </p>
-                            <p className="text-sm font-extralight leading-5">
-                              {product.description}
-                            </p>
-                          </div>
-
-                          <div className="flex flex-col items-end justify-between">
-                            <DeleteButton />
-
-                            <div className="flex items-center gap-2">
-                              <MinusButton
-                                onClick={() =>
-                                  handleDecreaseProductQuantity(product)
-                                }
-                              />
-                              <span className="text-xl 2xl:text-2xl">
-                                {product.quantity}
-                              </span>
-                              <PlusButton
-                                onClick={() =>
-                                  handleIncreaseProductQuantity(product)
-                                }
-                              />
-                              <span className="w-[150px] text-right xl:text-2xl 2xl:text-3xl">
-                                {formatPrice(
-                                  Number(product.price) * product.quantity
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        product={product}
+                        decreaseProductQuantity={handleDecreaseProductQuantity}
+                        increaseProductQuantity={handleIncreaseProductQuantity}
+                      />
                     ))
                   ) : (
                     <div className="space-y-4 text-xl">

@@ -1,8 +1,8 @@
 import PurchaseHistory from '@/app/user/_components/purchase-history-table';
 
-export default function UserPurchaseHistorySection() {
+export default async function UserPurchaseHistorySection() {
   return (
-    <div className="">
+    <div>
       <PurchaseHistory />
     </div>
   );

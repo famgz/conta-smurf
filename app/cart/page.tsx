@@ -3,15 +3,14 @@
 import { createProductOrder } from '@/app/_actions/prisma';
 import DeleteButton from '@/app/_components/buttons/delete-button';
 import FinishButton from '@/app/_components/buttons/finish-button';
-import MinusButton from '@/app/_components/buttons/minus-button';
-import PlusButton from '@/app/_components/buttons/plus-button';
 import { Button } from '@/app/_components/ui/button';
 import { Input } from '@/app/_components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/app/_components/ui/radio-group';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import { formatPrice } from '@/app/_lib/utils';
-import { CartProduct, useCartStore } from '@/app/_store/cart-store';
+import { useCartStore } from '@/app/_store/cart-store';
 import useStore from '@/app/_store/use-store';
+import { CartProduct } from '@/app/_types/order';
 import CartItemCard from '@/app/cart/_components/cart-item-card';
 import { basePaths } from '@/app/constants';
 import { signOut } from '@/auth';
@@ -85,7 +84,7 @@ export default function CartPage() {
 
       const productOrder = await createProductOrder(
         userId,
-        'CRYPTO',
+        'PIX',
         cartProducts,
         'cm0y93ihv0000js42je1zrprm'
       );
@@ -219,7 +218,7 @@ export default function CartPage() {
                       <div>
                         Go to{' '}
                         <Link
-                          href={'/#products'}
+                          href={'/#most-wanted'}
                           className="font-bold hover:underline"
                         >
                           Products

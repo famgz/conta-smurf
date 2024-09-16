@@ -1,10 +1,7 @@
+import { CartProduct } from '@/app/_types/order';
 import { Product } from '@prisma/client';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-
-export interface CartProduct extends Product {
-  quantity: number;
-}
 
 interface CartStore {
   cart: CartProduct[];

@@ -4,7 +4,7 @@ import DeleteButton from '@/app/_components/buttons/delete-button';
 import MinusButton from '@/app/_components/buttons/minus-button';
 import PlusButton from '@/app/_components/buttons/plus-button';
 import { formatPrice } from '@/app/_lib/utils';
-import { CartProduct } from '@/app/_store/cart-store';
+import { CartProduct } from '@/app/_types/order';
 import { basePaths } from '@/app/constants';
 import Image from 'next/image';
 

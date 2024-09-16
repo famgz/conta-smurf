@@ -2,7 +2,7 @@
 
 import db from '@/app/_lib/db';
 import { plainify } from '@/app/_lib/utils';
-import { CartProduct } from '@/app/_store/cart-store';
+import { CartProduct, ProductOrderFull } from '@/app/_types/order';
 import { basePaths } from '@/app/constants';
 import {
   Game,
@@ -66,6 +66,18 @@ async function checkUserIdElseThrowError(userId: string) {
   const user = await db.user.findUnique({ where: { id: userId } });
   if (!user) throw new Error('User not found');
   return user;
+}
+
+export async function getProductOrdersByUserId(
+  userId: string
+): Promise<ProductOrderFull[]> {
+  return await db.productOrder.findMany({
+    where: { userId },
+    include: {
+      items: { include: { product: true } },
+      coupon: true,
+    },
+  });
 }
 
 async function getProductOrderItemsElseThrowError(

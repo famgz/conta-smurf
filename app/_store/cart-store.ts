@@ -10,6 +10,7 @@ interface CartStore {
   cart: CartProduct[];
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
+  clearCart: () => void;
   cartTotalItems: () => number;
   cartTotalPrice: () => number;
 }
@@ -47,21 +48,28 @@ export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       cart: [],
+      //
       addToCart: (product) =>
         set((state) => ({
           cart: isProductOnCart(state.cart, product)
             ? increaseProductQuantity(state.cart, product?.id)
             : [...state.cart, { ...product, quantity: 1 }],
         })),
+      //
       removeFromCart: (product) =>
         set((state) => ({
           cart: decreaseProductQuantity(state.cart, product?.id),
         })),
+      //
+      clearCart: () => set((_) => ({ cart: [] })),
+      //
       cartTotalItems: () =>
         get().cart.reduce((acc, product) => acc + product.quantity, 0),
+      //
       cartTotalPrice: () =>
         get().cart.reduce(
-          (acc, product) => acc + product.quantity * Number(product.price),
+          (acc, product) =>
+            acc + product.quantity * Number(product.priceInCents),
           0
         ),
     }),

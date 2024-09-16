@@ -94,24 +94,40 @@ model Product {
   gameId            String
   rank              Rank            @relation(fields: [rankId], references: [id])
   rankId            String
-  price             Decimal         @db.Decimal(10, 2)
+  priceInCents      Int
   availableQuantity Int             @default(1)
   region            Region          @relation(fields: [regionId], references: [id])
   regionId          String
   status            ProductStatus
   extras            ProductExtras[]
 
-  ProductOrder ProductOrder[]
+  ProductOrder     ProductOrder[]
+  ProductOrderItem ProductOrderItem[]
+}
+
+model ProductOrderItem {
+  id                  String       @id @default(cuid())
+  order               ProductOrder @relation(fields: [orderId], references: [id])
+  orderId             String
+  product             Product      @relation(fields: [productId], references: [id])
+  productId           String
+  productPriceInCents Int // Price at the time of order
+  quantity            Int // Quantity of this product in the order
+  totalPriceInCents   Int // Total for this product line (productPriceInCents * quantity)
 }
 
 model ProductOrder {
-  id            String               @id @default(cuid())
-  products      Product[]
-  paymentMethod ProductPaymentMethod
-  coupon        Coupon?              @relation(fields: [couponId], references: [id])
-  couponId      String?
-  user          User                 @relation(fields: [userId], references: [id])
-  userId        String
+  id                String               @id @default(cuid())
+  products          Product[]
+  paymentMethod     ProductPaymentMethod
+  status            ProductOrderStatus   @default(PENDING)
+  totalPriceInCents Int
+  coupon            Coupon?              @relation(fields: [couponId], references: [id])
+  couponId          String?
+  user              User                 @relation(fields: [userId], references: [id])
+  userId            String
+  items             ProductOrderItem[]
+  createdAt         DateTime             @default(now())
 }
 
 model Elojob {
@@ -138,6 +154,12 @@ enum ElojobTypeOfClimb {
   DUO
 }
 
+enum ProductOrderStatus {
+  PENDING
+  COMPLETED
+  CANCELED
+}
+
 enum ProductStatus {
   ACTIVE
   DISABLED
@@ -156,7 +178,7 @@ enum ProductPaymentMethod {
   PIX
   NATIONAL_CREDITCARD_MASTERCARD
   NATIONAL_CREDITCARD_VISA
-  CRIPTO
+  CRYPTO
   INTERNATIONAL_CREDITCARD
 }
 

@@ -12,9 +12,8 @@ import {
   Rank,
   Region,
 } from '@prisma/client';
-import { addDays } from 'date-fns';
 import axios from 'axios';
-import { Decimal } from '@prisma/client/runtime/library';
+import { addDays } from 'date-fns';
 
 const prisma = new PrismaClient();
 
@@ -178,29 +177,72 @@ const coupon: Omit<Coupon, 'id'>[] = [
   },
 ];
 
-const game: Omit<Game, 'id'>[] = [
+const game: Game[] = [
   {
+    id: 'clzu4a2yp0009tcoxm9ewxmbf',
     title: 'League of Legends',
     slug: 'league-of-legends',
     imageUrl: 'title-lol.png',
   },
   {
+    id: 'cm0y8yesd000008lh2ws13q8t',
     title: 'Valorant',
     slug: 'valorant',
     imageUrl: 'title-valorant.png',
   },
 ];
 
-const rank: Omit<Rank, 'id'>[] = [
-  { title: 'Iron', slug: 'iron', imageUrl: `rank-iron.png` },
-  { title: 'Bronze', slug: 'bronze', imageUrl: `rank-bronze.png` },
-  { title: 'Silver', slug: 'silver', imageUrl: `rank-silver.png` },
-  { title: 'Gold', slug: 'gold', imageUrl: `rank-gold.png` },
-  { title: 'Platinum', slug: 'platinum', imageUrl: `rank-platinum.png` },
-  { title: 'Emerald', slug: 'emerald', imageUrl: `rank-emerald.png` },
-  { title: 'Diamond', slug: 'diamond', imageUrl: `rank-diamond.png` },
-  { title: 'Master', slug: 'master', imageUrl: `rank-master.png` },
+const rank: Rank[] = [
   {
+    id: 'clzu4a2v50003tcox63jr4v2w',
+    title: 'Iron',
+    slug: 'iron',
+    imageUrl: `rank-iron.png`,
+  },
+  {
+    id: 'clzu4a337000etcoxjyvcnlqf',
+    title: 'Bronze',
+    slug: 'bronze',
+    imageUrl: `rank-bronze.png`,
+  },
+  {
+    id: 'clzu4a354000htcoxlxn8hfwy',
+    title: 'Silver',
+    slug: 'silver',
+    imageUrl: `rank-silver.png`,
+  },
+  {
+    id: 'clzu4a35p000ktcoxkmxxhh4y',
+    title: 'Gold',
+    slug: 'gold',
+    imageUrl: `rank-gold.png`,
+  },
+  {
+    id: 'clzu4a31u000ctcox8x4nqeti',
+    title: 'Platinum',
+    slug: 'platinum',
+    imageUrl: `rank-platinum.png`,
+  },
+  {
+    id: 'clzu4a33f000gtcoxb4no20x9',
+    title: 'Emerald',
+    slug: 'emerald',
+    imageUrl: `rank-emerald.png`,
+  },
+  {
+    id: 'clzu4a35o000jtcoxra8zlgtz',
+    title: 'Diamond',
+    slug: 'diamond',
+    imageUrl: `rank-diamond.png`,
+  },
+  {
+    id: 'cm0y922mn000108lhdepv92nc',
+    title: 'Master',
+    slug: 'master',
+    imageUrl: `rank-master.png`,
+  },
+  {
+    id: 'cm0y927nd000208lh8dvo2xaa',
     title: 'Grandmaster',
     slug: 'grandmaster',
     imageUrl: `rank-grandmaster.png`,
@@ -359,9 +401,9 @@ const coreProducts = [
 const products: Omit<Product, 'id'>[] = coreProducts.map((p) => ({
   ...p,
   gameId: 'clzu4a2yp0009tcoxm9ewxmbf',
-  price: (Math.random() * 50 + 10) as unknown as Decimal,
-  availableQuantity: Math.floor(Math.random() * 20) + 1,
-  regionId: 'clzu4a355000itcoxihldlotv',
+  priceInCents: (Math.floor(Math.random() * 50) + 10) * 100, // 10_000 to 50_000 cents
+  availableQuantity: Math.floor(Math.random() * 12) + 1,
+  regionId: 'cm0y93jh9000cjs42mpjhsmqq',
   status: getRandomItem(Object.values(ProductStatus)) as ProductStatus,
   extras: Object.values(ProductExtras) as ProductExtras[],
 }));
@@ -426,6 +468,8 @@ async function insertProducts() {
 
 async function test() {
   await insertProducts();
+  return;
+  await insertCoreData();
 }
 
 test()

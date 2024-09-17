@@ -10,7 +10,7 @@ export default async function HomeMostWantedSection() {
   return (
     <div className="flex h-full max-w-[1580px] flex-col rounded-[30px] bg-folder p-1 py-4 xl:p-14 xl:pt-8">
       {/* title */}
-      <h2 className="w-full text-center text-2xl font-extrabold uppercase text-brass shadow-brass text-shadow-sm xl:text-left xl:text-6xl">
+      <h2 className="w-full text-center text-2xl font-extrabold uppercase text-brass shadow-brass text-shadow-sm xl:text-left xl:text-4xl">
         Most Wanted
       </h2>
 

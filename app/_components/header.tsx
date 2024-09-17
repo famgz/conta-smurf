@@ -14,6 +14,7 @@ import { cn } from '@/app/_lib/utils';
 import { useCartStore } from '@/app/_store/cart-store';
 import useStore from '@/app/_store/use-store';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -53,6 +54,8 @@ export default function Header() {
   const pathname = usePathname();
   const hash = useURLHash();
   const hideElements = pathname === '/' && hash === '';
+  const { data } = useSession();
+  const user = data?.user;
 
   const cartTotalItems = useStore(useCartStore, (state) =>
     state.cartTotalItems()
@@ -106,16 +109,16 @@ export default function Header() {
           {/* right items */}
           <div
             className={cn(
-              'flex items-center gap-4 2xl:gap-10',
+              'flex items-center gap-3 2xl:gap-10',
 
               hideElements && 'xl:gap-4'
             )}
           >
             {/* cart */}
-            <Link href={'/cart'} className="relative hidden xl:block">
-              <ShopBag />
-              {!!cartTotalItems && (
-                <div className="flex-center absolute -bottom-1 -right-1 size-5 rounded-full bg-gradient-to-b from-[#850000] to-[#f00] text-sm font-bold">
+            <Link href={'/cart'} className="relative">
+              <ShopBag className="max-xl:size-7" />
+              {cartTotalItems && (
+                <div className="flex-center x:text-sm absolute -bottom-1 -right-1 size-4 rounded-full bg-gradient-to-b from-[#850000] to-[#f00] text-[10px] font-bold xl:size-5">
                   {cartTotalItems}
                 </div>
               )}

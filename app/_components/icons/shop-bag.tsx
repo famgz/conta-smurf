@@ -6,6 +6,7 @@ const ShopBagIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={38}
     height={43}
+    viewBox="0 0 38 43"
     fill="none"
     {...props}
   >

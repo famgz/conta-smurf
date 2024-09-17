@@ -188,7 +188,7 @@ export default function CartPage() {
             </div>
           </div>
 
-          {/* right column - cart ietms */}
+          {/* right column - cart items */}
           <div className="flex flex-1 flex-col sm:bg-light">
             {/* header */}
             <div className="flex items-center justify-between px-9 sm:h-20 sm:bg-tab-header 2xl:h-32">
@@ -196,7 +196,7 @@ export default function CartPage() {
               <DeleteButton
                 onClick={cartStore.clearCart}
                 iconSize={20}
-                className="!size-8"
+                className="z-50 !size-8"
               />
             </div>
 

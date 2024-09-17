@@ -28,7 +28,6 @@ export default function PurchaseHistoryTable() {
     async function getOrders() {
       const orders = await getProductOrdersByUserId(user!.id);
       setOrders(orders);
-      console.log(orders);
     }
     if (user) {
       getOrders();

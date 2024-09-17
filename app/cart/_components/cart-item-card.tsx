@@ -19,8 +19,6 @@ export default function CartItemCard({
   decreaseProductQuantity,
   increaseProductQuantity,
 }: Props) {
-  console.log(product);
-
   return (
     <div key={product.id} className="flex gap-3 rounded-2xl bg-black/20 p-3">
       <div className="relative size-20 overflow-hidden rounded-2xl">

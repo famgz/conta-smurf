@@ -36,11 +36,9 @@ export default function HomeProductsSection() {
       const data = await getProducts();
       setProducts(data);
 
-      let filters: ProductFilters;
-
       const dbFilters = await getProductFilters();
 
-      filters = {
+      const filters = {
         ...dbFilters,
         status: Object.values(ProductStatus),
         price: {
@@ -51,65 +49,10 @@ export default function HomeProductsSection() {
       };
 
       setFilters(filters);
-      console.log(filters);
     }
 
     fetchData();
   }, []);
-
-  const imagePrefix = '/images/icons/';
-
-  const filters_ = {
-    game: [
-      {
-        title: 'League of legends',
-        icon: imagePrefix + 'lol.png',
-      },
-      {
-        title: 'Valorant',
-        icon: imagePrefix + 'valorant.png',
-      },
-      {
-        title: 'League of legends Wild Rift (WIP)',
-        icon: imagePrefix + 'lol-wip.png',
-      },
-      {
-        title: 'Legends of Runeterra (WIP)',
-        icon: imagePrefix + 'lor-wip.png',
-      },
-    ],
-    rank: [
-      { title: 'bronze', icon: imagePrefix + 'rank-bronze.png' },
-      { title: 'challenger', icon: imagePrefix + 'rank-challenger.png' },
-      { title: 'diamond', icon: imagePrefix + 'rank-diamond.png' },
-      { title: 'emerald', icon: imagePrefix + 'rank-emerald.png' },
-      { title: 'gold', icon: imagePrefix + 'rank-gold.png' },
-      { title: 'grandmaster', icon: imagePrefix + 'rank-grandmaster.png' },
-      { title: 'iron', icon: imagePrefix + 'rank-iron.png' },
-      { title: 'master', icon: imagePrefix + 'rank-master.png' },
-      { title: 'no-rank', icon: imagePrefix + 'rank-no-rank.png' },
-      { title: 'platinum', icon: imagePrefix + 'rank-platinum.png' },
-      { title: 'silver', icon: imagePrefix + 'rank-silver.png' },
-    ],
-    price: {
-      min: 0,
-      max: 2500,
-    },
-    region: [
-      'Brazil',
-      'North America',
-      'LATAM',
-      'Oceania',
-      'Japan',
-      'Korea',
-      'Europe W',
-      'Europe N & E',
-      'Russia',
-      'Turkey',
-    ],
-    status: ['Active', 'Disabled', '[NFA]', 'No bans', 'No ranked Played'],
-    other: ['Gift cards', 'Riot points', 'Valorant points'],
-  };
 
   return (
     <div className="flex flex-col overflow-hidden rounded-[30px] xl:grid xl:grid-cols-[1fr_3fr]">
@@ -144,7 +87,7 @@ export default function HomeProductsSection() {
               filters.game.slice(0, 2).map((x) => (
                 <div className="relative size-4" key={x.id}>
                   <Image
-                    src={x.imageUrl}
+                    src={`/images/icons/${x.slug}.png`}
                     alt=""
                     fill
                     className="object-contain"
@@ -187,7 +130,7 @@ export default function HomeProductsSection() {
                             <Checkbox className="size-6" />
                             <div className="relative size-[33px]">
                               <Image
-                                src={x.imageUrl}
+                                src={`/images/icons/${x.slug}.png`}
                                 fill
                                 className="object-contain"
                                 alt=""

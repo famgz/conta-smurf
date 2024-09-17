@@ -117,7 +117,7 @@ export default function Header() {
             {/* cart */}
             <Link href={'/cart'} className="relative">
               <ShopBag className="max-xl:size-7" />
-              {cartTotalItems && (
+              {!!cartTotalItems && (
                 <div className="flex-center x:text-sm absolute -bottom-1 -right-1 size-4 rounded-full bg-gradient-to-b from-[#850000] to-[#f00] text-[10px] font-bold xl:size-5">
                   {cartTotalItems}
                 </div>

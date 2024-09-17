@@ -97,7 +97,9 @@ export default function ProductCard({ product }: Props) {
                 className="object-cover object-top"
               />
             </div>
-            <h1 className="text-3xl font-semibold">{product.title}</h1>
+            <h1 className="text-2xl font-semibold xl:text-3xl">
+              {product.title}
+            </h1>
 
             {/* tags */}
             <div className="flex flex-wrap items-center gap-1 xl:gap-2">
@@ -116,7 +118,7 @@ export default function ProductCard({ product }: Props) {
               <div className="space-y-4">
                 <DialogClose asChild>
                   <Button
-                    className="subtitle-badge w-full text-xl"
+                    className="subtitle-badge w-full xl:text-xl"
                     onClick={handleAddToCart}
                   >
                     Add to Cart
@@ -131,7 +133,7 @@ export default function ProductCard({ product }: Props) {
               </div>
 
               <div className="space-y-2">
-                <p className="text-center font-light">
+                <p className="text-center font-light max-xl:text-sm">
                   {product.availableQuantity} items available
                 </p>
                 <div className="flex-center gap-2">
@@ -141,7 +143,7 @@ export default function ProductCard({ product }: Props) {
                   </span>
                   <PlusButton onClick={handleIncreaseQuantity} />
                 </div>
-                <p className="w-full rounded-xl bg-menu py-2 text-center text-2xl text-white 2xl:text-3xl">
+                <p className="w-full rounded-xl bg-menu py-2 text-center text-lg text-white xl:text-2xl 2xl:text-3xl">
                   {formatPrice(totalPrice)}
                 </p>
               </div>
@@ -149,8 +151,8 @@ export default function ProductCard({ product }: Props) {
           </div>
 
           <div>
-            <p className="text-2xl">Choose a cosmetic</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-lg xl:text-2xl">Choose a cosmetic</p>
+            <p className="text-xs text-muted-foreground xl:text-sm">
               When choosing a skin, you will only be able to purchase one unit.
             </p>
           </div>
